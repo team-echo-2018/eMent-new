@@ -1,0 +1,9 @@
+/* set full length to nav-bar */
+.fluid {
+    width: 100%;
+}
+
+/* shading attribute for nav-bar */
+.shade {
+    box-shadow: 0px 0px 1em #8f8f8f;
+}

@@ -1,0 +1,26 @@
+/* Remove the outline of Navigation items */
+app-nav-item {
+    outline: none;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    width: 189px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content app-nav-item {
+    display: block;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Set custom background color for dropdown items */
+.bg-color {
+    background-color: #979ea5;
+}

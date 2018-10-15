@@ -1,0 +1,13 @@
+.nav-item {
+    height: 50px;
+    line-height: 50px;
+}
+
+.nav-item :hover {
+    cursor: pointer;
+    background-color: #666c72;
+}
+
+.text-white :hover {
+    color: rgb(138, 130, 248);
+}

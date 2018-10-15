@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg bg-secondary py-0">
+  <div class="collapse navbar-collapse">
+    <ul class="nav col-lg-8 ml-auto">
+
+      <app-nav-item class="col-lg-3 p-0" _itemName="Projects" [routerLink]="['/projects']" routerLinkActive="router-link-active" ></app-nav-item>
+      
+      <div class="col-lg-3 dropdown">
+        <app-nav-item class="p-0 dropbtn" _itemName="Messaging" [routerLink]="['/messaging']" routerLinkActive="router-link-active" ></app-nav-item>
+        <div class="dropdown-content">
+          <app-nav-item class="p-0 bg-color" _itemName="Forum" [routerLink]="['/forum']" routerLinkActive="router-link-active" ></app-nav-item>
+        </div>
+      </div>
+
+      <div class="col-lg-3 dropdown">
+        <app-nav-item class="p-0 dropbtn" _itemName="Features" [routerLink]="['/features']" routerLinkActive="router-link-active"></app-nav-item>
+      </div>
+
+      <div class="col-lg-3 dropdown">
+        <app-nav-item class="p-0 dropbtn" _itemName="Profile" [routerLink]="['/profile']" routerLinkActive="router-link-active" ></app-nav-item>
+        <div class="dropdown-content">
+          <app-nav-item class="p-0 bg-color" _itemName="About Us" [routerLink]="['/about-us']" routerLinkActive="router-link-active" ></app-nav-item>
+          <app-nav-item class="p-0 bg-color" _itemName="Help" [routerLink]="['/help']" routerLinkActive="router-link-active" ></app-nav-item>
+          <app-nav-item class="p-0 bg-color" _itemName="Log Out"></app-nav-item>
+        </div>
+      </div>
+    
+    </ul>
+  </div>
+</nav>

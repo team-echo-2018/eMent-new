@@ -1,0 +1,22 @@
+/* Remove the outline of Logo span */
+a {
+    outline: none;
+}
+
+/* logo image size -> width: 300px, heigth: 100px */
+.logo {
+    position: absolute;
+    top: 10px;
+    left: 80px;
+    width: 300px;
+    height: 100px;
+    z-index: 1;
+}
+
+.logo-image {
+    width: 100%;
+    height: 100%;
+    border: 3px solid rgba(109, 109, 109, 0.801);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #8f8f8f;
+}
