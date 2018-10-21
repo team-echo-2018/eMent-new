@@ -6,8 +6,8 @@ a {
 /* logo image size -> width: 300px, heigth: 100px */
 .logo {
     position: absolute;
-    top: 10px;
-    left: 80px;
+    top: 0.5em;
+    left: 4em;
     width: 300px;
     height: 100px;
     z-index: 1;
