@@ -2,7 +2,7 @@
 
     <div class="container">
   
-    <header>
+    <!-- <header>
       <div class="header-text">
           <span><i class="fa fa-lock" aria-hidden="true"></i></span>
           <h4>Login</h4>
@@ -10,7 +10,7 @@
       <span class="down-arrow">
           <i class="fa fa-caret-down" aria-hidden="true"></i>
       </span>
-    </header>
+    </header> -->
     <!--header ends-->
   
     <div class="form-wrapper">
@@ -59,3 +59,36 @@
     </div>
   </article>
   <!--article ends-->
+
+
+
+
+  
+  <div class="form-section">
+    <div class="col-lg-5 mx-auto page">
+  
+      <div class="row mb-2 py-3 title">
+        <p class="h1 w-100 text-center text-light">
+          Login
+        </p>
+      </div>
+  
+      <div class="row">
+        <input type="text" class="form-control w-75 mx-auto my-4" placeholder="User Name">
+      </div>
+  
+      <div class="row">
+        <input class="form-control w-75 mx-auto mb-4" type="password" placeholder="Password">
+      </div>
+  
+      <div class="row">
+        <button type="button" class="btn btn-success w-75 mx-auto mb-4" (click)="login()"> LOGIN </button>
+      </div>
+  
+      <div class="row">
+        <p class="w-100 mb-4 text-center">
+          Forgot the <a href="#">password</a> or a <a routerLink="/sign-up">new user</a> ?
+        </p>
+      </div>
+    </div>
+  </div>    
