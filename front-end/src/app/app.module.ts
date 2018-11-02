@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 
 /*components*/
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { Error404Component } from './error404/error404.component';
 
