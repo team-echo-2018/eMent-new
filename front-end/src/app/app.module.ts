@@ -10,8 +10,8 @@ import { FormsModule } from '@angular/forms';
 /*components*/
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
-import { HomeComponent } from './home/home.component';
-import { Error404Component } from './error404/error404.component';
+import { HomeComponent } from './pages/home/home.component';
+import { Error404Component } from './pages/error404/error404.component';
 
 /*routes*/
 import { RouterModule } from '@angular/router';
