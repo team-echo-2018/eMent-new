@@ -1,0 +1,10 @@
+.title {
+    background-color: rgba(121, 121, 121, 0.856);
+}
+
+.page {
+    background-color: #e8e8ff;
+    border: 2px solid rgba(121, 121, 121, 0.856);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgb(109, 109, 109)
+}
