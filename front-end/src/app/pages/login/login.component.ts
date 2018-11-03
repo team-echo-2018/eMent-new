@@ -23,20 +23,20 @@ export class LoginComponent implements OnInit {
   }
 
   submitForm() {
-      const authData = new Auth(this.username, this.password);
-      this.httpBackendRequest.realizarHttpPost(HttpEnum.AUTH, authData)
-      .subscribe(
-        (result) => {
-          if (result === null) {
-            alert('Login credentials are not correct.');
-          } else {
-            this.authService.setUser(result);
-            console.log("Login credentials ok")
-            this.router.navigate(['/home']);
-          }
-        },
-        (err) => alert('Error occured.. Contact Administrations!')
-        // Verificar erro backend > (err) => alert('Ocorreu um erro: ' + err)
-      );
-    }
+    const authData = new Auth(this.username, this.password);
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.AUTH, authData)
+    .subscribe(
+      (result) => {
+        if (result === null) {
+          alert('Login credentials are not correct.');
+        } else {
+          this.authService.setUser(result);
+          console.log("Login credentials ok")
+          this.router.navigate(['/home']);
+        }
+      },
+      (err) => alert('Error occured.. Contact Administrations!')
+      // Verificar erro backend > (err) => alert('Ocorreu um erro: ' + err)
+    );
   }
+}
