@@ -4,6 +4,7 @@ import { HttpBackendRequestService } from '../../services/http-backend-request.s
 import { HttpEnum } from '../../utils/httpEnum';
 import { User } from '../../entities/user';
 import { AuthenticationService } from '../../services/authentication.service';
+import { Router } from '../../../../node_modules/@angular/router';
 
 
 @Component({
@@ -15,11 +16,10 @@ export class ProfileComponent implements OnInit {
 
   user: User;
 
-  constructor(private httpBackendRequest: HttpBackendRequestService, private authService: AuthenticationService) {
-    this.testStd();
-   }
+  constructor(private router:Router, private httpBackendRequest: HttpBackendRequestService, private authService: AuthenticationService) {  }
 
   ngOnInit() {
+    this.authService.isUserLogged();
   }
 
   testStd() {
