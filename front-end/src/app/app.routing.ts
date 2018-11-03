@@ -2,12 +2,24 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { Error404Component } from './pages/error404/error404.component';
+import { ProjectComponent } from './pages/project/project.component';
+import { MessagingComponent } from './pages/messaging/messaging.component';
+import { ForumComponent } from './pages/forum/forum.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { HelpComponent } from './pages/help/help.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'projects', component: ProjectComponent },
+  { path: 'messaging', component: MessagingComponent },
+  { path: 'forum', component: ForumComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'help', component: HelpComponent },
   { path: '**', component: Error404Component }
 ];
 
