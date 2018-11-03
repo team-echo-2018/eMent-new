@@ -3,6 +3,8 @@
 var User = require('../entities/user');
 var Student = require('../entities/student');
 
+
+
 /* ------ UTILS FUNCTIONS ------- */
 
 function Utils () { }
@@ -16,6 +18,7 @@ Utils.prototype.getInsertSqlUser = function(user) {
     return sqlUser;
 }
 
+// SQL query for select user by user name
 Utils.prototype.getSqlSelectUser = function(user_name) {
     
     var sqlSelectUser = "SELECT * FROM  users WHERE user_name like '" + user_name + "'";
@@ -23,6 +26,7 @@ Utils.prototype.getSqlSelectUser = function(user_name) {
     return sqlSelectUser;
 };
 
+// SQL query for select student by student id
 Utils.prototype.getSqlSelectStudent = function(std_id) {
 
     var sqlSelectStudent = "SELECT * FROM student WHERE std_id=" + std_id;
@@ -30,7 +34,7 @@ Utils.prototype.getSqlSelectStudent = function(std_id) {
     return sqlSelectStudent;
 };
 
-
+// user object generating function
 Utils.prototype.generateUser = function(resultUser) {
     var user = null;
     if(resultUser) {
@@ -43,6 +47,7 @@ Utils.prototype.generateUser = function(resultUser) {
     return user;
 };
 
+// student object generating function
 Utils.prototype.generateStudent = function(resultStudent) {
     var student = null;
     if(resultStudent) {
@@ -59,4 +64,5 @@ Utils.prototype.generateStudent = function(resultStudent) {
     return student;
 }
 
+// export utils function
 module.exports = Utils;

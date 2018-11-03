@@ -9,6 +9,7 @@ var DAOMySql = require('../models/backend-mysql-database');
 
 function BackendController() { }
 
+// not used yet... don't change..
 BackendController.prototype.insert = function (req, callback) {
 
     var user = new User(req.nome, 
@@ -28,6 +29,8 @@ BackendController.prototype.insert = function (req, callback) {
     })
 }
 
+
+// user authentcation function
 BackendController.prototype.auth = function(req, callback){
     
     var daoMsql = new DAOMySql();
@@ -73,7 +76,7 @@ BackendController.prototype.auth = function(req, callback){
 //     })
 // }
 
-// get student by controller
+// get student object from DB model
 BackendController.prototype.getStudent = function(req, callback){
     
     var daoMsql = new DAOMySql();

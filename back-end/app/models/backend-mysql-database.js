@@ -18,6 +18,7 @@ function DatabaseMySql() {  }
 
 /* ---------  DATABASE - METHODS   -----------*/
 
+// not used yet.... don't change
 DatabaseMySql.prototype.insert = function (user, callback) {
 
   var utils = new Utils();
@@ -49,7 +50,7 @@ DatabaseMySql.prototype.insert = function (user, callback) {
   });
 }
 
-
+// get user object relevant to DB
 DatabaseMySql.prototype.getUser = function (user_name, callback) {
   
   var utils = new Utils();
@@ -65,7 +66,7 @@ DatabaseMySql.prototype.getUser = function (user_name, callback) {
   });
 }
 
-// generate student object
+// get student object relevant to DB
 DatabaseMySql.prototype.getStudent = function (std_id, callback) {
 
   var utils = new Utils();
@@ -82,7 +83,7 @@ DatabaseMySql.prototype.getStudent = function (std_id, callback) {
 }
 
 
-
+// DB query inserting function 
 function insertSql(query, callback) {
    
   connection.query(query, function(err, result) {
