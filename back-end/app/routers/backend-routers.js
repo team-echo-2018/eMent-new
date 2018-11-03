@@ -2,6 +2,7 @@
 
 var express = require('express');
 var Usuario = require('../entities/user');
+var Student = require('../entities/student');
 var BackendController = require('../controllers/backend-controller');
 
 const util = require('util');
@@ -11,7 +12,6 @@ var backendController = new BackendController();
 
 
 /* ---------  ROUTERS - POST METHODS   -----------*/
-
 
 router.route('/addUser').post(function (req, res) {
     backendController.insert(req.body, function (result, error) {
@@ -39,6 +39,18 @@ router.route('/auth').post(function (req, res) {
             res.json(result);
         }
 
+    });
+});
+
+router.route('/profile').post(function (req, res) {
+    backendController.getStudent(req.body, function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 

@@ -65,7 +65,25 @@ DatabaseMySql.prototype.getUser = function (user_name, callback) {
   });
 }
 
- function insertSql(query, callback) {
+// generate student object
+DatabaseMySql.prototype.getStudent = function (std_id, callback) {
+
+  var utils = new Utils();
+
+  var sqlSelectStudent = utils.getSqlSelectStudent(std_id);
+
+  connection.query(sqlSelectStudent, function(err, resultStudent) {
+    if (err || resultStudent.length == 0) {
+      callback (null, err);
+    } else {
+      callback (utils.generateStudent(resultStudent[0]));
+    }
+  });
+}
+
+
+
+function insertSql(query, callback) {
    
   connection.query(query, function(err, result) {
     if (err) {
