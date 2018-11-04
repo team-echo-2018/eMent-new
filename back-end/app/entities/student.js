@@ -1,4 +1,4 @@
-var Student = function(studentId, studentFname, studentLname, studentAddress, studentPhone, studentEmail, studentImagLink, studentDescription){
+var Student = function(studentId, studentFname, studentLname, studentAddress, studentPhone, studentEmail, studentImgLink, studentDescription){
 
     this.studentId = studentId;
     this.studentFname = studentFname;
@@ -6,7 +6,7 @@ var Student = function(studentId, studentFname, studentLname, studentAddress, st
     this.studentAddress = studentAddress;
     this.studentPhone = studentPhone;
     this.studentEmail = studentEmail;
-    this.studentImagLink = studentImagLink;
+    this.studentImgLink = studentImgLink;
     this.studentDescription = studentDescription;
 
 }

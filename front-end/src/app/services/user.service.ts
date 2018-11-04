@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { AuthenticationService } from './authentication.service';
 import { Utils } from '../utils/utils';
+import { User } from '../entities/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private currentUser: any;
+  currentUser: any;
 
-  constructor(private authService: AuthenticationService) { }
+  constructor() { }
 
   ngOnInit() {
     this.currentUser = null;
@@ -19,19 +19,14 @@ export class UserService {
     return this.currentUser;
   }
 
-  setCurrentUser (user: Object) {
-    let authUser = this.authService.getUser();
-    if(!authUser) {
-      console.log("err : user has not logged.");
-    } else {
-      switch(this.authService.getLoggedUserType()){
-        case 'S':
-          this.setUserForStudent(user);
-          break;
-        case 'M':
-          this.setUserForMentor();
-          break;
-      }
+  setCurrentUser (loggedUser: User ,user: Object) {
+    switch(loggedUser.userType){
+      case 'S':
+        this.setUserForStudent(user);
+        break;
+      case 'M':
+        this.setUserForMentor();
+        break;
     }
   }
 

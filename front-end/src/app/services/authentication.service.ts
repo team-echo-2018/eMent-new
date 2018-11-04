@@ -3,6 +3,11 @@ import { User } from '../entities/user';
 import { Utils } from '../utils/utils';
 import { Router } from '@angular/router';
 
+import { HttpEnum } from '../utils/httpEnum';
+import { HttpBackendRequestService } from './http-backend-request.service';
+import { Auth } from '../entities/auth';
+import { UserService } from './user.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +15,9 @@ export class AuthenticationService {
 
   private userAuth: User;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, 
+    private httpBackendRequest: HttpBackendRequestService, 
+    private userService: UserService) { }
 
   ngOnInit() {
     this.userAuth = null;
@@ -24,9 +31,41 @@ export class AuthenticationService {
     this.userAuth = Utils.convertDatabaseUserToUser(userAuth);
   }
 
+  loginUser(authData: Auth) {
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.AUTH, authData)
+    .subscribe(
+      (result) => {
+        if (result === null) {
+          alert('Login credentials are not correct.');
+        } else {
+          this.setUser(result);
+          this.setLoggedUserObject();
+          console.log("Login credentials ok")
+          this.router.navigate(['/home']);
+        }
+      },
+      (err) => alert('Error occured.. Contact Administrations!')
+      // Verificar erro backend > (err) => alert('Ocorreu um erro: ' + err)
+    );
+  }
+
+  setLoggedUserObject() {
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.GETSTUDENT, this.userAuth)
+    .subscribe(
+      (result) => {
+        if (result === null) {
+          alert('error.');
+        } else {
+          this.userService.setCurrentUser(this.userAuth ,result);
+        }
+      },
+      (err) => alert('Error occured.. Contact Administrations!')
+    );
+  }
+
   isUserLogged(): Boolean {
     if (!this.userAuth) {
-      alert('User should be logged.');
+      // alert('User should be logged.');
       this.router.navigate(['/login']);
       return false;
     } else {
@@ -36,6 +75,12 @@ export class AuthenticationService {
 
   getLoggedUserType(): string {
     return this.userAuth.userType;
+  }
+
+  logoutUser() {
+    this.userAuth = null;
+    this.userService.currentUser = null;
+    this.router.navigate(['/login']);
   }
 
 }

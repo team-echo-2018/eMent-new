@@ -22,7 +22,7 @@
         <div class="dropdown-content w-100">
           <app-nav-item class="p-0 bg-color" _itemName="About Us" [routerLink]="['/about-us']" routerLinkActive="router-link-active" ></app-nav-item>
           <app-nav-item class="p-0 bg-color" _itemName="Help" [routerLink]="['/help']" routerLinkActive="router-link-active" ></app-nav-item>
-          <app-nav-item class="p-0 bg-color" _itemName="Log Out"></app-nav-item>
+          <app-nav-item class="p-0 bg-color" _itemName="Log Out" (click)="logout()"></app-nav-item>
         </div>
       </div>
     
