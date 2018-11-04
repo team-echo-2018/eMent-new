@@ -5,6 +5,7 @@ import { HttpBackendRequestService } from '../../services/http-backend-request.s
 import { Auth } from '../../entities/auth';
 import { HttpEnum } from '../../utils/httpEnum';
 import { AuthenticationService } from '../../services/authentication.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,10 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
 
-  constructor( private httpBackendRequest: HttpBackendRequestService, private router: Router, private authService: AuthenticationService ) { }
+  constructor( 
+    private httpBackendRequest: HttpBackendRequestService, 
+    private router: Router, 
+    private authService: AuthenticationService, private userService: UserService ) { }
 
   ngOnInit() {
   }
@@ -31,6 +35,7 @@ export class LoginComponent implements OnInit {
           alert('Login credentials are not correct.');
         } else {
           this.authService.setUser(result);
+          this.setCurrentUserObject();
           console.log("Login credentials ok")
           this.router.navigate(['/home']);
         }
@@ -39,4 +44,20 @@ export class LoginComponent implements OnInit {
       // Verificar erro backend > (err) => alert('Ocorreu um erro: ' + err)
     );
   }
+
+  setCurrentUserObject() {
+    let user = this.authService.getUser();
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.GETSTUDENT, user)
+    .subscribe(
+      (result) => {
+        if (result === null) {
+          alert('error.');
+        } else {
+          this.userService.setCurrentUser(result);
+        }
+      },
+      (err) => alert('Error occured.. Contact Administrations!')
+    );
+  }
+  
 }

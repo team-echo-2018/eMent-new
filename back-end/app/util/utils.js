@@ -12,24 +12,24 @@ function Utils () { }
 Utils.prototype.getInsertSqlUser = function(user) {
 	
     var sqlUser =   "INSERT INTO users (user_type, user_name, user_password) VALUES (" +
-        "'" + user.user_type      + "', " + 
-        "'" + user.user_name      + "', " + 
-        "'" + user.user_password  + "')";
+        "'" + user.userType      + "', " + 
+        "'" + user.userName      + "', " + 
+        "'" + user.userPassword  + "')";
     return sqlUser;
 }
 
 // SQL query for select user by user name
-Utils.prototype.getSqlSelectUser = function(user_name) {
+Utils.prototype.getSqlSelectUser = function(userName) {
     
-    var sqlSelectUser = "SELECT * FROM  users WHERE user_name like '" + user_name + "'";
+    var sqlSelectUser = "SELECT * FROM  users WHERE user_name like '" + userName + "'";
     
     return sqlSelectUser;
 };
 
 // SQL query for select student by student id
-Utils.prototype.getSqlSelectStudent = function(std_id) {
+Utils.prototype.getSqlSelectStudent = function(studentId) {
 
-    var sqlSelectStudent = "SELECT * FROM student WHERE std_id=" + std_id;
+    var sqlSelectStudent = "SELECT * FROM student WHERE student_id=" + studentId;
 
     return sqlSelectStudent;
 };
@@ -52,14 +52,14 @@ Utils.prototype.generateStudent = function(resultStudent) {
     var student = null;
     if(resultStudent) {
         student = new Student(
-            resultStudent.std_id, 
-            resultStudent.std_fname, 
-            resultStudent.std_lname, 
-            resultStudent.std_address, 
-            resultStudent.std_phone, 
-            resultStudent.std_email, 
-            resultStudent.std_image, 
-            resultStudent.std_description);
+            resultStudent.student_id, 
+            resultStudent.student_fname, 
+            resultStudent.student_lname, 
+            resultStudent.student_address, 
+            resultStudent.student_phone, 
+            resultStudent.student_email, 
+            resultStudent.student_imglink, 
+            resultStudent.student_description);
     }
     return student;
 }

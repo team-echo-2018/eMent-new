@@ -51,11 +51,11 @@ DatabaseMySql.prototype.insert = function (user, callback) {
 }
 
 // get user object relevant to DB
-DatabaseMySql.prototype.getUser = function (user_name, callback) {
+DatabaseMySql.prototype.getUser = function (userName, callback) {
   
   var utils = new Utils();
   
-  var sqlSelectUser = utils.getSqlSelectUser(user_name);
+  var sqlSelectUser = utils.getSqlSelectUser(userName);
   
   connection.query(sqlSelectUser, function(err, resultUser) {
     if (err || resultUser.length == 0) {
@@ -67,11 +67,11 @@ DatabaseMySql.prototype.getUser = function (user_name, callback) {
 }
 
 // get student object relevant to DB
-DatabaseMySql.prototype.getStudent = function (std_id, callback) {
+DatabaseMySql.prototype.getStudent = function (studentId, callback) {
 
   var utils = new Utils();
 
-  var sqlSelectStudent = utils.getSqlSelectStudent(std_id);
+  var sqlSelectStudent = utils.getSqlSelectStudent(studentId);
 
   connection.query(sqlSelectStudent, function(err, resultStudent) {
     if (err || resultStudent.length == 0) {

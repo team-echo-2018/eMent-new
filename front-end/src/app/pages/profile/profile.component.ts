@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { HttpBackendRequestService } from '../../services/http-backend-request.service';
-import { HttpEnum } from '../../utils/httpEnum';
 import { User } from '../../entities/user';
 import { AuthenticationService } from '../../services/authentication.service';
+import { UserService } from '../../services/user.service';
 
 
 @Component({
@@ -15,29 +15,14 @@ export class ProfileComponent implements OnInit {
 
   user: User;
 
-  constructor(private httpBackendRequest: HttpBackendRequestService, private authService: AuthenticationService) {
-    this.testStd();
-   }
+  constructor(
+    private httpBackendRequest: HttpBackendRequestService, 
+    private authService: AuthenticationService, 
+    private userService: UserService ) {  }
 
   ngOnInit() {
-  }
-
-  testStd() {
-    this.user = this.authService.getUser();
-
-    this.httpBackendRequest.realizarHttpPost(HttpEnum.GETSTUDENT, this.user)
-    .subscribe(
-      (result) => {
-        if (result === null) {
-          alert('error.');
-        } else {
-          // this.authService.setUser(result);
-          console.log(result);
-        }
-      },
-      (err) => alert('Error occured.. Contact Administrations!')
-      // Verificar erro backend > (err) => alert('Ocorreu um erro: ' + err)
-    );
+    // if user is not logged, redirect to login page
+    this.authService.isUserLogged();
   }
 
 }
