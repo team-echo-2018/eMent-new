@@ -3,7 +3,15 @@
 
 <!-- Profile page content -->
 <div class="container-fluid mt-3">
-  <p>Profile Page content here...</p>
+  <form>
+    <input [(ngModel)]="image" name="image" type="text" class="form-control w-75 mx-auto my-4" disabled/>
+    <input [(ngModel)]="fname" name="fname" type="text" class="form-control w-75 mx-auto my-4" disabled/>
+    <input [(ngModel)]="lname" name="lname" type="text" class="form-control w-75 mx-auto my-4" disabled/>
+    <input [(ngModel)]="address" name="address" type="text" class="form-control w-75 mx-auto my-4" disabled/>
+    <input [(ngModel)]="email" name="email" type="text" class="form-control w-75 mx-auto my-4" disabled/>
+    <input [(ngModel)]="phone" name="phone" type="text" class="form-control w-75 mx-auto my-4" disabled/>
+    <input [(ngModel)]="description" name="description" type="text" class="form-control w-75 mx-auto my-4" disabled/>
+  </form>
   
 </div>
 
