@@ -24,11 +24,18 @@ export class AuthenticationService {
     this.userAuth = Utils.convertDatabaseUserToUser(userAuth);
   }
 
-  isUserLogged() {
+  isUserLogged(): Boolean {
     if (!this.userAuth) {
       alert('User should be logged.');
       this.router.navigate(['/login']);
+      return false;
+    } else {
+      return true;
     }
+  }
+
+  getLoggedUserType(): string {
+    return this.userAuth.userType;
   }
 
 }

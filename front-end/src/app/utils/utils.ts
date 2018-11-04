@@ -1,4 +1,5 @@
 import { User } from '../entities/user';
+import { Student } from '../entities/student';
 
 export class Utils {
 
@@ -7,11 +8,29 @@ export class Utils {
     public static convertDatabaseUserToUser(dataUser: any): User {
 
         const user = new User();
-        user.user_id = dataUser.user_id;
-        user.user_name = dataUser.user_name;
-        user.user_password = dataUser.user_password;
-        user.user_type = dataUser.user_type;
+
+        user.userId = dataUser.userId;
+        user.userName = dataUser.userName;
+        user.userPassword = dataUser.userPassword;
+        user.userType = dataUser.userType;
         
         return user;
+    }
+
+    public static convertDatabaseStudentToStudent(dataStudent: any): Student {
+
+        const student = new Student();
+
+        student.studentId = dataStudent.studentId;
+        student.studentFname = dataStudent.studentFname;
+        student.studentLname = dataStudent.studentLname;
+        student.studentAddress = dataStudent.studentAddress;
+        student.studentPhone = dataStudent.studentPhone;
+        student.studentEmail = dataStudent.studentEmail;
+        student.studentImglink = dataStudent.studentImglink;
+        student.studentDescription = dataStudent.studentDescription;
+
+        return student;
+
     }
 }

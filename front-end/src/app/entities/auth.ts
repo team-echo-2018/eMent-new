@@ -1,9 +1,9 @@
 export class Auth {
-    user_name: string;
-    user_password: string;
+    userName: string;
+    userPassword: string;
 
-    constructor(user_name: string, user_password: string) {
-        this.user_name = user_name;
-        this.user_password = user_password;
+    constructor(userName: string, userPassword: string) {
+        this.userName = userName;
+        this.userPassword = userPassword;
     }
 }

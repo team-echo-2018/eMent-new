@@ -35,14 +35,14 @@ BackendController.prototype.auth = function(req, callback){
     
     var daoMsql = new DAOMySql();
 
-    daoMsql.getUser(req.user_name,  function(result, err) { 
+    daoMsql.getUser(req.userName,  function(result, err) { 
         console.log("Enter to the get user function");
         if (err || !result) {
             console.log("** error or no result");
             callback(null, err);
         } else {
             console.log("** no errors");
-            if ( result.user_password == req.user_password ) {
+            if ( result.userPassword == req.userPassword ) {
                 console.log("**** password matched");
                 callback(result);
             } else {
@@ -78,10 +78,10 @@ BackendController.prototype.auth = function(req, callback){
 
 // get student object from DB model
 BackendController.prototype.getStudent = function(req, callback){
-    
+
     var daoMsql = new DAOMySql();
 
-    daoMsql.getStudent(req.user_id,  function(result, err) { 
+    daoMsql.getStudent(req.userId,  function(result, err) { 
         console.log("Enter to the get student function");
         if (err || !result) {
             console.log("** error or no result");
