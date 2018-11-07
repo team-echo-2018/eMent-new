@@ -82,10 +82,39 @@ DatabaseMySql.prototype.getStudent = function (studentId, callback) {
   });
 }
 
+// update student object relevant to DB
+DatabaseMySql.prototype.updateStudent = function (student, callback) {
+  
+  var utils = new Utils();
+
+  /* -- Start transation -- */
+  //connection.connect();
+  connection.beginTransaction(function(err) {
+    if (err) { callback (null, err); }
+
+    var sqlUpdateStudent = utils.getSqlUpdateStudent(student);
+    
+    insertSql(sqlUpdateStudent, function(result, err){
+      if(err){
+        connection.rollback();
+        callback (null, err);
+      } else {
+        connection.commit(function(err) {
+          if (err) { 
+            connection.rollback();
+            callback (null, err);
+          }
+          console.log('Transaction Complete.');
+          //connection.end();
+          callback("Student successfully updated in the system!");
+        });
+      }
+    });
+  });
+}
 
 // DB query inserting function 
-function insertSql(query, callback) {
-   
+function insertSql(query, callback) { 
   connection.query(query, function(err, result) {
     if (err) {
       callback (null, err);
@@ -93,7 +122,7 @@ function insertSql(query, callback) {
       callback(result)
     }
   });
- }
+}
 
 
 

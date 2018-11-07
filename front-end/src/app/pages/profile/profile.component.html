@@ -3,14 +3,17 @@
 
 <!-- Profile page content -->
 <div class="container-fluid mt-3">
-  <form>
-    <input [(ngModel)]="image" name="image" type="text" class="form-control w-75 mx-auto my-4" disabled/>
-    <input [(ngModel)]="fname" name="fname" type="text" class="form-control w-75 mx-auto my-4" disabled/>
-    <input [(ngModel)]="lname" name="lname" type="text" class="form-control w-75 mx-auto my-4" disabled/>
-    <input [(ngModel)]="address" name="address" type="text" class="form-control w-75 mx-auto my-4" disabled/>
-    <input [(ngModel)]="email" name="email" type="text" class="form-control w-75 mx-auto my-4" disabled/>
-    <input [(ngModel)]="phone" name="phone" type="text" class="form-control w-75 mx-auto my-4" disabled/>
-    <input [(ngModel)]="description" name="description" type="text" class="form-control w-75 mx-auto my-4" disabled/>
+  <form #loginForm="ngForm" (ngSubmit)="submitForm()" method="POST" action="www" class="my-5">
+    <input [(ngModel)]="image" name="image" type="text" class="form-control w-75 mx-auto my-4" [disabled]="editable"/>
+    <input [(ngModel)]="fname" name="fname" type="text" class="form-control w-75 mx-auto my-4" [disabled]="editable"/>
+    <input [(ngModel)]="lname" name="lname" type="text" class="form-control w-75 mx-auto my-4" [disabled]="editable"/>
+    <input [(ngModel)]="address" name="address" type="text" class="form-control w-75 mx-auto my-4" [disabled]="editable"/>
+    <input [(ngModel)]="email" name="email" type="text" class="form-control w-75 mx-auto my-4" [disabled]="editable"/>
+    <input [(ngModel)]="phone" name="phone" type="text" class="form-control w-75 mx-auto my-4" [disabled]="editable"/>
+    <input [(ngModel)]="description" name="description" type="text" class="form-control w-75 mx-auto my-4" [disabled]="editable"/>
+    <div class="w-75 mx-auto my-4">
+      <button type="submit" class="btn btn-primary w-25">{{btnCaption}}</button>
+    </div>
   </form>
   
 </div>
