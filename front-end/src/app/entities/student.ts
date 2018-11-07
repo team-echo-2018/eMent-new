@@ -11,6 +11,7 @@ export class Student {
     studentImgLink: string;
     studentDescription: string;
 
+    // getters
     public getId(): string {
         return this.studentId;
     }
@@ -41,5 +42,38 @@ export class Student {
 
     public getDescription(): string {
         return this.studentDescription;
+    }
+
+    // setters
+    public setId(id: string) {
+        this.studentId = id;
+    }
+
+    public setFirstName(fname: string) {
+        this.studentFname = fname;
+    }
+
+    public setLastName(lname: string) {
+        this.studentLname = lname;
+    }
+
+    public setAddress(address: string) {
+        this.studentAddress = address;
+    }
+
+    public setPhone(phone: string) {
+        this.studentPhone = phone;
+    }
+
+    public setEmail(email: string) {
+        this.studentEmail = email;
+    }
+
+    public setImgLink(imglink: string) {
+        this.studentImgLink = imglink;
+    }
+
+    public setDescription(des: string) {
+        this.studentDescription = des;
     }
 }

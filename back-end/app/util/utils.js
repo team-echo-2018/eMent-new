@@ -34,6 +34,22 @@ Utils.prototype.getSqlSelectStudent = function(studentId) {
     return sqlSelectStudent;
 };
 
+// SQL query for update student by student id
+Utils.prototype.getSqlUpdateStudent = function(student) {
+
+    var sqlUpdateStudent = "UPDATE student SET" +
+        " student_fname='" + student.studentFname + "'," +
+        " student_lname='" + student.studentLname + "'," +
+        " student_address='" + student.studentAddress +"'," + 
+        " student_phone='" + student.studentPhone + "'," + 
+        " student_email='" + student.studentEmail + "'," + 
+        " student_imglink='" + student.studentImgLink + "'," +
+        " student_description='" + student.studentDescription + "' WHERE" + 
+        " student_id=" + student.studentId;
+
+    return sqlUpdateStudent;
+};
+
 // user object generating function
 Utils.prototype.generateUser = function(resultUser) {
     var user = null;

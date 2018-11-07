@@ -92,4 +92,32 @@ BackendController.prototype.getStudent = function(req, callback){
     });
 }
 
+// update student object from DB model
+BackendController.prototype.updateStudent = function(req, callback){
+
+    // student object with updated details
+    var student = new Student(
+        req.studentId, 
+        req.studentFname, 
+        req.studentLname, 
+        req.studentAddress, 
+        req.studentPhone, 
+        req.studentEmail, 
+        req.studentImgLink, 
+        req.studentDescription
+    );
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.updateStudent(student, function(result, err) { 
+        console.log("Enter to the update student function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
 module.exports = BackendController;

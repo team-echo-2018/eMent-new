@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Utils } from '../utils/utils';
 import { User } from '../entities/user';
+import { HttpBackendRequestService } from './http-backend-request.service';
+import { HttpEnum } from '../utils/httpEnum';
+import { Student } from '../entities/student';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +12,7 @@ export class UserService {
 
   currentUser: any;
 
-  constructor() { }
+  constructor(private httpBackendRequest: HttpBackendRequestService) { }
 
   ngOnInit() {
     this.currentUser = null;
@@ -36,6 +39,28 @@ export class UserService {
 
   private setUserForMentor() {
 
+  }
+
+  updateCurrentUserDetails(loggedUser: User ,user: any) {
+    switch(loggedUser.userType){
+      case 'S':
+        this.updateStudentDetails(user);
+        break;
+      case 'M':
+        this.setUserForMentor();
+        break;
+    }
+  }
+
+  updateStudentDetails(student: Student) {
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.UPDATESTUDENT, student)
+    .subscribe(
+      (result) => {
+        alert(result);
+      },
+      (err) => alert('Error occured.. Contact Administrations!')
+      // Verificar erro backend > (err) => alert('Ocorreu um erro: ' + err)
+    );
   }
 
 }

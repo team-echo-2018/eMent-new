@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { HttpBackendRequestService } from '../../services/http-backend-request.service';
 import { Auth } from '../../entities/auth';
-import { HttpEnum } from '../../utils/httpEnum';
 import { AuthenticationService } from '../../services/authentication.service';
-import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -19,10 +16,7 @@ export class LoginComponent implements OnInit {
   password: string;
 
   constructor( 
-    private httpBackendRequest: HttpBackendRequestService, 
-    private router: Router, 
-    private authService: AuthenticationService, 
-    private userService: UserService ) { }
+    private authService: AuthenticationService ) { }
 
   ngOnInit() {
     this.authService.isUserLogged();

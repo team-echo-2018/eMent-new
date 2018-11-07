@@ -53,4 +53,15 @@ router.route('/profile').post(function (req, res) {
     });
 });
 
+router.route('/profile/update').post(function (req, res) {
+    backendController.updateStudent(req.body, function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.json(result);
+        }
+    });
+});
+
 module.exports = router;

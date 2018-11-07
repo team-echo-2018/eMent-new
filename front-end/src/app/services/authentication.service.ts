@@ -50,7 +50,7 @@ export class AuthenticationService {
   }
 
   setLoggedUserObject() {
-    this.httpBackendRequest.realizarHttpPost(HttpEnum.GETSTUDENT, this.userAuth)
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.GETUSER, this.userAuth)
     .subscribe(
       (result) => {
         if (result === null) {
@@ -73,9 +73,9 @@ export class AuthenticationService {
     }
   }
 
-  getLoggedUserType(): string {
-    return this.userAuth.userType;
-  }
+  // getLoggedUserType(): string {
+  //   return this.userAuth.userType;
+  // }
 
   logoutUser() {
     this.userAuth = null;
