@@ -47,6 +47,9 @@ export class ProfileComponent implements OnInit {
     this.email = this.user.getEmail();
     this.phone = this.user.getPhone();
     this.image = this.user.getImgLink();
+    if(this.image==null || this.image=="") {
+      this.image = "default.jpg";
+    }
     this.description = this.user.getDescription();
 
     this.editable = true;

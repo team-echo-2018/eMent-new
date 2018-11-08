@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2018 at 06:26 PM
+-- Generation Time: Nov 08, 2018 at 03:34 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -128,7 +128,7 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`student_id`, `student_fname`, `student_lname`, `student_address`, `student_phone`, `student_email`, `student_imglink`, `student_description`) VALUES
-(1, 'Ravindu', 'Sachintha', '640/57, 2nd Kurana, Colombo Road, Negombo', '077-2769963', 'ravindusachintha53@gmail.com', 'daasdsdasd', 'A student');
+(1, 'Ravindu', 'Sachintha', '640/57, 2nd Kurana, Colombo Road, Negombo', '077-2769963', 'ravindusachintha53@gmail.com', '', 'A student of UCSC');
 
 -- --------------------------------------------------------
 
