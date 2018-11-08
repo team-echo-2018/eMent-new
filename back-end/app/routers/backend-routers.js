@@ -1,14 +1,13 @@
 /* ---------  REQUIRES   -----------*/
 
 var express = require('express');
-var Usuario = require('../entities/user');
-var Student = require('../entities/student');
 var BackendController = require('../controllers/backend-controller');
-
-const util = require('util');
+var upload = require('../config/multer.config');
+var fileWorker = require('../controllers/file.controller');
 
 var router = express.Router();
 var backendController = new BackendController();
+
 
 
 /* ---------  ROUTERS - POST METHODS   -----------*/
@@ -63,5 +62,11 @@ router.route('/profile/update').post(function (req, res) {
         }
     });
 });
+
+// file uploading ................
+router.route('/file/upload').post(upload.single("file"), fileWorker.uploadFile);
+
+// getting uploaded files...
+
 
 module.exports = router;
