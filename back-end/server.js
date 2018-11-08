@@ -5,6 +5,15 @@
 var express     = require('express'); //chamando o pacote express
 var app         = express(); //definção da nossa aplicação através do express
 var bodyParser  = require('body-parser');  //chamando o pacote body-parser
+
+const cors = require('cors')
+const corsOptions = {
+  origin: 'http://localhost:4200',
+  optionsSuccessStatus: 200
+}
+app.use(cors(corsOptions));
+
+global.__basedir = __dirname;
  
 /** Configuração da variável 'app' para usar o 'bodyParser()'.
  * Ao fazermos isso nos permitirá retornar os dados a partir de um POST
@@ -12,6 +21,10 @@ var bodyParser  = require('body-parser');  //chamando o pacote body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
  
+
+// serve static files in  the uploads folder.
+app.use(express.static('uploads'));
+
 /** Definição da porta onde será executada a nossa aplicação */
 var port = process.env.PORT || 8000; 
  

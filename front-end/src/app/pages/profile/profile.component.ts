@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { HttpBackendRequestService } from '../../services/http-backend-request.service';
-import { User } from '../../entities/user';
 import { AuthenticationService } from '../../services/authentication.service';
 import { UserService } from '../../services/user.service';
+import { UploadFileService } from '../../services/upload-file.service';
+import { HttpResponse } from '@angular/common/http';
+import { HttpEnum } from '../../utils/httpEnum';
 
 
 @Component({
@@ -25,10 +26,15 @@ export class ProfileComponent implements OnInit {
   image: string;
   description: string;
 
+  selectedFiles: FileList;
+  currentFileUpload: File;
+  imageAddress: string;
+
 
   constructor(
     private authService: AuthenticationService, 
-    private userService: UserService ) {  }
+    private userService: UserService,
+    private uploadService: UploadFileService ) {  }
 
   ngOnInit() {
     // if user is not logged, redirect to login page
@@ -45,6 +51,7 @@ export class ProfileComponent implements OnInit {
 
     this.editable = true;
     this.btnCaption = "Edit";
+    this.imageAddress = HttpEnum.BASEURL + this.image;
   }
 
   submitForm() {
@@ -74,5 +81,23 @@ export class ProfileComponent implements OnInit {
     updatedUser.setImgLink(this.image);
     updatedUser.setDescription(this.description);
     return updatedUser;
+  }
+
+  // function for image uploading
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
+  }
+
+  uploadFile() { 
+    this.currentFileUpload = this.selectedFiles.item(0);
+    this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+      if (event instanceof HttpResponse) {
+        this.image = this.currentFileUpload.name;
+        this.imageAddress = HttpEnum.BASEURL + this.image;
+        console.log('File is completely uploaded!');
+      }
+    });
+ 
+    this.selectedFiles = undefined;
   }
 }
