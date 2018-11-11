@@ -32,6 +32,8 @@ import { ForumComponent } from './pages/forum/forum.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { HelpComponent } from './pages/help/help.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
     ForumComponent,
     AboutUsComponent,
     HelpComponent,
-    ProfileComponent
+    ProfileComponent,
+    SignUpComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,

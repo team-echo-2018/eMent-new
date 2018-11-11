@@ -1,17 +1,26 @@
-/* ---------  REQUIRES   -----------*/
+/**
+ * Definitions for routings in the system.
+ * Server will call to here and this will call to controllers.
+ */
+
+
+/* ---------  REQUIRES  -----------*/
 
 var express = require('express');
 var BackendController = require('../controllers/backend-controller');
 var upload = require('../config/multer.config');
 var fileWorker = require('../controllers/file.controller');
 
+
+/* ---------  DEFINE VARIABLES  -----------*/
+
 var router = express.Router();
 var backendController = new BackendController();
 
 
-
 /* ---------  ROUTERS - POST METHODS   -----------*/
 
+// not used yet...
 router.route('/addUser').post(function (req, res) {
     backendController.insert(req.body, function (result, error) {
         if (error) {
@@ -23,11 +32,10 @@ router.route('/addUser').post(function (req, res) {
     });
 });
 
-
-/* ---------  ROUTERS - GET METHODS   -----------*/
-
+/* Router for User Authentications */
 router.route('/auth').post(function (req, res) {
-    // console.log('Auth Request identified..');
+    
+    console.log('Auth Request identified..');
     // console.log(JSON.stringify(req.body))
 
     backendController.auth(req.body, function (result, error) {
@@ -41,6 +49,7 @@ router.route('/auth').post(function (req, res) {
     });
 });
 
+/* Router for getting user profile details */
 router.route('/profile').post(function (req, res) {
     backendController.getStudent(req.body, function (result, error) {
         if (error) {
@@ -52,6 +61,7 @@ router.route('/profile').post(function (req, res) {
     });
 });
 
+/* Router for update user profile */
 router.route('/profile/update').post(function (req, res) {
     backendController.updateStudent(req.body, function (result, error) {
         if (error) {
@@ -63,10 +73,8 @@ router.route('/profile/update').post(function (req, res) {
     });
 });
 
-// file uploading ................
+/* Router for file uploading */
 router.route('/file/upload').post(upload.single("file"), fileWorker.uploadFile);
-
-// getting uploaded files...
 
 
 module.exports = router;
