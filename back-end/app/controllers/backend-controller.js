@@ -1,3 +1,9 @@
+/**
+ * Main Controller for backend query functions
+ * Routers will call to this controller and this will call to Database Model
+ */
+
+
 /* ---------  REQUIRES   -----------*/
 
 var User = require('../entities/user');
@@ -30,7 +36,7 @@ BackendController.prototype.insert = function (req, callback) {
 }
 
 
-// user authentcation function
+/* User Authentcation function */
 BackendController.prototype.auth = function(req, callback){
     
     var daoMsql = new DAOMySql();
@@ -76,7 +82,7 @@ BackendController.prototype.auth = function(req, callback){
 //     })
 // }
 
-// get student object from DB model
+/* Get student object from DB model */
 BackendController.prototype.getStudent = function(req, callback){
 
     var daoMsql = new DAOMySql();
@@ -92,10 +98,10 @@ BackendController.prototype.getStudent = function(req, callback){
     });
 }
 
-// update student object from DB model
+/* Update student object from DB model */
 BackendController.prototype.updateStudent = function(req, callback){
 
-    // student object with updated details
+    // Student object with updated details
     var student = new Student(
         req.studentId, 
         req.studentFname, 

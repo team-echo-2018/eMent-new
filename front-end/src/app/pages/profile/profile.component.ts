@@ -39,6 +39,8 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     // if user is not logged, redirect to login page
     this.authService.isUserLogged();
+
+    // if user is logged, get the current user
     this.user = this.userService.getCurrentUser();
 
     this.fname = this.user.getFirstName();

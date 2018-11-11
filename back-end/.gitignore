@@ -60,3 +60,9 @@ build/Release
 
 # Optional REPL history
 .node_repl_history
+
+# Uploads Folder
+/Uploads
+
+# But not ignore the default image
+!/Uploads/default.jpg

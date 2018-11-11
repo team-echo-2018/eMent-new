@@ -8,11 +8,14 @@ import { ForumComponent } from './pages/forum/forum.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { HelpComponent } from './pages/help/help.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'sign-up', component: SignUpComponent },
   { path: 'home', component: HomeComponent },
   { path: 'projects', component: ProjectComponent },
   { path: 'messaging', component: MessagingComponent },
@@ -20,6 +23,7 @@ export const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'help', component: HelpComponent },
+  { path: 'admin-panel', component: AdminPanelComponent },
   { path: '**', component: Error404Component }
 ];
 

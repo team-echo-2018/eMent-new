@@ -1,17 +1,11 @@
 /* ---------  REQUIRES   -----------*/
 var mysql      = require('mysql');
 var Utils      = require('../util/utils');
+var DB         = require('../config/database.config');
 
 
 /* -----  CONFIGURATION DATABASE   -------*/
-var connection = mysql.createConnection({
-  connectionLimit : 2,
-  host     : 'localhost',
-  port     : '3306',
-  database: "ement_db",
-  user     : 'root',
-  password : ''
-});
+var connection = mysql.createConnection(DB);
 
 
 function DatabaseMySql() {  }
