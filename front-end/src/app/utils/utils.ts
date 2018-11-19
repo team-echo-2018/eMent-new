@@ -1,5 +1,6 @@
 import { User } from '../entities/user';
 import { Student } from '../entities/student';
+import { Mentor } from '../entities/mentor';
 
 export class Utils {
 
@@ -31,6 +32,23 @@ export class Utils {
         student.studentDescription = dataStudent.studentDescription;
 
         return student;
+
+    }
+
+    public static convertDatabaseMentorToMentor(dataMentor: any): Mentor {
+
+        const mentor = new Mentor();
+
+        mentor.mentorId = dataMentor.mentorId;
+        mentor.mentorFname = dataMentor.mentorFname;
+        mentor.mentorLname = dataMentor.mentorLname;
+        mentor.mentorAddress = dataMentor.mentorAddress;
+        mentor.mentorPhone = dataMentor.mentorPhone;
+        mentor.mentorEmail = dataMentor.mentorEmail;
+        mentor.mentorImgLink = dataMentor.mentorImgLink;
+        mentor.mentorDescription = dataMentor.mentorDescription;
+
+        return mentor;
 
     }
 }

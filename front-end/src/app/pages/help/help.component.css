@@ -1,7 +1,9 @@
 .jumbotron {
-    background: #358CCE;
+    background: rgba(24, 57, 82, 0.836);
     color: #FFF;
     border-radius: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .jumbotron-sm { padding-top: 24px;

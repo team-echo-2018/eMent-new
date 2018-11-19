@@ -28,7 +28,7 @@ export class UserService {
         this.setUserForStudent(user);
         break;
       case 'M':
-        this.setUserForMentor();
+        this.setUserForMentor(user);
         break;
     }
   }
@@ -37,8 +37,8 @@ export class UserService {
     this.currentUser =  Utils.convertDatabaseStudentToStudent(curStudent);
   }
 
-  private setUserForMentor() {
-
+  private setUserForMentor(curMentor: Object) {
+    this.currentUser = Utils.convertDatabaseMentorToMentor(curMentor);
   }
 
   updateCurrentUserDetails(loggedUser: User ,user: any) {
@@ -47,7 +47,7 @@ export class UserService {
         this.updateStudentDetails(user);
         break;
       case 'M':
-        this.setUserForMentor();
+        this.setUserForMentor(user);
         break;
     }
   }

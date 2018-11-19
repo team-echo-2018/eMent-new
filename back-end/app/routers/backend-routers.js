@@ -51,26 +51,48 @@ router.route('/auth').post(function (req, res) {
 
 /* Router for getting user profile details */
 router.route('/profile').post(function (req, res) {
-    backendController.getStudent(req.body, function (result, error) {
-        if (error) {
-            res.status(404);
-            res.send(error);
-        } else {
-            res.json(result);
-        }
-    });
+    if(req.body.userType == "S") {
+        backendController.getStudent(req.body, function (result, error) {
+            if (error) {
+                res.status(404);
+                res.send(error);
+            } else {
+                res.json(result);
+            }
+        });
+    } else if(req.body.userType == "M") {
+        backendController.getMentor(req.body, function (result, error) {
+            if (error) {
+                res.status(404);
+                res.send(error);
+            } else {
+                res.json(result);
+            }
+        });
+    }
 });
 
 /* Router for update user profile */
 router.route('/profile/update').post(function (req, res) {
-    backendController.updateStudent(req.body, function (result, error) {
-        if (error) {
-            res.status(404);
-            res.send(error);
-        } else {
-            res.json(result);
-        }
-    });
+    if(req.body.userType == "S") {
+        backendController.updateStudent(req.body, function (result, error) {
+            if (error) {
+                res.status(404);
+                res.send(error);
+            } else {
+                res.json(result);
+            }
+        });
+    } else if(req.body.userType == "M") {
+        backendController.updateMentor(req.body, function (result, error) {
+            if (error) {
+                res.status(404);
+                res.send(error);
+            } else {
+                res.json(result);
+            }
+        });
+    }
 });
 
 /* Router for file uploading */
