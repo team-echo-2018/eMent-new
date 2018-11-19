@@ -8,6 +8,7 @@
 
 var User = require('../entities/user');
 var Student = require('../entities/student');
+var Mentor = require('../entities/mentor');
 var DAOMySql = require('../models/backend-mysql-database');
 
 
@@ -117,6 +118,50 @@ BackendController.prototype.updateStudent = function(req, callback){
 
     daoMsql.updateStudent(student, function(result, err) { 
         console.log("Enter to the update student function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+/* Get mentor object from DB model */
+BackendController.prototype.getMentor = function(req, callback){
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.getMentor(req.userId,  function(result, err) { 
+        console.log("Enter to the get mentor function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+/* Update mentor object from DB model */
+BackendController.prototype.updateMentor = function(req, callback){
+
+    // Mentor object with updated details
+    var mentor = new Mentor(
+        req.mentorId, 
+        req.mentorFname, 
+        req.mentorLname, 
+        req.mentorAddress, 
+        req.mentorPhone, 
+        req.mentorEmail, 
+        req.mentorImgLink, 
+        req.mentorDescription
+    );
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.updateMentor(mentor, function(result, err) { 
+        console.log("Enter to the update mentor function");
         if (err || !result) {
             console.log("** error or no result");
             callback(null, err);

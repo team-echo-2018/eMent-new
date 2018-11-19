@@ -107,6 +107,53 @@ DatabaseMySql.prototype.updateStudent = function (student, callback) {
   });
 }
 
+// get mentor object relevant to DB
+DatabaseMySql.prototype.getMentor = function (mentorId, callback) {
+
+  var utils = new Utils();
+
+  var sqlSelectMentor = utils.getSqlSelectMentor(mentorId);
+
+  connection.query(sqlSelectMentor, function(err, resultMentor) {
+    if (err || resultMentor.length == 0) {
+      callback (null, err);
+    } else {
+      callback (utils.generateMentor(resultMentor[0]));
+    }
+  });
+}
+
+// update mentor object relevant to DB
+DatabaseMySql.prototype.updateMentor = function (mentor, callback) {
+  
+  var utils = new Utils();
+
+  /* -- Start transation -- */
+  //connection.connect();
+  connection.beginTransaction(function(err) {
+    if (err) { callback (null, err); }
+
+    var sqlUpdateMentor = utils.getSqlUpdateMentor(mentor);
+    
+    insertSql(sqlUpdateMentor, function(result, err){
+      if(err){
+        connection.rollback();
+        callback (null, err);
+      } else {
+        connection.commit(function(err) {
+          if (err) { 
+            connection.rollback();
+            callback (null, err);
+          }
+          console.log('Transaction Complete.');
+          //connection.end();
+          callback("Mentor successfully updated in the system!");
+        });
+      }
+    });
+  });
+}
+
 // DB query inserting function 
 function insertSql(query, callback) { 
   connection.query(query, function(err, result) {

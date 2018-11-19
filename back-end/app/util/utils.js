@@ -2,6 +2,7 @@
 
 var User = require('../entities/user');
 var Student = require('../entities/student');
+var Mentor = require('../entities/mentor');
 
 
 
@@ -50,6 +51,30 @@ Utils.prototype.getSqlUpdateStudent = function(student) {
     return sqlUpdateStudent;
 };
 
+// SQL query for select mentor by mentor id
+Utils.prototype.getSqlSelectMentor = function(mentorId) {
+
+    var sqlSelectMentor = "SELECT * FROM mentor WHERE mentor_id=" + mentorId;
+
+    return sqlSelectMentor;
+};
+
+// SQL query for update mentor by mentor id
+Utils.prototype.getSqlUpdateMentor = function(mentor) {
+
+    var sqlUpdateMentor = "UPDATE mentor SET" +
+        " mentor_fname='" + mentor.mentorFname + "'," +
+        " mentor_lname='" + mentor.mentorLname + "'," +
+        " mentor_address='" + mentor.mentorAddress +"'," + 
+        " mentor_phone='" + mentor.mentorPhone + "'," + 
+        " mentor_email='" + mentor.mentorEmail + "'," + 
+        " mentor_imglink='" + mentor.mentorImgLink + "'," +
+        " mentor_description='" + mentor.mentorDescription + "' WHERE" + 
+        " mentor_id=" + mentor.mentorId;
+
+    return sqlUpdateMentor;
+};
+
 // user object generating function
 Utils.prototype.generateUser = function(resultUser) {
     var user = null;
@@ -78,6 +103,23 @@ Utils.prototype.generateStudent = function(resultStudent) {
             resultStudent.student_description);
     }
     return student;
+}
+
+// mentor object generating function
+Utils.prototype.generateMentor = function(resultMentor) {
+    var mentor = null;
+    if(resultMentor) {
+        mentor = new Mentor(
+            resultMentor.mentor_id, 
+            resultMentor.mentor_fname, 
+            resultMentor.mentor_lname, 
+            resultMentor.mentor_address, 
+            resultMentor.mentor_phone, 
+            resultMentor.mentor_email, 
+            resultMentor.mentor_imglink, 
+            resultMentor.mentor_description);
+    }
+    return mentor;
 }
 
 // export utils function
