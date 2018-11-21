@@ -1,0 +1,37 @@
+input,textarea{
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: none;
+  border-bottom: 1px solid #414a59 !important;
+  border: 0;
+  color: aliceblue
+}
+input[type='submit'] {
+  background-color:#6e6d65;
+  cursor:pointer;
+  color:#000;
+  font-weight:bold;
+  margin-bottom:50px;
+  padding:20px;
+}
+
+ul {
+  list-style-type:none;
+  width:100%;
+  margin:0;padding:0;
+}
+ul li {
+  background-color:#ffcc00;
+  padding:20px;
+  margin-bottom:2px;
+  color:#151618;
+  text-emphasis-color: rgb(78, 78, 78);
+}
+ul li a {
+  color:#ffcc00;
+}
+h1 {
+  margin-top:50px;
+}
