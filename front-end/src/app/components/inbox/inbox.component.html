@@ -1,0 +1,30 @@
+<div class="full-page">
+  <div class="reciever-msg-list" style="width: 50%;height: 100%; float: left;padding: 10px; padding-top: 100px">
+    <ul *ngFor="let post of posts |async">
+      <li (click)="getPost(post.senderID)">
+        <strong>Messages from  {{post.senderID}}</strong>
+
+
+      </li>
+    </ul>
+
+  </div>
+  <div class="sender-msg-list" style="width: 50%;height: 100%;float:right; padding: 10px">
+    <input type="text" [(ngModel)]="message" name="message" placeholder="enter message">
+    <input type="text" [(ngModel)]="recieverid" name="recieverid" placeholder="Enter recipient!!">
+    <input type="submit" value="Add a comment" (click)="addmessage()">
+
+
+
+    <ul *ngFor="let msg of messages |async">
+        <li>
+          <strong>{{msg.recieverID}}</strong>
+          <br>
+          {{msg.message}}
+        </li>
+    </ul>
+
+  </div>
+
+</div>
+

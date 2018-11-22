@@ -17,7 +17,16 @@ import { LogoSpanComponent } from './components/logo-span/logo-span.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { NavItemComponent } from './components/nav-item/nav-item.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { InboxComponent } from './components/inbox/inbox.component';
 import { ProjectComponent } from './pages/project/project.component';
+import { MessagingComponent } from './pages/messaging/messaging.component';
+import { ForumComponent } from './pages/forum/forum.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { HelpComponent } from './pages/help/help.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 
 /*routes*/
 import { RouterModule } from '@angular/router';
@@ -27,13 +36,6 @@ import { routes } from './app.routing';
 import { DatePipe } from '@angular/common';
 import { HttpBackendRequestService } from './services/http-backend-request.service';
 import { AuthenticationService } from './services/authentication.service';
-import { MessagingComponent } from './pages/messaging/messaging.component';
-import { ForumComponent } from './pages/forum/forum.component';
-import { AboutUsComponent } from './pages/about-us/about-us.component';
-import { HelpComponent } from './pages/help/help.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { SignUpComponent } from './pages/sign-up/sign-up.component';
-import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
     HelpComponent,
     ProfileComponent,
     SignUpComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    ChatComponent,
+    InboxComponent
   ],
   imports: [
     BrowserModule,
