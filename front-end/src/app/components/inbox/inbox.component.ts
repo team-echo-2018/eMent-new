@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable, from } from 'rxjs';
 import { stringify } from '@angular/compiler/src/util';
 import { map } from 'rxjs/operators';
@@ -34,7 +34,7 @@ export class InboxComponent implements OnInit {
   senderId = 'usr003';
   recieverid: 'usr003' ;
   owner = "mario";
-  constructor(private afs: AngularFirestore ,private data :ShareuNameService) {
+  constructor(private afs: AngularFirestore ) {
 
   }
 
@@ -56,7 +56,7 @@ export class InboxComponent implements OnInit {
     console.log("VERBOSE SETTING SENDER IS TO :"+senderID);
 
     this.recieverid =senderID;
-    this.data.changesMessage(senderID);
+    // this.data.changesMessage(senderID);
   }
 
   //THE PART FOR THE ADDITION OF NEW MESSAGES TO THE FIRESTORE
