@@ -51,4 +51,16 @@ export class SignUpComponent implements OnInit {
     this.selectedFiles = undefined;
   }
 
+  // userObject(): any {
+  //   let User = new 
+  //   User.setFirstName(this.fname);
+  //   User.setLastName(this.lname);
+  //   User.setAddress(this.address);
+  //   User.setPhone(this.phone);
+  //   User.setEmail(this.email);
+  //   User.setImgLink(this.image);
+  //   User.setDescription(this.description);
+  //   return User;
+  // }
+
 }
