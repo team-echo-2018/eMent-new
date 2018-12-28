@@ -36,6 +36,9 @@ import { routes } from './app.routing';
 import { DatePipe } from '@angular/common';
 import { HttpBackendRequestService } from './services/http-backend-request.service';
 import { AuthenticationService } from './services/authentication.service';
+import { ProDescComponent } from './components/pro-desc/pro-desc.component';
+import { NotificationComponent } from './components/notification/notification.component';
+import { RankingComponent } from './components/ranking/ranking.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,10 @@ import { AuthenticationService } from './services/authentication.service';
     SignUpComponent,
     AdminPanelComponent,
     ChatComponent,
-    InboxComponent
+    InboxComponent,
+    ProDescComponent,
+    NotificationComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,
