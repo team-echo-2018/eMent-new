@@ -2,9 +2,102 @@
 <app-header></app-header>
 
 <!-- Forum page content -->
-<div class="container-fluid mt-3">
-  <p>Forum Page content here...</p>
+<div class="container-fluid mt-3 border">
+
+  <div class="search">
+      <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-search" type="button"><i class="fa fa-search fa-fw"></i> Search</button>
+              </span>
+        </div>
+    <div>
+      
+      <ul class="searchBox_advanced_search">
+        <a href="https://www.codingforums.com/search.php" >Advanced Search</a>
+        <a class="pull-right" routerLink="/new-thread">Ask a question?</a>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+           <a href="" > Most recent</a> <br>
+           <a href="" > Most viewed</a>
+  </div>
+  <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-10 my-5 pb-3 page-box">
+            <div>
+                <div class="table-responsive table-bordered table-hover">
+                  <table>
+                    <tr>
+                     
+                        <th>Thread ID</th>
+                        <th>Thread</th>
+                        <th>Replies / Views</th>
+                        <th>Posted by</th>
+                        <th>date/time</th>
+                      
+                    </tr>
+                    <tr>
+                      
+                        <td>1</td>
+                        <td>fdsaf</td>
+                        <td>
+                          <tr>0 replies</tr>
+                          <tr>0 views</tr>
+                        </td>
+                        <td>admin</td>
+                        <td>
+                          <tr>today</tr>
+                          <tr>thistime</tr>
+                        </td>
+                     
+                    </tr>
+                  </table>
+                </div>
+          </div>
+          
+       </div>
 </div>
 
+<!-- thread with reply section -->
+
+<div class="container-fluid mt-3 border">
+  <div class="thread">
+    this is my thread 
+
+  </div>
+  <div class="replies"> 
+      Thread ID:
+      reply ID:reply
+
+  </div>
+  <div class="table-responsive table-bordered table-hover">
+      <table>
+        <tr>
+         
+            <th>reply ID</th>
+            <th>reply</th>
+            <th>Posted by</th>
+            <th>date/time</th>
+          
+        </tr>
+        <tr>
+          
+            <td>1 </td>
+            <td>reply 1 text</td>
+            <td>mentor12</td>
+            <td>
+              <tr></tr>
+              <tr>0 views</tr>
+            </td>
+        </tr>
+      </table>
+    </div>
+</div>
+
+<!-- Advanced search section -->
+<div class="container-fluid mt-3 border">
+  
+
+</div>        
 <!-- Add the app footer section -->
 <app-footer></app-footer>
