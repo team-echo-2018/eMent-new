@@ -1,0 +1,12 @@
+.title{
+    background-color: rgb(40, 40, 207);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    
+  }
+  
+  .page{
+      border: 2px solid gray;
+      background-color: darkgray;
+      border-radius: 10px;
+  }
