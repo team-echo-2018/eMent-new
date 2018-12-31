@@ -6,6 +6,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import {AngularFireModule} from 'angularfire2';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
 
 /*components*/
 import { AppComponent } from './app.component';
@@ -39,6 +41,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { ProDescComponent } from './components/pro-desc/pro-desc.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { RankingComponent } from './components/ranking/ranking.component';
+import { environment } from 'src/environments/environment';
 import { WorkingProjComponent } from './components/working-proj/working-proj.component';
 import { OtherProjComponent } from './components/other-proj/other-proj.component';
 
@@ -71,6 +74,8 @@ import { OtherProjComponent } from './components/other-proj/other-proj.component
     OtherProjComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebaseconfig),
+    AngularFirestoreModule,
     BrowserModule,
     RouterModule.forRoot(routes),
     AngularFontAwesomeModule,
