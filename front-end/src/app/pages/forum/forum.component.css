@@ -1,0 +1,42 @@
+
+  .btn-search {
+        background: #424242;
+        border-radius: 0;
+        color: #fff;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #1c1c1c;
+      }
+      .btn-search:link, .btn-search:visited {
+        color: #fff;
+      }
+      .btn-search:active, .btn-search:hover {
+        background: #1c1c1c;
+        color: #fff;
+      }
+
+       .table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        border-radius: 8px;
+      }
+      
+        td, th {
+        border: 1px solid #ddd;
+        padding: 8px;
+        width: 30%;
+      }
+      
+        tr:nth-child(even){background-color: #f2f2f2;}
+      
+        tr:hover {
+          background-color: #ddd;
+          border-radius: 8px;}
+      
+        th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+      }
