@@ -39,6 +39,8 @@ import { AuthenticationService } from './services/authentication.service';
 import { ProDescComponent } from './components/pro-desc/pro-desc.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { RankingComponent } from './components/ranking/ranking.component';
+import { WorkingProjComponent } from './components/working-proj/working-proj.component';
+import { OtherProjComponent } from './components/other-proj/other-proj.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { RankingComponent } from './components/ranking/ranking.component';
     InboxComponent,
     ProDescComponent,
     NotificationComponent,
-    RankingComponent
+    RankingComponent,
+    WorkingProjComponent,
+    OtherProjComponent
   ],
   imports: [
     BrowserModule,
