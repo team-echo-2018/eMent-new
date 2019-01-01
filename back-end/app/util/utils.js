@@ -374,6 +374,46 @@ Utils.prototype.getSqlDeleteSkill = function (skill) {
 
 
 
+// Task Entity related functions
+// SQL query for select task by id
+Utils.prototype.getSqlSelectTask = function (taskId) {
+
+    var sqlSelectTask = "SELECT * FROM task WHERE task_id=" + taskId;
+    return sqlSelectTask;
+};
+
+// SQL query for insert task
+Utils.prototype.getInsertSqlTask = function (task) {
+
+    var sqlTask = "INSERT INTO task (responsible_student, archived_date, supposed_date, description) VALUES (" +
+        "'" + task.taskResponsibleStudent + "', " +
+        "'" + task.taskArchivedDate + "', " +
+        "'" + task.taskSupposedDate + "', " +
+        "'" + task.taskDescription + "')";
+    return sqlTask;
+};
+
+// SQL query for update task by id
+Utils.prototype.getUpdateSqlTask = function (task) {
+
+    var sqlTask = "UPDATE task SET" + 
+        " responsible_student='" + task.taskResponsibleStudent + "'," + 
+        " archived_date='" + task.taskArchivedDate + "'," + 
+        " supposed_date='" + task.taskSupposedDate + "'," + 
+        " description='" + task.taskDescription + "' WHERE" +
+        " task_id=" + task.taskId;
+    return sqlTask;
+};
+
+// SQL query for delete task by id
+Utils.prototype.getSqlDeleteTask = function (task) {
+
+    var sqlDeleteTask = "DELETE FROM task WHERE task_id=" + task.taskId;
+    return sqlDeleteTask;
+};
+
+
+
 
 // Objects generating function definitions
 // user object generating function
@@ -487,8 +527,23 @@ Utils.prototype.generateSkill = function (resultSkill) {
             resultSkill.skillLevel,
             resultSkill.skillCategory);
     }
-    return projectIdea;
+    return skill;
 };
+
+// task object generating function
+Utils.prototype.generateTask = function (resultTask) {
+    var task = null;
+    if (resultTask) {
+        task = new Task(
+            resultTask.taskId,
+            resultTask.taskResponsibleStudent,
+            resultTask.taskArchivedDate,
+            resultTask.taskSupposedDate,
+            resultTask.taskDescription);
+    }
+    return task;
+};
+
 
 // export utils
 module.exports = Utils;
