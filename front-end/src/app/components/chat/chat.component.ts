@@ -64,7 +64,7 @@ export class ChatComponent implements OnInit {
 
     this.messageCol =this.afs.collection('messages',ref => ref.where('recieverID','==',this.owner).where('senderID','==',this.senderId));
     this.messages =this.messageCol.valueChanges();
-    this.data.changesMessage(senderID);
+    //this.data.changesMessage(senderID);
   }
 
   //THE PART FOR THE ADDITION OF NEW MESSAGES TO THE FIRESTORE
