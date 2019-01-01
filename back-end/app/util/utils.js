@@ -298,6 +298,44 @@ Utils.prototype.getSqlDeleteProject = function (project) {
 
 
 
+// ProjectIdea Entity related functions
+// SQL query for select projectIdea by id
+Utils.prototype.getSqlSelectProjectIdea = function (projectIdeaId) {
+
+    var sqlSelectProjectIdea = "SELECT * FROM  project_ideas WHERE idea_id=" + projectIdeaId;
+    return sqlSelectProjectIdea;
+};
+
+// SQL query for insert projectIdea
+Utils.prototype.getInsertSqlProjectIdea = function (projectIdea) {
+
+    var sqlProjectIdea = "INSERT INTO project_ideas (date, owner, category) VALUES (" +
+        "'" + projectIdea.projectIdeaDate + "', " +
+        "'" + projectIdea.projectIdeaOwner + "', " +
+        "'" + projectIdea.projectIdeaCategory + "')";
+    return sqlProjectIdea;
+};
+
+// SQL query for update projectIdea by id
+Utils.prototype.getUpdateSqlProjectIdea = function (projectIdea) {
+
+    var sqlProjectIdea = "UPDATE project_ideas SET" + 
+        " date='" + projectIdea.projectIdeaDate + "'," + 
+        " owner='" + projectIdea.projectIdeaOwner + "'," + 
+        " category='" + projectIdea.projectIdeaCategory + "' WHERE" +
+        " idea_id=" + projectIdea.projectIdeaId;
+    return sqlProjectIdea;
+};
+
+// SQL query for delete projectIdea by id
+Utils.prototype.getSqlDeleteProjectIdea = function (projectIdea) {
+
+    var sqlDeleteProjectIdea = "DELETE FROM project_ideas WHERE idea_id=" + projectIdea.projectIdeaId;
+    return sqlDeleteProjectIdea;
+};
+
+
+
 
 // Objects generating function definitions
 // user object generating function
@@ -386,6 +424,19 @@ Utils.prototype.generateProject = function (resultProject) {
             resultProject.projectDuration);
     }
     return project;
+};
+
+// projectIdea object generating function
+Utils.prototype.generateProjectIdea = function (resultProjectIdea) {
+    var projectIdea = null;
+    if (resultProjectIdea) {
+        projectIdea = new ProjectIdea(
+            resultProjectIdea.projectIdeaId,
+            resultProjectIdea.projectIdeaDate,
+            resultProjectIdea.projectIdeaOwner,
+            resultProjectIdea.projectIdeaCategory);
+    }
+    return projectIdea;
 };
 
 // export utils
