@@ -1,91 +1,77 @@
 <!-- Add the app header section -->
 <app-header></app-header>
 
-<!-- Forum page content -->
-<div class="container-fluid mt-3 border">
+<!--stylesheets and resources -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--global styles-->
+<style>
+html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
+</style>
 
-    <div class="search">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                  <button class="btn btn-search" type="button"><i class="fa fa-search fa-fw"></i> Search</button>
-                </span>
-        </div>
-        <div>
-          <a class="pull-right" routerLink="/new-thread">Ask a question?</a>
-        </div>
-    <div class="container">
-            <a href="" > Most recent</a> <br>
-            <a href="" > Most viewed</a>
-    </div>
-    <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-10 my-5 pb-3 page-box">
-      <table class="table-responsive table-striped table-hover text-center mx-auto" >
-        <tr>
-          
-            <th>Thread ID</th>
-            <th id="2">Thread</th>
-            <th>Replies / Views</th>
-            <th>Posted by</th>
-            <th>date/time</th>
-          
-        </tr>
-        <tr>
-          
-            <td>1</td>
-            <td>fdsaf</td>
-            <td>0 replies<br>0 views</td>
-            <td>admin</td>
-            <td>today<br>thistime</td>
-          
-        </tr>
-      </table>
-    </div>
-  </div>
-</div>
-
-<!-- thread with reply section -->
-
-<div class="container-fluid mt-3 border">
-  
-  
-  <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-10 my-5 pb-3 page-box">
-      <div class="thread">
-          this is my thread 
-      
-        </div>
-      <table class="table-responsive table-striped table-hover ">
-        <tr>
-         
-            <th>reply ID</th>
-            <th>reply</th>
-            <th>Posted by</th>
-            <th>date/time</th>
-          
-        </tr>
-        <tr>
-          
-            <td>1 </td>
-            <td>reply 1 text</td>
-            <td>mentor12</td>
-            <td>date<br>time</td>
-        </tr>
-      </table>
-    </div>
-</div>
-
-<!-- Ask a question section -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px"> </div>
 <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-10 my-5 pb-3 page-box">
- 
-  <div class="container-fluid mt-3 border">
-    Ask a question 
-    <div class="input-group">
-        <input type="text" class="form-control" placeholder="ask about...">
-            <span class="input-group-btn">
-               <button class="btn btn-success" type="button"><i class="fa fa-submit fa-fw"></i> Search</button>
-            </span>
+  <body class="w3-theme-l5">
+    <div class="w3-col m7">
+
+     <div class="w3-row-padding">
+       <div class="w3-col m12">
+         <div class="w3-card w3-round w3-white">
+           <div class="w3-container w3-padding">
+             <h6 class="w3-opacity">Welcome to the ement Forum</h6>
+             <p contenteditable="true" class="w3-border w3-padding">Heading</p>
+             <p contenteditable="true" class="w3-border w3-padding">body</p>
+             <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i>  Post</button>
+           </div>
+         </div>
+       </div>
      </div>
-  </div>        
+
+     <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+       <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+       <span class="w3-right w3-opacity">1 min</span>
+       <h4>John Doe</h4><br>
+       <hr class="w3-clear">
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+         <div class="w3-row-padding" style="margin:0 -16px">
+           <div class="w3-half">
+             <img src="/w3images/lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+           </div>
+           <div class="w3-half">
+             <img src="/w3images/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
+         </div>
+       </div>
+       <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+       <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+     </div>
+
+     <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+       <img src="/w3images/avatar5.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+       <span class="w3-right w3-opacity">16 min</span>
+       <h4>Jane Doe</h4><br>
+       <hr class="w3-clear">
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+       <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+       <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+     </div>
+
+     <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+       <img src="/w3images/avatar6.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+       <span class="w3-right w3-opacity">32 min</span>
+       <h4>Angie Jane</h4><br>
+       <hr class="w3-clear">
+       <p>Have you seen this?</p>
+       <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+       <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+       <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+     </div>
 </div>
+</body>
+</div>
+
 
 
 <!-- Add the app footer section -->
