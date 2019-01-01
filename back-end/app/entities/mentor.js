@@ -1,4 +1,6 @@
-var Mentor = function(mentorId, mentorFname,mentorLname, mentorAddress, mentorPhone, mentorEmail,mentorImgLink, mentorDescription){
+/* Mentor Entity */
+var Mentor = function (mentorId, mentorFname, mentorLname, mentorAddress,
+    mentorPhone, mentorEmail, mentorImgLink, mentorDescription) {
 
     this.mentorId = mentorId;
     this.mentorFname = mentorFname;
@@ -8,7 +10,6 @@ var Mentor = function(mentorId, mentorFname,mentorLname, mentorAddress, mentorPh
     this.mentorEmail = mentorEmail;
     this.mentorImgLink = mentorImgLink;
     this.mentorDescription = mentorDescription;
-
 }
 
 module.exports = Mentor;

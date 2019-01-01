@@ -1,70 +1,44 @@
 <!-- Profile page content -->
 <div class="container-fluid mt-3">
-    <form #signUpForm="ngForm" (ngSubmit)="submitForm()" method="POST" action="www" class="my-5" ngNativeValidate>
-      
-      <div class="border" style="width: 200px; height: 200px; overflow: hidden;">
-        <img src="{{imageAddress}}" width="200" />
-      </div>
-  
-      <div>
-      <label class="btn btn-default">
-        <input type="file" (change)="selectFile($event)">
-      </label>
-      <button class="btn btn-success" [disabled]="!selectedFiles" (click)="uploadFile()">Upload</button>
-      </div>
-  
-      <input [(ngModel)]="fname" 
-          name="fname" 
-          type="text" 
-          class="form-control w-75 mx-auto my-4"
-          placeholder="First Name" 
-          required="true"
-          title="Enter your first name" />
 
-      <input [(ngModel)]="lname" 
-          name="lname" 
-          type="text" 
-          class="form-control w-75 mx-auto my-4" 
-          placeholder="Last Name" 
-          required="true"
-          title="Enter your last name"/>
+    <div class="container bg-secondary">
+        
+        <form #signUpForm="ngForm" (ngSubmit)="submitForm()" method="POST" action="www" class="my-5" ngNativeValidate>
 
-      <input [(ngModel)]="address" 
-          name="address" 
-          type="text" 
-          class="form-control w-75 mx-auto my-4"
-          placeholder="Address" 
-          required="true"
-          title="Enter your address" />
+            <div class="border" style="width: 200px; height: 200px; overflow: hidden;">
+                <img src="{{imageAddress}}" width="200" />
+            </div>
 
-      <input [(ngModel)]="email" 
-          name="email" 
-          type="text"
-          class="form-control w-75 mx-auto my-4"
-          placeholder="Email" 
-          required="true"
-          title="Enter your email address" />
+            <div>
+                <label class="btn btn-default">
+                    <input type="file" (change)="selectFile($event)">
+                </label>
+                <button class="btn btn-success" [disabled]="!selectedFiles" (click)="uploadFile()">Upload</button>
+            </div>
 
-      <input [(ngModel)]="phone" 
-          name="phone" 
-          type="text" 
-          class="form-control w-75 mx-auto my-4"
-          placeholder="Contact Number" 
-          required="true"
-          title="Enter your contact number" />
-          
-      <input [(ngModel)]="description" 
-          name="description" 
-          type="text" 
-          class="form-control w-75 mx-auto my-4" 
-          placeholder="Description" 
-          required="true"
-          title="Enter about you"/>
-          
-      <div class="w-75 mx-auto my-4">
-        <button type="submit" class="btn btn-primary w-25">Sign Up</button>
-        <button type="reset" class="btn btn-primary w-25">Clear</button>
-      </div>
-    </form>
-    
-  </div>
+            <input [(ngModel)]="fname" name="fname" type="text" class="form-control w-75 mx-auto my-4" placeholder="First Name"
+                required="true" title="Enter your first name" />
+
+            <input [(ngModel)]="lname" name="lname" type="text" class="form-control w-75 mx-auto my-4" placeholder="Last Name"
+                required="true" title="Enter your last name" />
+
+            <input [(ngModel)]="address" name="address" type="text" class="form-control w-75 mx-auto my-4" placeholder="Address"
+                required="true" title="Enter your address" />
+
+            <input [(ngModel)]="email" name="email" type="text" class="form-control w-75 mx-auto my-4" placeholder="Email"
+                required="true" title="Enter your email address" />
+
+            <input [(ngModel)]="phone" name="phone" type="text" class="form-control w-75 mx-auto my-4" placeholder="Contact Number"
+                required="true" title="Enter your contact number" />
+
+            <input [(ngModel)]="description" name="description" type="text" class="form-control w-75 mx-auto my-4"
+                placeholder="Description" required="true" title="Enter about you" />
+
+            <div class="w-75 mx-auto my-4">
+                <button type="submit" class="btn btn-primary w-25">Sign Up</button>
+                <button type="reset" class="btn btn-primary w-25">Clear</button>
+            </div>
+        </form>
+    </div>
+
+</div>
