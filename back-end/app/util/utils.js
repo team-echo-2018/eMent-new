@@ -1,5 +1,5 @@
 /**
- * Definitions for DB queries related functions.
+ * Definitions for DB queries and related functions.
  * Backend-Mysql-Database will call to here and this will call to entities.
  **/
 
@@ -222,6 +222,44 @@ Utils.prototype.getSqlDeleteCompany = function (company) {
 
 
 
+// Milestone Entity related functions
+// SQL query for select milestone by id
+Utils.prototype.getSqlSelectMilestone = function (milestoneId) {
+
+    var sqlSelectMilestone = "SELECT * FROM  milestone WHERE milestone_id=" + milestoneId;
+    return sqlSelectMilestone;
+};
+
+// SQL query for insert milestone
+Utils.prototype.getInsertSqlMilestone = function (milestone) {
+
+    var sqlMilestone = "INSERT INTO milestone (supposed_date, archived_date, description) VALUES (" +
+        "'" + milestone.milestoneSupposedDate + "', " +
+        "'" + milestone.milestoneArchivedDate + "', " +
+        "'" + milestone.milestoneDescription + "')";
+    return sqlMilestone;
+};
+
+// SQL query for update milestone by id
+Utils.prototype.getUpdateSqlMilestone = function (milestone) {
+
+    var sqlMilestone = "UPDATE milestone SET" + 
+        " supposed_date='" + milestone.milestoneSupposedDate + "'," + 
+        " archived_date='" + milestone.milestoneArchivedDate + "'," + 
+        " description='" + milestone.milestoneDescription + "' WHERE" +
+        " milestone_id=" + milestone.milestoneId;
+    return sqlMilestone;
+};
+
+// SQL query for delete milestone by id
+Utils.prototype.getSqlDeleteMilestone = function (milestone) {
+
+    var sqlDeleteMilestone = "DELETE FROM milestone WHERE milestone_id=" + milestone.milestoneId;
+    return sqlDeleteMilestone;
+};
+
+
+
 // Objects generating function definitions
 // user object generating function
 Utils.prototype.generateUser = function (resultUser) {
@@ -268,6 +306,21 @@ Utils.prototype.generateMentor = function (resultMentor) {
             resultMentor.mentor_description);
     }
     return mentor;
+}
+
+// company object generating function
+Utils.prototype.generateCompany = function (resultCompany) {
+    var company = null;
+    if (resultCompany) {
+        company = new Company(
+            resultCompany.companyId,
+            resultCompany.companyName,
+            resultCompany.companyAddress,
+            resultCompany.companyPhone,
+            resultCompany.companyEmail,
+            resultCompany.companyDescription);
+    }
+    return company;
 }
 
 // export utils
