@@ -1,5 +1,5 @@
 /**
- * Definitions for DB queries related functions.
+ * Definitions for DB queries and related functions.
  * Backend-Mysql-Database will call to here and this will call to entities.
  **/
 
@@ -171,6 +171,133 @@ Utils.prototype.getSqlDeleteMentor = function (mentor) {
 
 
 
+// Company Entity related functions
+// SQL query for select company by company id
+Utils.prototype.getSqlSelectCompany = function (companyId) {
+
+    var sqlSelectCompany = "SELECT * FROM company WHERE company_id=" + companyId;
+    return sqlSelectCompany;
+};
+
+// SQL query for select company by company name
+Utils.prototype.getSqlSelectCompanytByName = function (companyName) {
+
+    var sqlSelectCompany = "SELECT * FROM  company WHERE company_name like '" + companyName + "'";
+    return sqlSelectCompany;
+};
+
+// SQL query for insert company
+Utils.prototype.getInsertSqlCompany = function (company) {
+
+    var sqlInsertCompany = "INSERT INTO company (company_id, company_name, company_address, " +
+        ", company_phone, company_email, company_description) VALUES (" +
+              company.companyId + ", " +
+        "'" + company.companyName + "', " +
+        "'" + company.companyAddress + "', " +
+        "'" + company.companyPhone + "', " +
+        "'" + company.companyEmail + "', " +
+        "'" + company.companyDescription + "')";
+    return sqlInsertCompany;
+};
+
+// SQL query for update company by company id
+Utils.prototype.getSqlUpdateCompany = function (company) {
+
+    var sqlUpdateCompany = "UPDATE company SET" +
+        " company_name='" + company.companyName + "'," +
+        " company_address='" + company.companyAddress + "'," +
+        " company_phone='" + company.companyPhone + "'," +
+        " company_email='" + company.companyEmail + "'," +
+        " company_description='" + company.companyDescription + "' WHERE" +
+        " company_id=" + company.companyId;
+    return sqlUpdateCompany;
+};
+
+// SQL query for delete company by id
+Utils.prototype.getSqlDeleteCompany = function (company) {
+
+    var sqlDeleteCompany = "DELETE FROM company WHERE company_id=" + company.companyId;
+    return sqlDeleteCompany;
+};
+
+
+
+// Milestone Entity related functions
+// SQL query for select milestone by id
+Utils.prototype.getSqlSelectMilestone = function (milestoneId) {
+
+    var sqlSelectMilestone = "SELECT * FROM  milestone WHERE milestone_id=" + milestoneId;
+    return sqlSelectMilestone;
+};
+
+// SQL query for insert milestone
+Utils.prototype.getInsertSqlMilestone = function (milestone) {
+
+    var sqlMilestone = "INSERT INTO milestone (supposed_date, archived_date, description) VALUES (" +
+        "'" + milestone.milestoneSupposedDate + "', " +
+        "'" + milestone.milestoneArchivedDate + "', " +
+        "'" + milestone.milestoneDescription + "')";
+    return sqlMilestone;
+};
+
+// SQL query for update milestone by id
+Utils.prototype.getUpdateSqlMilestone = function (milestone) {
+
+    var sqlMilestone = "UPDATE milestone SET" + 
+        " supposed_date='" + milestone.milestoneSupposedDate + "'," + 
+        " archived_date='" + milestone.milestoneArchivedDate + "'," + 
+        " description='" + milestone.milestoneDescription + "' WHERE" +
+        " milestone_id=" + milestone.milestoneId;
+    return sqlMilestone;
+};
+
+// SQL query for delete milestone by id
+Utils.prototype.getSqlDeleteMilestone = function (milestone) {
+
+    var sqlDeleteMilestone = "DELETE FROM milestone WHERE milestone_id=" + milestone.milestoneId;
+    return sqlDeleteMilestone;
+};
+
+
+
+// Project Entity related functions
+// SQL query for select project by id
+Utils.prototype.getSqlSelectProject = function (projectId) {
+
+    var sqlSelectProject = "SELECT * FROM  project WHERE project_id=" + projectId;
+    return sqlSelectProject;
+};
+
+// SQL query for insert project
+Utils.prototype.getInsertSqlProject = function (project) {
+
+    var sqlProject = "INSERT INTO project (lead_mentor, starting_date, duration) VALUES (" +
+        "'" + project.projectLeadMentor + "', " +
+        "'" + project.projectStartingDate + "', " +
+        "'" + project.projectDuration + "')";
+    return sqlProject;
+};
+
+// SQL query for update project by id
+Utils.prototype.getUpdateSqlProject = function (project) {
+
+    var sqlProject = "UPDATE project SET" + 
+        " lead_mentor='" + project.projectLeadMentor + "'," + 
+        " starting_date='" + project.projectStartingDate + "'," + 
+        " duration='" + project.projectDuration + "' WHERE" +
+        " project_id=" + project.projectId;
+    return sqlProject;
+};
+
+// SQL query for delete project by id
+Utils.prototype.getSqlDeleteProject = function (project) {
+
+    var sqlDeleteProject = "DELETE FROM project WHERE project_id=" + project.projectId;
+    return sqlDeleteProject;
+};
+
+
+
 
 // Objects generating function definitions
 // user object generating function
@@ -219,6 +346,47 @@ Utils.prototype.generateMentor = function (resultMentor) {
     }
     return mentor;
 }
+
+// company object generating function
+Utils.prototype.generateCompany = function (resultCompany) {
+    var company = null;
+    if (resultCompany) {
+        company = new Company(
+            resultCompany.companyId,
+            resultCompany.companyName,
+            resultCompany.companyAddress,
+            resultCompany.companyPhone,
+            resultCompany.companyEmail,
+            resultCompany.companyDescription);
+    }
+    return company;
+}
+
+// milestone object generating function
+Utils.prototype.generateMilestone = function (resultMilestone) {
+    var milestone = null;
+    if (resultMilestone) {
+        milestone = new Milestone(
+            resultMilestone.milestoneId,
+            resultMilestone.milestoneSupposedDate,
+            resultMilestone.milestoneArchivedDate,
+            resultMilestone.milestoneDescription);
+    }
+    return milestone;
+};
+
+// project object generating function
+Utils.prototype.generateProject = function (resultProject) {
+    var project = null;
+    if (resultProject) {
+        project = new Project(
+            resultProject.projectId,
+            resultProject.projectLeadMentor,
+            resultProject.projectStartingDate,
+            resultProject.projectDuration);
+    }
+    return project;
+};
 
 // export utils
 module.exports = Utils;
