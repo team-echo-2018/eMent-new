@@ -10,8 +10,17 @@ export class ForumComponent implements OnInit {
 
   constructor(private authService: AuthenticationService) { }
 
+  hidden:boolean =true;
+
   ngOnInit() {
     this.authService.isUserLogged();
+  }
+  comments(){
+    if(this.hidden){
+      this.hidden =false;
+    }else{
+      this.hidden =true;
+    }
   }
 
 }

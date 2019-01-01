@@ -54,8 +54,16 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
        <hr class="w3-clear">
        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
-       <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
-     </div>
+       <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" (click)="comments()"><i class="fa fa-comment"></i>  Comment</button>
+        <div *ngIf="hidden">
+          <ul>
+            <li>
+              <h6>user 004</h6>
+              <p>nice comment!!</p>
+            </li>
+          </ul>
+        </div>
+      </div>
 
      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
        <img src="/w3images/avatar6.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
