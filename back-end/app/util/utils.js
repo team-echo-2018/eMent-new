@@ -171,6 +171,56 @@ Utils.prototype.getSqlDeleteMentor = function (mentor) {
 
 
 
+// Company Entity related functions
+// SQL query for select company by company id
+Utils.prototype.getSqlSelectCompany = function (companyId) {
+
+    var sqlSelectCompany = "SELECT * FROM company WHERE company_id=" + companyId;
+    return sqlSelectCompany;
+};
+
+// SQL query for select company by company name
+Utils.prototype.getSqlSelectCompanytByName = function (companyName) {
+
+    var sqlSelectCompany = "SELECT * FROM  company WHERE company_name like '" + companyName + "'";
+    return sqlSelectCompany;
+};
+
+// SQL query for insert company
+Utils.prototype.getInsertSqlCompany = function (company) {
+
+    var sqlInsertCompany = "INSERT INTO company (company_id, company_name, company_address, " +
+        ", company_phone, company_email, company_description) VALUES (" +
+              company.companyId + ", " +
+        "'" + company.companyName + "', " +
+        "'" + company.companyAddress + "', " +
+        "'" + company.companyPhone + "', " +
+        "'" + company.companyEmail + "', " +
+        "'" + company.companyDescription + "')";
+    return sqlInsertCompany;
+};
+
+// SQL query for update company by company id
+Utils.prototype.getSqlUpdateCompany = function (company) {
+
+    var sqlUpdateCompany = "UPDATE company SET" +
+        " company_name='" + company.companyName + "'," +
+        " company_address='" + company.companyAddress + "'," +
+        " company_phone='" + company.companyPhone + "'," +
+        " company_email='" + company.companyEmail + "'," +
+        " company_description='" + company.companyDescription + "' WHERE" +
+        " company_id=" + company.companyId;
+    return sqlUpdateCompany;
+};
+
+// SQL query for delete company by id
+Utils.prototype.getSqlDeleteCompany = function (company) {
+
+    var sqlDeleteCompany = "DELETE FROM company WHERE company_id=" + company.companyId;
+    return sqlDeleteCompany;
+};
+
+
 
 // Objects generating function definitions
 // user object generating function
