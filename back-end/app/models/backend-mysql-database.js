@@ -1,3 +1,8 @@
+/**
+ * Definitions for DB models related functions.
+ * Backend-Controller will call to here and this will call to Utils.
+ **/
+
 /* ---------  REQUIRES   -----------*/
 var mysql      = require('mysql');
 var Utils      = require('../util/utils');
