@@ -260,6 +260,45 @@ Utils.prototype.getSqlDeleteMilestone = function (milestone) {
 
 
 
+// Project Entity related functions
+// SQL query for select project by id
+Utils.prototype.getSqlSelectProject = function (projectId) {
+
+    var sqlSelectProject = "SELECT * FROM  project WHERE project_id=" + projectId;
+    return sqlSelectProject;
+};
+
+// SQL query for insert project
+Utils.prototype.getInsertSqlProject = function (project) {
+
+    var sqlProject = "INSERT INTO project (lead_mentor, starting_date, duration) VALUES (" +
+        "'" + project.projectLeadMentor + "', " +
+        "'" + project.projectStartingDate + "', " +
+        "'" + project.projectDuration + "')";
+    return sqlProject;
+};
+
+// SQL query for update project by id
+Utils.prototype.getUpdateSqlProject = function (project) {
+
+    var sqlProject = "UPDATE project SET" + 
+        " lead_mentor='" + project.projectLeadMentor + "'," + 
+        " starting_date='" + project.projectStartingDate + "'," + 
+        " duration='" + project.projectDuration + "' WHERE" +
+        " project_id=" + project.projectId;
+    return sqlProject;
+};
+
+// SQL query for delete project by id
+Utils.prototype.getSqlDeleteProject = function (project) {
+
+    var sqlDeleteProject = "DELETE FROM project WHERE project_id=" + project.projectId;
+    return sqlDeleteProject;
+};
+
+
+
+
 // Objects generating function definitions
 // user object generating function
 Utils.prototype.generateUser = function (resultUser) {
@@ -334,6 +373,19 @@ Utils.prototype.generateMilestone = function (resultMilestone) {
             resultMilestone.milestoneDescription);
     }
     return milestone;
+};
+
+// project object generating function
+Utils.prototype.generateProject = function (resultProject) {
+    var project = null;
+    if (resultProject) {
+        project = new Project(
+            resultProject.projectId,
+            resultProject.projectLeadMentor,
+            resultProject.projectStartingDate,
+            resultProject.projectDuration);
+    }
+    return project;
 };
 
 // export utils
