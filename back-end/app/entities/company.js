@@ -1,4 +1,6 @@
-var Company = function(companyId, companyName, companyAddress, companyPhone, companyEmail, companyDescription){
+/* Company Entity */
+var Company = function (companyId, companyName, companyAddress,
+    companyPhone, companyEmail, companyDescription) {
 
     this.companyId = companyId;
     this.companyName = companyName;
@@ -6,7 +8,6 @@ var Company = function(companyId, companyName, companyAddress, companyPhone, com
     this.companyPhone = companyPhone;
     this.companyEmail = companyEmail;
     this.companyDescription = companyDescription;
-
 }
 
 module.exports = Company;
