@@ -323,5 +323,18 @@ Utils.prototype.generateCompany = function (resultCompany) {
     return company;
 }
 
+// milestone object generating function
+Utils.prototype.generateMilestone = function (resultMilestone) {
+    var milestone = null;
+    if (resultMilestone) {
+        milestone = new Milestone(
+            resultMilestone.milestoneId,
+            resultMilestone.milestoneSupposedDate,
+            resultMilestone.milestoneArchivedDate,
+            resultMilestone.milestoneDescription);
+    }
+    return milestone;
+};
+
 // export utils
 module.exports = Utils;
