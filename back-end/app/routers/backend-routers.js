@@ -1,7 +1,7 @@
 /**
  * Definitions for routings in the system.
  * Server will call to here and this will call to controllers.
- */
+ **/
 
 
 /* ---------  REQUIRES  -----------*/
@@ -34,7 +34,7 @@ router.route('/addUser').post(function (req, res) {
 
 /* Router for User Authentications */
 router.route('/auth').post(function (req, res) {
-    
+
     console.log('Auth Request identified..');
     // console.log(JSON.stringify(req.body))
 
@@ -51,7 +51,7 @@ router.route('/auth').post(function (req, res) {
 
 /* Router for getting user profile details */
 router.route('/profile').post(function (req, res) {
-    if(req.body.userType == "S") {
+    if (req.body.userType == "S") {
         backendController.getStudent(req.body, function (result, error) {
             if (error) {
                 res.status(404);
@@ -60,7 +60,7 @@ router.route('/profile').post(function (req, res) {
                 res.json(result);
             }
         });
-    } else if(req.body.userType == "M") {
+    } else if (req.body.userType == "M") {
         backendController.getMentor(req.body, function (result, error) {
             if (error) {
                 res.status(404);
@@ -74,7 +74,7 @@ router.route('/profile').post(function (req, res) {
 
 /* Router for update user profile */
 router.route('/profile/update').post(function (req, res) {
-    if(req.body.userType == "S") {
+    if (req.body.userType == "S") {
         backendController.updateStudent(req.body, function (result, error) {
             if (error) {
                 res.status(404);
@@ -83,7 +83,7 @@ router.route('/profile/update').post(function (req, res) {
                 res.json(result);
             }
         });
-    } else if(req.body.userType == "M") {
+    } else if (req.body.userType == "M") {
         backendController.updateMentor(req.body, function (result, error) {
             if (error) {
                 res.status(404);
