@@ -44,9 +44,9 @@ Utils.prototype.getInsertSqlUser = function (user) {
 // SQL query for update user by id
 Utils.prototype.getUpdateSqlUser = function (user) {
 
-    var sqlUser = "UPDATE users SET" + 
-        " user_type='" + user.userType + "'," + 
-        " user_name='" + user.userName + "'," + 
+    var sqlUser = "UPDATE users SET" +
+        " user_type='" + user.userType + "'," +
+        " user_name='" + user.userName + "'," +
         " user_password='" + user.userPassword + "' WHERE" +
         " user_id=" + user.userId;
     return sqlUser;
@@ -81,7 +81,7 @@ Utils.prototype.getInsertSqlStudent = function (student) {
 
     var sqlInsertStudent = "INSERT INTO student (student_id, student_fname, student_lname, " +
         ", student_address, student_phone, student_email, student_imglink, student_description) VALUES (" +
-              student.studentId + ", " +
+        student.studentId + ", " +
         "'" + student.studentFname + "', " +
         "'" + student.studentLname + "', " +
         "'" + student.studentAddress + "', " +
@@ -136,7 +136,7 @@ Utils.prototype.getInsertSqlMentor = function (mentor) {
 
     var sqlInsertMentor = "INSERT INTO mentor (mentor_id, mentor_fname, mentor_lname, " +
         ", mentor_address, mentor_phone, mentor_email, mentor_imglink, mentor_description) VALUES (" +
-              mentor.mentorId + ", " +
+        mentor.mentorId + ", " +
         "'" + mentor.mentorFname + "', " +
         "'" + mentor.mentorLname + "', " +
         "'" + mentor.mentorAddress + "', " +
@@ -191,7 +191,7 @@ Utils.prototype.getInsertSqlCompany = function (company) {
 
     var sqlInsertCompany = "INSERT INTO company (company_id, company_name, company_address, " +
         ", company_phone, company_email, company_description) VALUES (" +
-              company.companyId + ", " +
+        company.companyId + ", " +
         "'" + company.companyName + "', " +
         "'" + company.companyAddress + "', " +
         "'" + company.companyPhone + "', " +
@@ -243,9 +243,9 @@ Utils.prototype.getInsertSqlMilestone = function (milestone) {
 // SQL query for update milestone by id
 Utils.prototype.getUpdateSqlMilestone = function (milestone) {
 
-    var sqlMilestone = "UPDATE milestone SET" + 
-        " supposed_date='" + milestone.milestoneSupposedDate + "'," + 
-        " archived_date='" + milestone.milestoneArchivedDate + "'," + 
+    var sqlMilestone = "UPDATE milestone SET" +
+        " supposed_date='" + milestone.milestoneSupposedDate + "'," +
+        " archived_date='" + milestone.milestoneArchivedDate + "'," +
         " description='" + milestone.milestoneDescription + "' WHERE" +
         " milestone_id=" + milestone.milestoneId;
     return sqlMilestone;
@@ -281,9 +281,9 @@ Utils.prototype.getInsertSqlProject = function (project) {
 // SQL query for update project by id
 Utils.prototype.getUpdateSqlProject = function (project) {
 
-    var sqlProject = "UPDATE project SET" + 
-        " lead_mentor='" + project.projectLeadMentor + "'," + 
-        " starting_date='" + project.projectStartingDate + "'," + 
+    var sqlProject = "UPDATE project SET" +
+        " lead_mentor='" + project.projectLeadMentor + "'," +
+        " starting_date='" + project.projectStartingDate + "'," +
         " duration='" + project.projectDuration + "' WHERE" +
         " project_id=" + project.projectId;
     return sqlProject;
@@ -319,9 +319,9 @@ Utils.prototype.getInsertSqlProjectIdea = function (projectIdea) {
 // SQL query for update projectIdea by id
 Utils.prototype.getUpdateSqlProjectIdea = function (projectIdea) {
 
-    var sqlProjectIdea = "UPDATE project_ideas SET" + 
-        " date='" + projectIdea.projectIdeaDate + "'," + 
-        " owner='" + projectIdea.projectIdeaOwner + "'," + 
+    var sqlProjectIdea = "UPDATE project_ideas SET" +
+        " date='" + projectIdea.projectIdeaDate + "'," +
+        " owner='" + projectIdea.projectIdeaOwner + "'," +
         " category='" + projectIdea.projectIdeaCategory + "' WHERE" +
         " idea_id=" + projectIdea.projectIdeaId;
     return sqlProjectIdea;
@@ -332,6 +332,44 @@ Utils.prototype.getSqlDeleteProjectIdea = function (projectIdea) {
 
     var sqlDeleteProjectIdea = "DELETE FROM project_ideas WHERE idea_id=" + projectIdea.projectIdeaId;
     return sqlDeleteProjectIdea;
+};
+
+
+
+// Skill Entity related functions
+// SQL query for select skill by id
+Utils.prototype.getSqlSelectSkill = function (skillId) {
+
+    var sqlSelectSkill = "SELECT * FROM skill WHERE skill_id=" + skillId;
+    return sqlSelectSkill;
+};
+
+// SQL query for insert skill
+Utils.prototype.getInsertSqlSkill = function (skill) {
+
+    var sqlSkill = "INSERT INTO skill (skill_name, level, category) VALUES (" +
+        "'" + skill.skillName + "', " +
+        "'" + skill.skillLevel + "', " +
+        "'" + skill.skillCategory + "')";
+    return sqlSkill;
+};
+
+// SQL query for update skill by id
+Utils.prototype.getUpdateSqlSkill = function (skill) {
+
+    var sqlSkill = "UPDATE skill SET" + 
+        " skill_name='" + skill.skillName + "'," + 
+        " level='" + skill.skillLevel + "'," + 
+        " category='" + skill.skillCategory + "' WHERE" +
+        " skill_id=" + skill.skillId;
+    return sqlSkill;
+};
+
+// SQL query for delete skill by id
+Utils.prototype.getSqlDeleteSkill = function (skill) {
+
+    var sqlDeleteSkill = "DELETE FROM skill WHERE skill_id=" + skill.skillId;
+    return sqlDeleteSkill;
 };
 
 
@@ -435,6 +473,19 @@ Utils.prototype.generateProjectIdea = function (resultProjectIdea) {
             resultProjectIdea.projectIdeaDate,
             resultProjectIdea.projectIdeaOwner,
             resultProjectIdea.projectIdeaCategory);
+    }
+    return projectIdea;
+};
+
+// skill object generating function
+Utils.prototype.generateSkill = function (resultSkill) {
+    var skill = null;
+    if (resultSkill) {
+        skill = new Skill(
+            resultSkill.skillId,
+            resultSkill.skillName,
+            resultSkill.skillLevel,
+            resultSkill.skillCategory);
     }
     return projectIdea;
 };
