@@ -32,15 +32,17 @@ export class ChatComponent implements OnInit {
   message: string;
   senderId = 'usr003';
   recieverid: 'usr003' ;
-  owner = "mario";
+  owner:string;
   data: any;
 
   constructor(private authService: AuthenticationService, private userService: UserService,private afs: AngularFirestore) {}
 
   ngOnInit() {
     this.authService.isUserLogged();
-    console.log(this.userService.getCurrentUser());
-
+    //console.log(this.userService.getCurrentUser());
+    this.data =this.authService.getUser();
+    this.owner =this.data.userName;
+    //this.owner ='mario';
 
     this.postsCol = this.afs.collection('sendEvent', ref => ref.where('recieverID', '==', this.owner));
     this.messageCol =this.afs.collection('messages',ref => ref.where('recieverID','==',this.owner).where('senderID','==',this.senderId));
@@ -57,7 +59,11 @@ export class ChatComponent implements OnInit {
   getPost(senderID){
     console.log("VERBOSE SETTING SENDER IS TO :"+senderID);
 
-    this.recieverid =senderID;
+    this.senderId =senderID;
+    console.log("user selected "+this.senderId);
+
+    this.messageCol =this.afs.collection('messages',ref => ref.where('recieverID','==',this.owner).where('senderID','==',this.senderId));
+    this.messages =this.messageCol.valueChanges();
     this.data.changesMessage(senderID);
   }
 
