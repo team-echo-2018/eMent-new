@@ -183,7 +183,6 @@ BackendController.prototype.updateMentor = function(req, callback){
     });
 }
 
-<<<<<<< HEAD
 //insert posts
  BackendController.prototype.insertPost =function(req,callback){
      var Post =new Post(
@@ -215,17 +214,6 @@ BackendController.prototype.updateMentor = function(req, callback){
 
     PoMsql.getPost(req,  function(result, err) { 
         console.log("connecting to database and getting posts");
-=======
-
-
-// Company Object related functions ..............................................................
-// Get company object from DB model
-BackendController.prototype.getCompany = function(req, callback){
-
-    var daoMsql = new DAOMySql();
-
-    daoMsql.getCompany(req.companyId,  function(result, err) { 
-        console.log("Enter to the get company function");
         if (err || !result) {
             console.log("** error or no result");
             callback(null, err);
@@ -234,53 +222,12 @@ BackendController.prototype.getCompany = function(req, callback){
         }
     });
 }
-
-// Update company object from DB model
-BackendController.prototype.updateCompany = function(req, callback){
-
-    // Company object with updated details
-    var company = new Company(
-        req.companyId, 
-        req.companyName, 
-        req.companyAddress, 
-        req.companyPhone, 
-        req.companyEmail, 
-        req.companyDescription
-    );
-
-    var daoMsql = new DAOMySql();
-
-    daoMsql.updateCompany(company, function(result, err) { 
-        console.log("Enter to the update company function");
->>>>>>> bdae0c29a6b00305791f4ead6443ab692f4c4682
-        if (err || !result) {
-            console.log("** error or no result");
-            callback(null, err);
-        } else {
-            callback(result);
-        }
-    });
-}
-<<<<<<< HEAD
 BackendController.prototype.deletePosts = function(req, callback){
 
     var PoMsql = new PostMySql();
 
     PoMsql.deletePost (req,  function(result, err) { 
         console.log("connecting to database and getting posts");
-=======
-
-
-
-// Milestone Object related functions ..............................................................
-// Get milestone object from DB model
-BackendController.prototype.getMilestone = function(req, callback){
-
-    var daoMsql = new DAOMySql();
-
-    daoMsql.getMilestone(req.milestoneId,  function(result, err) { 
-        console.log("Enter to the get milestone function");
->>>>>>> bdae0c29a6b00305791f4ead6443ab692f4c4682
         if (err || !result) {
             console.log("** error or no result");
             callback(null, err);
@@ -289,7 +236,6 @@ BackendController.prototype.getMilestone = function(req, callback){
         }
     });
 }
-<<<<<<< HEAD
     
 BackendController.prototype.updatePost =function(req,callback){
 
@@ -302,43 +248,18 @@ BackendController.prototype.updatePost =function(req,callback){
         req.postbody
     );
 
-    PoMsql.updatePost =function(req,callback){
-        var PoMsql = new PostMySql();
+   
+        
 
-        PoMsql.updatePost(Post,function(result,err){
-            if(err || !result){
-                console.log("** error or no result");
-                callback(null, err);
-            }else{
-                callback(result);
-            }
-        })
-    }
-=======
-
-// Update milestone object from DB model
-BackendController.prototype.updateMilestone = function(req, callback){
-
-    // Milestone object with updated details
-    var milestone = new Milestone(
-        req.milestoneId, 
-        req.milestoneSupposedDate, 
-        req.milestoneArchivedDate, 
-        req.milestoneDescription
-    );
-
-    var daoMsql = new DAOMySql();
-
-    daoMsql.updateMilestone(milestone, function(result, err) { 
-        console.log("Enter to the update milestone function");
-        if (err || !result) {
+    PoMsql.updatePost(Post,function(result,err){
+        if(err || !result){
             console.log("** error or no result");
             callback(null, err);
-        } else {
+        }else{
             callback(result);
         }
-    });
->>>>>>> bdae0c29a6b00305791f4ead6443ab692f4c4682
-}
+    })
+};
+
 
 module.exports = BackendController;
