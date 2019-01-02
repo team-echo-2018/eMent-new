@@ -10,6 +10,7 @@ var User = require('../entities/user');
 var Student = require('../entities/student');
 var Mentor = require('../entities/mentor');
 var DAOMySql = require('../models/backend-mysql-database');
+var PostMySql =require('../models/posts-mysql-database');
 
 
 /* ---------  CONTROLLERS - METHODS   -----------*/
@@ -169,6 +170,85 @@ BackendController.prototype.updateMentor = function(req, callback){
             callback(result);
         }
     });
+}
+
+//insert posts
+ BackendController.prototype.insertPost =function(req,callback){
+     var Post =new Post(
+         req.postId,
+         req.postauthor,
+         req.postheading,
+         req.postbody
+     );
+    
+    var PoMsql = new PostMySql();
+
+    PoMsql.insertPost(Post,function(req,err){
+        if(err || !result){
+            console.log("error in inserting post");
+            callback(null,err);
+            
+        } else{
+            callback(result);
+        }
+    })
+
+ }
+
+ //get posts from database
+
+ BackendController.prototype.getPosts = function(req, callback){
+
+    var PoMsql = new PostMySql();
+
+    PoMsql.getPost(req,  function(result, err) { 
+        console.log("connecting to database and getting posts");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+BackendController.prototype.deletePosts = function(req, callback){
+
+    var PoMsql = new PostMySql();
+
+    PoMsql.deletePost (req,  function(result, err) { 
+        console.log("connecting to database and getting posts");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+    
+BackendController.prototype.updatePost =function(req,callback){
+
+    var PoMsql = new PostMySql();
+
+    var Post =new Post(
+        req.postId,
+        req.postauthor,
+        req.postheading,
+        req.postbody
+    );
+
+    PoMsql.updatePost =function(req,callback){
+        var PoMsql = new PostMySql();
+
+        PoMsql.updatePost(Post,function(result,err){
+            if(err || !result){
+                console.log("** error or no result");
+                callback(null, err);
+            }else{
+                callback(result);
+            }
+        })
+    }
 }
 
 module.exports = BackendController;
