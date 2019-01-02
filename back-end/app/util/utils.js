@@ -15,6 +15,7 @@ var Skill = require('../entities/skill');
 var Student = require('../entities/student');
 var Task = require('../entities/task');
 var User = require('../entities/user');
+var Post =require('../entities/posts');
 
 
 /* ------ UTILS FUNCTIONS ------- */
@@ -463,6 +464,46 @@ Utils.prototype.generateMentor = function (resultMentor) {
     return mentor;
 }
 
+<<<<<<< HEAD
+//add posts
+Utils.prototype.addPosts =function(Post)
+{
+    var sqlInsertPost = "INSERT INTO posts (postId,postauthor,postheading,postbody) VALUES ("+
+        "'"+Post.postId +"',"+
+        "'"+Post.postauthor +"',"+
+        "'"+Post.postheading +"',"+
+        "'"+Post.postbody +"')";
+    return sqlInsertPost;
+}
+
+//update posts
+
+Utils.prototype.updatePosts =function(Post)
+{
+    var sqlUpdatePost = "UPDATE posts SET"+
+        "postId='"+Post.postId +"',"+
+        "postauthor='"+Post.postauthor +"',"+
+        "postheading='"+Post.postheading +"',"+
+        "postbody='"+Post.postbody +"')";
+
+    return sqlUpdatePost;
+}
+
+//select all posts
+
+Utils.prototype.selectPosts =function(){
+    var selectSqlPost = "SELECT * FROM Post";
+
+    return selectSqlPost;
+}
+
+//Delete Post
+Utils.prototype.deletePost =function(Post){
+    var deleteSqlPost ="DELETE FROM Post WHERE postId='"+Post.postId+"'";
+
+    return deleteSqlPost;
+}
+=======
 // company object generating function
 Utils.prototype.generateCompany = function (resultCompany) {
     var company = null;
@@ -544,6 +585,7 @@ Utils.prototype.generateTask = function (resultTask) {
     return task;
 };
 
+>>>>>>> bdae0c29a6b00305791f4ead6443ab692f4c4682
 
 // export utils
 module.exports = Utils;

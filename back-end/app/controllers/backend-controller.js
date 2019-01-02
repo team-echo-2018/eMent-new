@@ -16,6 +16,7 @@ var Student = require('../entities/student');
 var Task = require('../entities/task');
 var User = require('../entities/user');
 var DAOMySql = require('../models/backend-mysql-database');
+var PostMySql =require('../models/posts-mysql-database');
 
 
 /* ---------  CONTROLLERS - METHODS   -----------*/
@@ -182,6 +183,39 @@ BackendController.prototype.updateMentor = function(req, callback){
     });
 }
 
+<<<<<<< HEAD
+//insert posts
+ BackendController.prototype.insertPost =function(req,callback){
+     var Post =new Post(
+         req.postId,
+         req.postauthor,
+         req.postheading,
+         req.postbody
+     );
+    
+    var PoMsql = new PostMySql();
+
+    PoMsql.insertPost(Post,function(req,err){
+        if(err || !result){
+            console.log("error in inserting post");
+            callback(null,err);
+            
+        } else{
+            callback(result);
+        }
+    })
+
+ }
+
+ //get posts from database
+
+ BackendController.prototype.getPosts = function(req, callback){
+
+    var PoMsql = new PostMySql();
+
+    PoMsql.getPost(req,  function(result, err) { 
+        console.log("connecting to database and getting posts");
+=======
 
 
 // Company Object related functions ..............................................................
@@ -218,6 +252,7 @@ BackendController.prototype.updateCompany = function(req, callback){
 
     daoMsql.updateCompany(company, function(result, err) { 
         console.log("Enter to the update company function");
+>>>>>>> bdae0c29a6b00305791f4ead6443ab692f4c4682
         if (err || !result) {
             console.log("** error or no result");
             callback(null, err);
@@ -226,6 +261,14 @@ BackendController.prototype.updateCompany = function(req, callback){
         }
     });
 }
+<<<<<<< HEAD
+BackendController.prototype.deletePosts = function(req, callback){
+
+    var PoMsql = new PostMySql();
+
+    PoMsql.deletePost (req,  function(result, err) { 
+        console.log("connecting to database and getting posts");
+=======
 
 
 
@@ -237,6 +280,7 @@ BackendController.prototype.getMilestone = function(req, callback){
 
     daoMsql.getMilestone(req.milestoneId,  function(result, err) { 
         console.log("Enter to the get milestone function");
+>>>>>>> bdae0c29a6b00305791f4ead6443ab692f4c4682
         if (err || !result) {
             console.log("** error or no result");
             callback(null, err);
@@ -245,6 +289,32 @@ BackendController.prototype.getMilestone = function(req, callback){
         }
     });
 }
+<<<<<<< HEAD
+    
+BackendController.prototype.updatePost =function(req,callback){
+
+    var PoMsql = new PostMySql();
+
+    var Post =new Post(
+        req.postId,
+        req.postauthor,
+        req.postheading,
+        req.postbody
+    );
+
+    PoMsql.updatePost =function(req,callback){
+        var PoMsql = new PostMySql();
+
+        PoMsql.updatePost(Post,function(result,err){
+            if(err || !result){
+                console.log("** error or no result");
+                callback(null, err);
+            }else{
+                callback(result);
+            }
+        })
+    }
+=======
 
 // Update milestone object from DB model
 BackendController.prototype.updateMilestone = function(req, callback){
@@ -268,6 +338,7 @@ BackendController.prototype.updateMilestone = function(req, callback){
             callback(result);
         }
     });
+>>>>>>> bdae0c29a6b00305791f4ead6443ab692f4c4682
 }
 
 module.exports = BackendController;

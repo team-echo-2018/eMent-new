@@ -95,6 +95,65 @@ router.route('/profile/update').post(function (req, res) {
     }
 });
 
+
+/* Routes for post CRUD operations */
+
+/* get posts */
+router.route('/posts/getPost').post(function (req, res) {
+    backendController.getPosts(req.body,function(res,error){
+        if(error){
+            res.status(404);
+            res.send(error);
+        }else{
+            res.status(200);
+            res.json(result);
+        }
+
+    });
+});
+
+/* update posts  --changes are needed*/
+router.route('/posts/updatePost').post(function (req, res) {
+    backendController.updatePost(req.body,func(req.body,function(result,err){
+            if(err){
+                res.status(404);
+                res.send(err);
+            }else{
+                req.status(200);
+                res.send('update completed');
+            }
+        })
+        )});
+
+
+/* Delete Posts */
+router.route('/posts/deletePost').post(function (req, res) {
+    backendController.deletePosts(req.body,function(res,error){
+        if(error){
+            res.status(404);
+            res.send(error);
+        }else{
+            res.status(200);
+            res.json(result);
+        }
+
+    });
+});
+
+/* insert a Post */
+router.route('/posts/insertPost').post(function (req, res) {
+    backendController.insertPost(req.body,function(res,error){
+        if(error){
+            res.status(404);
+            res.send(error);
+        }else{
+            res.status(200);
+            res.json(result);
+        }
+
+    });
+});
+
 /* Router for file uploading */
 router.route('/file/upload').post(upload.single("file"), fileWorker.uploadFile);
 
