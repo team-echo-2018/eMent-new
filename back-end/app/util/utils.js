@@ -23,7 +23,7 @@ function Utils() { }
 
 
 
-// User Entity related functions
+// User Entity related functions ..............................................................
 // SQL query for select user by user name
 Utils.prototype.getSqlSelectUser = function (userName) {
 
@@ -61,7 +61,7 @@ Utils.prototype.getSqlDeleteUser = function (user) {
 
 
 
-// Student Entity related functions
+// Student Entity related functions................................................................
 // SQL query for select student by student id
 Utils.prototype.getSqlSelectStudent = function (studentId) {
 
@@ -116,7 +116,7 @@ Utils.prototype.getSqlDeleteStudent = function (student) {
 
 
 
-// Mentor Entity related functions
+// Mentor Entity related functions................................................................
 // SQL query for select mentor by mentor id
 Utils.prototype.getSqlSelectMentor = function (mentorId) {
 
@@ -171,7 +171,7 @@ Utils.prototype.getSqlDeleteMentor = function (mentor) {
 
 
 
-// Company Entity related functions
+// Company Entity related functions..........................................................
 // SQL query for select company by company id
 Utils.prototype.getSqlSelectCompany = function (companyId) {
 
@@ -222,7 +222,7 @@ Utils.prototype.getSqlDeleteCompany = function (company) {
 
 
 
-// Milestone Entity related functions
+// Milestone Entity related functions........................................................
 // SQL query for select milestone by id
 Utils.prototype.getSqlSelectMilestone = function (milestoneId) {
 
@@ -260,7 +260,7 @@ Utils.prototype.getSqlDeleteMilestone = function (milestone) {
 
 
 
-// Project Entity related functions
+// Project Entity related functions..........................................................
 // SQL query for select project by id
 Utils.prototype.getSqlSelectProject = function (projectId) {
 
@@ -298,7 +298,7 @@ Utils.prototype.getSqlDeleteProject = function (project) {
 
 
 
-// ProjectIdea Entity related functions
+// ProjectIdea Entity related functions......................................................
 // SQL query for select projectIdea by id
 Utils.prototype.getSqlSelectProjectIdea = function (projectIdeaId) {
 
@@ -336,7 +336,7 @@ Utils.prototype.getSqlDeleteProjectIdea = function (projectIdea) {
 
 
 
-// Skill Entity related functions
+// Skill Entity related functions................................................................
 // SQL query for select skill by id
 Utils.prototype.getSqlSelectSkill = function (skillId) {
 
@@ -357,9 +357,9 @@ Utils.prototype.getInsertSqlSkill = function (skill) {
 // SQL query for update skill by id
 Utils.prototype.getUpdateSqlSkill = function (skill) {
 
-    var sqlSkill = "UPDATE skill SET" + 
-        " skill_name='" + skill.skillName + "'," + 
-        " level='" + skill.skillLevel + "'," + 
+    var sqlSkill = "UPDATE skill SET" +
+        " skill_name='" + skill.skillName + "'," +
+        " level='" + skill.skillLevel + "'," +
         " category='" + skill.skillCategory + "' WHERE" +
         " skill_id=" + skill.skillId;
     return sqlSkill;
@@ -374,7 +374,7 @@ Utils.prototype.getSqlDeleteSkill = function (skill) {
 
 
 
-// Task Entity related functions
+// Task Entity related functions..............................................................
 // SQL query for select task by id
 Utils.prototype.getSqlSelectTask = function (taskId) {
 
@@ -396,10 +396,10 @@ Utils.prototype.getInsertSqlTask = function (task) {
 // SQL query for update task by id
 Utils.prototype.getUpdateSqlTask = function (task) {
 
-    var sqlTask = "UPDATE task SET" + 
-        " responsible_student='" + task.taskResponsibleStudent + "'," + 
-        " archived_date='" + task.taskArchivedDate + "'," + 
-        " supposed_date='" + task.taskSupposedDate + "'," + 
+    var sqlTask = "UPDATE task SET" +
+        " responsible_student='" + task.taskResponsibleStudent + "'," +
+        " archived_date='" + task.taskArchivedDate + "'," +
+        " supposed_date='" + task.taskSupposedDate + "'," +
         " description='" + task.taskDescription + "' WHERE" +
         " task_id=" + task.taskId;
     return sqlTask;
@@ -415,7 +415,7 @@ Utils.prototype.getSqlDeleteTask = function (task) {
 
 
 
-// Objects generating function definitions
+/* ------ Objects generating function definitions ------- */
 // user object generating function
 Utils.prototype.generateUser = function (resultUser) {
     var user = null;
