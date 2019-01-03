@@ -184,6 +184,7 @@ BackendController.prototype.updateMentor = function (req, callback) {
 }
 
 
+
 // Company Object related functions ..............................................................
 // Get company by id object from DB model
 BackendController.prototype.getCompany = function (req, callback) {
@@ -476,7 +477,13 @@ BackendController.prototype.getPosts = function(req, callback){
 
    PoMsql.getPost(req,  function(result, err) { 
        console.log("connecting to database and getting posts");
-   }
+       if(err || !result){
+        console.log("** error or no result");
+        callback(null, err);
+    }else{
+        callback(result);
+    }
+   });
 }
 
        
@@ -488,7 +495,13 @@ BackendController.prototype.deletePosts = function(req, callback){
 
     PoMsql.deletePost (req,  function(result, err) { 
         console.log("connecting to database and getting posts");
-    }
+        if(err || !result){
+            console.log("** error or no result");
+            callback(null, err);
+        }else{
+            callback(result);
+        }
+    });
 }
 
 

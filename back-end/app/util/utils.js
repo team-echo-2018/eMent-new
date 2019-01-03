@@ -464,7 +464,6 @@ Utils.prototype.generateMentor = function (resultMentor) {
     return mentor;
 }
 
-<<<<<<< HEAD
 //add posts
 Utils.prototype.addPosts =function(Post)
 {
@@ -503,7 +502,7 @@ Utils.prototype.deletePost =function(Post){
 
     return deleteSqlPost;
 }
-=======
+
 // company object generating function
 Utils.prototype.generateCompany = function (resultCompany) {
     var company = null;
@@ -585,7 +584,7 @@ Utils.prototype.generateTask = function (resultTask) {
     return task;
 };
 
->>>>>>> bdae0c29a6b00305791f4ead6443ab692f4c4682
+
 
 // export utils
 module.exports = Utils;
