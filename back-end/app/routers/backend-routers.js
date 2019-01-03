@@ -134,7 +134,7 @@ router.route('/posts/deletePost').post(function (req, res) {
             res.send(error);
         }else{
             res.status(200);
-            res.json(result);
+            res.send("ok");
         }
 
     });
