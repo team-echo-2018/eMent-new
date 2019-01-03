@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Posts } from '../entities/posts';
 import { HttpEnum } from '../utils/httpEnum';
 import { HttpBackendRequestService } from './http-backend-request.service';
+import { Postreply } from '../entities/postreply';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -30,6 +31,24 @@ export class PostserviceService {
       }
     )
   }
+
+/* GET REPLY FOR POSTS */
+
+  getPostsreply(){
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.BASEURL +"getPostReply",null).subscribe(
+      (results)=>{
+        if(results ==null){
+          console.log("error in getting posts --no posts");
+
+        }else{
+          return results;
+        }
+
+      }
+    )
+  }
+
+
 /* DELETE POSTS */
 
   deletePosts(Postdetails:Posts){
@@ -49,6 +68,16 @@ export class PostserviceService {
 
       }
 
+    )
+  }
+  /* INSERT REPLY */
+
+  InsertReplys(ReplyDetails:Postreply){
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.BASEURL+"insertReply",ReplyDetails).subscribe(
+      (error)=>{
+        console.log("error in inserting replys to system");
+
+      }
     )
   }
 
