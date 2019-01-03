@@ -6,9 +6,15 @@
 
 /* ---------  REQUIRES   -----------*/
 
-var User = require('../entities/user');
-var Student = require('../entities/student');
+var Company = require('../entities/company');
 var Mentor = require('../entities/mentor');
+var Milestone = require('../entities/milestone');
+var Project = require('../entities/project');
+var ProjectIdea = require('../entities/projectIdea');
+var Skill = require('../entities/skill');
+var Student = require('../entities/student');
+var Task = require('../entities/task');
+var User = require('../entities/user');
 var DAOMySql = require('../models/backend-mysql-database');
 
 
@@ -19,17 +25,17 @@ function BackendController() { }
 // not used yet... don't change..
 BackendController.prototype.insert = function (req, callback) {
 
-    var user = new User(req.nome, 
-                        req.user_name,
-                        req.senha,
-                        req.dataNascimento,
-                        addressUser);
-    
+    var user = new User(req.nome,
+        req.user_name,
+        req.senha,
+        req.dataNascimento,
+        addressUser);
+
     var daoMsql = new DAOMySql();
 
-    daoMsql.insert(user, function(result, err) { 
+    daoMsql.insert(user, function (result, err) {
         if (err) {
-            callback (null, err);
+            callback(null, err);
         } else {
             callback(result)
         }
@@ -38,18 +44,18 @@ BackendController.prototype.insert = function (req, callback) {
 
 
 /* User Authentcation function */
-BackendController.prototype.auth = function(req, callback){
-    
+BackendController.prototype.auth = function (req, callback) {
+
     var daoMsql = new DAOMySql();
 
-    daoMsql.getUser(req.userName,  function(result, err) { 
+    daoMsql.getUser(req.userName, function (result, err) {
         console.log("Enter to the get user function");
         if (err || !result) {
             console.log("** error or no result");
             callback(null, err);
         } else {
             console.log("** no errors");
-            if ( result.userPassword == req.userPassword ) {
+            if (result.userPassword == req.userPassword) {
                 console.log("**** password matched");
                 callback(result);
             } else {
@@ -71,7 +77,7 @@ BackendController.prototype.auth = function(req, callback){
 //         req.std_email, 
 //         req.std_image, 
 //         req.std_description);
-    
+
 //     var daoMsql = new DAOMySql();
 
 //     daoMsql.insert(user, function(result, err) { 
@@ -83,12 +89,14 @@ BackendController.prototype.auth = function(req, callback){
 //     })
 // }
 
-/* Get student object from DB model */
-BackendController.prototype.getStudent = function(req, callback){
+
+// Student Object related functions ..............................................................
+// Get student by id object from DB model
+BackendController.prototype.getStudent = function (req, callback) {
 
     var daoMsql = new DAOMySql();
 
-    daoMsql.getStudent(req.userId,  function(result, err) { 
+    daoMsql.getStudent(req.userId, function (result, err) {
         console.log("Enter to the get student function");
         if (err || !result) {
             console.log("** error or no result");
@@ -99,24 +107,24 @@ BackendController.prototype.getStudent = function(req, callback){
     });
 }
 
-/* Update student object from DB model */
-BackendController.prototype.updateStudent = function(req, callback){
+// Update student object from DB model
+BackendController.prototype.updateStudent = function (req, callback) {
 
     // Student object with updated details
     var student = new Student(
-        req.studentId, 
-        req.studentFname, 
-        req.studentLname, 
-        req.studentAddress, 
-        req.studentPhone, 
-        req.studentEmail, 
-        req.studentImgLink, 
+        req.studentId,
+        req.studentFname,
+        req.studentLname,
+        req.studentAddress,
+        req.studentPhone,
+        req.studentEmail,
+        req.studentImgLink,
         req.studentDescription
     );
 
     var daoMsql = new DAOMySql();
 
-    daoMsql.updateStudent(student, function(result, err) { 
+    daoMsql.updateStudent(student, function (result, err) {
         console.log("Enter to the update student function");
         if (err || !result) {
             console.log("** error or no result");
@@ -127,12 +135,15 @@ BackendController.prototype.updateStudent = function(req, callback){
     });
 }
 
-/* Get mentor object from DB model */
-BackendController.prototype.getMentor = function(req, callback){
+
+
+// Mentor Object related functions ..............................................................
+// Get mentor by id object from DB model
+BackendController.prototype.getMentor = function (req, callback) {
 
     var daoMsql = new DAOMySql();
 
-    daoMsql.getMentor(req.userId,  function(result, err) { 
+    daoMsql.getMentor(req.userId, function (result, err) {
         console.log("Enter to the get mentor function");
         if (err || !result) {
             console.log("** error or no result");
@@ -143,25 +154,286 @@ BackendController.prototype.getMentor = function(req, callback){
     });
 }
 
-/* Update mentor object from DB model */
-BackendController.prototype.updateMentor = function(req, callback){
+// Update mentor object from DB model
+BackendController.prototype.updateMentor = function (req, callback) {
 
     // Mentor object with updated details
     var mentor = new Mentor(
-        req.mentorId, 
-        req.mentorFname, 
-        req.mentorLname, 
-        req.mentorAddress, 
-        req.mentorPhone, 
-        req.mentorEmail, 
-        req.mentorImgLink, 
+        req.mentorId,
+        req.mentorFname,
+        req.mentorLname,
+        req.mentorAddress,
+        req.mentorPhone,
+        req.mentorEmail,
+        req.mentorImgLink,
         req.mentorDescription
     );
 
     var daoMsql = new DAOMySql();
 
-    daoMsql.updateMentor(mentor, function(result, err) { 
+    daoMsql.updateMentor(mentor, function (result, err) {
         console.log("Enter to the update mentor function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+
+
+// Company Object related functions ..............................................................
+// Get company by id object from DB model
+BackendController.prototype.getCompany = function (req, callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.getCompany(req.companyId, function (result, err) {
+        console.log("Enter to the get company function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+// Update company object from DB model
+BackendController.prototype.updateCompany = function (req, callback) {
+
+    // Company object with updated details
+    var company = new Company(
+        req.companyId,
+        req.companyName,
+        req.companyAddress,
+        req.companyPhone,
+        req.companyEmail,
+        req.companyDescription
+    );
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.updateCompany(company, function (result, err) {
+        console.log("Enter to the update company function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+
+
+// Milestone Object related functions ..............................................................
+// Get milestone by id object from DB model
+BackendController.prototype.getMilestone = function (req, callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.getMilestone(req.milestoneId, function (result, err) {
+        console.log("Enter to the get milestone function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+// Update milestone object from DB model
+BackendController.prototype.updateMilestone = function (req, callback) {
+
+    // Milestone object with updated details
+    var milestone = new Milestone(
+        req.milestoneId,
+        req.milestoneSupposedDate,
+        req.milestoneArchivedDate,
+        req.milestoneDescription
+    );
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.updateMilestone(milestone, function (result, err) {
+        console.log("Enter to the update milestone function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+
+
+// Project Object related functions ..............................................................
+// Get project by id object from DB model
+BackendController.prototype.getProject = function (req, callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.getProject(req.projectId, function (result, err) {
+        console.log("Enter to the get project function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+// Update project object from DB model
+BackendController.prototype.updateProject = function (req, callback) {
+
+    // Project object with updated details
+    var project = new Project(
+        req.projectId,
+        req.projectLeadMentor,
+        req.projectStartingDate,
+        req.projectDuration
+    );
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.updateProject(project, function (result, err) {
+        console.log("Enter to the update project function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+
+
+// ProjectIdea Object related functions ..............................................................
+// Get projectIdea by id object from DB model
+BackendController.prototype.getProjectIdea = function (req, callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.getProjectIdea(req.projectIdeaId, function (result, err) {
+        console.log("Enter to the get projectIdea function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+// Update projectIdea object from DB model
+BackendController.prototype.updateProjectIdea = function (req, callback) {
+
+    // ProjectIdea object with updated details
+    var projectIdea = new Mentor(
+        req.projectIdeaId,
+        req.projectIdeaDate,
+        req.projectIdeaOwner,
+        req.projectIdeaCategory
+    );
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.updateProjectIdea(projectIdea, function (result, err) {
+        console.log("Enter to the update projectIdea function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+
+
+// Skill Object related functions ..............................................................
+// Get skill by id object from DB model
+BackendController.prototype.getSkill = function (req, callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.getSkill(req.skillId, function (result, err) {
+        console.log("Enter to the get skill function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+// Update skill object from DB model
+BackendController.prototype.updateSkill = function (req, callback) {
+
+    // Skill object with updated details
+    var skill = new Skill(
+        req.skillId,
+        req.skillName,
+        req.skillLevel,
+        req.skillCategory
+    );
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.updateSkill(skill, function (result, err) {
+        console.log("Enter to the update skill function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+
+
+// Task Object related functions ..............................................................
+// Get task by id object from DB model
+BackendController.prototype.getTask = function (req, callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.getTask(req.milestoneId, function (result, err) {
+        console.log("Enter to the get task function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+// Update task object from DB model
+BackendController.prototype.updateTask = function (req, callback) {
+
+    // Task object with updated details
+    var task = new Task(
+        req.taskId,
+        req.taskResponsibleStudent,
+        req.taskArchivedDate,
+        req.taskSupposedDate,
+        req.taskDescription
+    );
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.updateTask(task, function (result, err) {
+        console.log("Enter to the update task function");
         if (err || !result) {
             console.log("** error or no result");
             callback(null, err);
