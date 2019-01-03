@@ -1,0 +1,10 @@
+.title{
+    background: rgba(24, 57, 82, 0.836);
+    color: #FFF;
+    border-radius: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.desc{
+    font-size: 22px;
+}
