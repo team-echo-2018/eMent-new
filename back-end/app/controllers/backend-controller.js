@@ -16,7 +16,6 @@ var Student = require('../entities/student');
 var Task = require('../entities/task');
 var User = require('../entities/user');
 var DAOMySql = require('../models/backend-mysql-database');
-var PostMySql =require('../models/posts-mysql-database');
 
 
 /* ---------  CONTROLLERS - METHODS   -----------*/
@@ -455,9 +454,9 @@ BackendController.prototype.insertPost =function(req,callback){
         req.postbody
     );
    
-   var PoMsql = new PostMySql();
+   var daoMsql = new DAOMySql();
 
-   PoMsql.insertPost(Post,function(req,err){
+   daoMsql.insertPost(Post,function(req,err){
        if(err || !result){
            console.log("error in inserting post");
            callback(null,err);
@@ -473,9 +472,9 @@ BackendController.prototype.insertPost =function(req,callback){
 
 BackendController.prototype.getPosts = function(req, callback){
 
-   var PoMsql = new PostMySql();
+   var daoMsql = new DAOMySql();
 
-   PoMsql.getPost(req,  function(result, err) { 
+   daoMsql.getPost(req,  function(result, err) { 
        console.log("connecting to database and getting posts");
        if(err || !result){
         console.log("** error or no result");
@@ -491,9 +490,9 @@ BackendController.prototype.getPosts = function(req, callback){
 
 BackendController.prototype.deletePosts = function(req, callback){
 
-    var PoMsql = new PostMySql();
+    var daoMsql = new DAOMySql();
 
-    PoMsql.deletePost (req,  function(result, err) { 
+    daoMsql.deletePost (req,  function(result, err) { 
         console.log("connecting to database and getting posts");
         if(err || !result){
             console.log("** error or no result");
@@ -507,7 +506,7 @@ BackendController.prototype.deletePosts = function(req, callback){
 
 BackendController.prototype.updatePost =function(req,callback){
 
-    var PoMsql = new PostMySql();
+    var daoMsql = new DAOMySql();
 
     var Post =new Post(
         req.postId,
@@ -516,10 +515,10 @@ BackendController.prototype.updatePost =function(req,callback){
         req.postbody
     );
 
-    PoMsql.updatePost =function(req,callback){
-        var PoMsql = new PostMySql();
+    daoMsql.updatePost =function(req,callback){
+        var daoMsql = new DAOMySql();
 
-        PoMsql.updatePost(Post,function(result,err){
+        daoMsql.updatePost(Post,function(result,err){
             if(err || !result){
                 console.log("** error or no result");
                 callback(null, err);

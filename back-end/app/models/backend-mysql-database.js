@@ -775,7 +775,7 @@ DatabaseMySql.prototype.updateTask = function (task, callback) {
 }
 
 // get Post object in DB
-PostsMysql.prototype.getPost = function (err, callback) {
+DatabaseMySql.prototype.getPost = function (err, callback) {
 
   var utils = new Utils();
 
@@ -792,7 +792,7 @@ PostsMysql.prototype.getPost = function (err, callback) {
 }
 
 // updating a post
-PostsMysql.prototype.updatePost = function (Post, callback) {
+DatabaseMySql.prototype.updatePost = function (Post, callback) {
 
   var utils = new Utils();
 
@@ -823,7 +823,7 @@ PostsMysql.prototype.updatePost = function (Post, callback) {
 }
 
 //Delete POSTs
-PostsMysql.prototype.deletePost = function (err, callback) {
+DatabaseMySql.prototype.deletePost = function (err, callback) {
 
   var utils = new Utils();
 
