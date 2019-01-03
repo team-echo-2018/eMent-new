@@ -791,6 +791,23 @@ DatabaseMySql.prototype.getPost = function (err, callback) {
   });
 }
 
+/* get Post reply object in db */
+
+DatabaseMySql.prototype.getPostReply =function(err,callback){
+
+  var Utils =new Utils();
+
+  var sqlselectreply =Utils.getReply();
+
+  connection.query(sqlselectreply,function(err,resultsreply){
+    if(err|| resultsreply.length ==0){
+      callback(null,err);
+    }else{
+      return resultsreply;
+    }
+  })
+}
+
 // updating a post
 DatabaseMySql.prototype.updatePost = function (Post, callback) {
 

@@ -16,6 +16,7 @@ var Student = require('../entities/student');
 var Task = require('../entities/task');
 var User = require('../entities/user');
 var Post =require('../entities/posts');
+var reply =require('../entities/reply')
 
 
 /* ------ UTILS FUNCTIONS ------- */
@@ -501,6 +502,21 @@ Utils.prototype.deletePost =function(Post){
     var deleteSqlPost ="DELETE FROM Post WHERE postId='"+Post.postId+"'";
 
     return deleteSqlPost;
+}
+
+/* insert reply */
+Utils.prototype.insertReply =function(reply){
+    var insertreply ="INSERT INTO postsreply VALUES("+reply.replyId+","+reply.postId+",'"+reply.author+"','"+reply.body+"')";
+
+    return insertreply;
+
+}
+
+/* get post replys */
+Utils.prototype.getReply =function(reply){
+    var selectReply ="SELECT * FROM postsreply WHERE postId ="+reply.postId;
+
+    return selectReply;
 }
 
 // company object generating function
