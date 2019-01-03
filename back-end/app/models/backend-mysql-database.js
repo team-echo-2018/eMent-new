@@ -791,6 +791,23 @@ DatabaseMySql.prototype.getPost = function (err, callback) {
   });
 }
 
+/* get Post reply object in db */
+
+DatabaseMySql.prototype.getPostReply =function(reply,callback){
+
+  var Utils =new Utils();
+
+  var sqlselectreply =Utils.getReply(reply);
+
+  connection.query(sqlselectreply,function(err,resultsreply){
+    if(err|| resultsreply.length ==0){
+      callback(null,err);
+    }else{
+      return resultsreply;
+    }
+  })
+}
+
 // updating a post
 DatabaseMySql.prototype.updatePost = function (Post, callback) {
 
@@ -816,6 +833,69 @@ DatabaseMySql.prototype.updatePost = function (Post, callback) {
           console.log('Transaction Complete.');
           //connection.end();
           callback("Post successfully updated in the system!");
+        });
+      }
+    });
+  });
+}
+
+/* insert Posts */
+
+
+DatabaseMySql.prototype.insertsPosts = function (Post, callback) {
+
+  var utils = new Utils();
+
+  /* -- Start transation -- */
+  connection.beginTransaction(function (err) {
+    if (err) { callback(null, err); }
+
+    var sqlInsertspost = utils.addPosts(Post);
+
+    /* -- Start insert Skill -- */
+    insertSql(sqlInsertspost, function (result, err) {
+      if (err) {
+        connection.rollback();
+        callback(null, err);
+      } else {
+        connection.commit(function (err) {
+          if (err) {
+            connection.rollback();
+            callback(null, err);
+          }
+          console.log('Transaction Complete.');
+          callback("Post successfully inserted into the system!");
+        });
+      }
+    });
+  });
+}
+
+/* insert reply */
+
+DatabaseMySql.prototype.insertreply = function (reply, callback) {
+
+  var utils = new Utils();
+
+  /* -- Start transation -- */
+  connection.beginTransaction(function (err) {
+    if (err) { callback(null, err); }
+
+    var sqlInsertreply = utils.insertReply(reply);
+
+    /* -- Start insert Skill -- */
+    insertSql(sqlInsertreply, function (result, err) {
+      if (err) {
+        connection.rollback();
+        callback(null, err);
+      } else {
+        connection.commit(function (err) {
+          if (err) {
+            connection.rollback();
+            callback(null, err);
+          }
+          console.log('Transaction Complete.');
+          callback("Post reply successfully inserted into the system!");
         });
       }
     });

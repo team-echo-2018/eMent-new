@@ -112,6 +112,22 @@ router.route('/posts/getPost').post(function (req, res) {
     });
 });
 
+/* get reply fro posts */
+
+router.route('/posts/getPostReply').post(function (req, res) {
+    backendController.getreplyPosts(req.body,function(res,error){
+        if(error){
+            res.status(404);
+            res.send(error);
+        }else{
+            res.status(200);
+            res.json(result);
+        }
+
+    });
+});
+
+
 /* update posts  --changes are needed*/
 router.route('/posts/updatePost').post(function (req, res) {
     backendController.updatePost(req.body,func(req.body,function(result,err){
@@ -140,7 +156,22 @@ router.route('/posts/deletePost').post(function (req, res) {
     });
 });
 
-/* insert a Post */
+/* insert a Reply for post */
+router.route('/posts/insertReply').post(function (req, res) {
+    backendController.insertReply(req.body,function(res,error){
+        if(error){
+            res.status(404);
+            res.send(error);
+        }else{
+            res.status(200);
+            res.json(result);
+        }
+
+    });
+});
+
+/* insert post reply */
+
 router.route('/posts/insertPost').post(function (req, res) {
     backendController.insertPost(req.body,function(res,error){
         if(error){
