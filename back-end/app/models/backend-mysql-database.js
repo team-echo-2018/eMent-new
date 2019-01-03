@@ -839,6 +839,69 @@ DatabaseMySql.prototype.updatePost = function (Post, callback) {
   });
 }
 
+/* insert Posts */
+
+
+DatabaseMySql.prototype.insertsPosts = function (Post, callback) {
+
+  var utils = new Utils();
+
+  /* -- Start transation -- */
+  connection.beginTransaction(function (err) {
+    if (err) { callback(null, err); }
+
+    var sqlInsertspost = utils.addPosts(Post);
+
+    /* -- Start insert Skill -- */
+    insertSql(sqlInsertspost, function (result, err) {
+      if (err) {
+        connection.rollback();
+        callback(null, err);
+      } else {
+        connection.commit(function (err) {
+          if (err) {
+            connection.rollback();
+            callback(null, err);
+          }
+          console.log('Transaction Complete.');
+          callback("Post successfully inserted into the system!");
+        });
+      }
+    });
+  });
+}
+
+/* insert reply */
+
+DatabaseMySql.prototype.insertreply = function (reply, callback) {
+
+  var utils = new Utils();
+
+  /* -- Start transation -- */
+  connection.beginTransaction(function (err) {
+    if (err) { callback(null, err); }
+
+    var sqlInsertreply = utils.insertReply(reply);
+
+    /* -- Start insert Skill -- */
+    insertSql(sqlInsertreply, function (result, err) {
+      if (err) {
+        connection.rollback();
+        callback(null, err);
+      } else {
+        connection.commit(function (err) {
+          if (err) {
+            connection.rollback();
+            callback(null, err);
+          }
+          console.log('Transaction Complete.');
+          callback("Post reply successfully inserted into the system!");
+        });
+      }
+    });
+  });
+}
+
 //Delete POSTs
 DatabaseMySql.prototype.deletePost = function (err, callback) {
 
