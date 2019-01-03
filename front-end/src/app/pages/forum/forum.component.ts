@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
+import { Posts } from '../../entities/posts';
+import { Postreply } from '../../entities/postreply';
 
 @Component({
   selector: 'app-forum',
