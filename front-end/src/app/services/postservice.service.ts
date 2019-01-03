@@ -16,6 +16,7 @@ export class PostserviceService {
 
   constructor( private httpBackendRequest: HttpBackendRequestService) { }
 
+  /* GET POSTS */
   getPosts(){
     this.httpBackendRequest.realizarHttpPost(HttpEnum.BASEURL +"getPost",null).subscribe(
       (results)=>{
@@ -29,10 +30,22 @@ export class PostserviceService {
       }
     )
   }
+/* DELETE POSTS */
+
   deletePosts(Postdetails:Posts){
     this.httpBackendRequest.realizarHttpPost(HttpEnum.BASEURL+"deletePost",Postdetails).subscribe(
       (error)=>{
-        console.log("porblem deleting posts");
+        console.log("problem deleting posts");
+
+      }
+
+    )
+  }
+/* INSERT POSTS */
+  InsertPosts(Postdetails:Posts){
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.BASEURL+"insertPost",Postdetails).subscribe(
+      (error)=>{
+        console.log("problem inserting posts");
 
       }
 
