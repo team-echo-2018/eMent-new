@@ -443,7 +443,30 @@ BackendController.prototype.updateTask = function (req, callback) {
     });
 }
 
+// Controller related to posts ..................................................................
+/* insert reply post */
 
+BackendController.prototype.insertReply =function(req,callback){
+    var reply =new Reply(
+        req.replyId,
+        req.postId,
+        req.author,
+        req.body
+    );
+   
+   var daoMsql = new DAOMySql();
+
+   daoMsql.insertreply(reply,function(req,err){
+       if(err || !result){
+           console.log("error in inserting reply");
+           callback(null,err);
+           
+       } else{
+           callback(result);
+       }
+   })
+
+}
 
 //insert posts
 BackendController.prototype.insertPost =function(req,callback){
@@ -485,6 +508,15 @@ BackendController.prototype.getPosts = function(req, callback){
    });
 }
 
+BackendController.prototype.getreplyPosts =function(req,callback){
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.getreplyPosts(req, function(result,err){
+        console.log("gettig reply for posts");
+        
+    })
+}
        
 
 

@@ -793,11 +793,11 @@ DatabaseMySql.prototype.getPost = function (err, callback) {
 
 /* get Post reply object in db */
 
-DatabaseMySql.prototype.getPostReply =function(err,callback){
+DatabaseMySql.prototype.getPostReply =function(reply,callback){
 
   var Utils =new Utils();
 
-  var sqlselectreply =Utils.getReply();
+  var sqlselectreply =Utils.getReply(reply);
 
   connection.query(sqlselectreply,function(err,resultsreply){
     if(err|| resultsreply.length ==0){
