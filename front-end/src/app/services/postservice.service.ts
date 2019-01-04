@@ -14,11 +14,11 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class PostserviceService {
-  private getPostsUrl =HttpEnum.BASEURL+"getPost";
-  private insertPostsUrl =HttpEnum.BASEURL +"insertPost";
-  private deletePostsUrl =HttpEnum.BASEURL +"deletePost";
-  private getreplyUrl =HttpEnum.BASEURL +"getPostReply";
-  private insertreplyUrl =HttpEnum.BASEURL+"insertReply";
+  private getPostsUrl =HttpEnum.BASEURL+"posts/getPost";
+  private insertPostsUrl =HttpEnum.BASEURL +"posts/insertPost";
+  private deletePostsUrl =HttpEnum.BASEURL +"posts/deletePost";
+  private getreplyUrl =HttpEnum.BASEURL +"posts/getPostReply";
+  private insertreplyUrl =HttpEnum.BASEURL+"posts/insertReply";
 
   constructor( private httpBackendRequest: HttpBackendRequestService,private Http :HttpClient) { }
 
@@ -29,11 +29,12 @@ export class PostserviceService {
   }
   /* GET ALL REPLYS */
 
-  getReplys (replyposts: Postreply): Observable<Postreply[]> {
+  getReplys (posts: Posts): Observable<Postreply[]> {
     return this.Http.post<Postreply[]>(this.getreplyUrl,httpOptions);
   }
 
   addPosts (posts: Posts): Observable<Posts> {
+    console.log("addpost called");
     return this.Http.post<Posts>(this.insertPostsUrl, posts, httpOptions);
   }
 

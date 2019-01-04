@@ -12,6 +12,10 @@ import { PostserviceService } from '../../services/postservice.service';
 export class ForumComponent implements OnInit {
 
   posts : Posts[];
+  postsreply :Postreply[];
+  Postheading:string;
+  postbody:string;
+  postreply:string;
 
   constructor(private authService: AuthenticationService,private postService :PostserviceService) { }
 
@@ -39,12 +43,35 @@ export class ForumComponent implements OnInit {
       this.hiddenwrite =true;
     }
   }
-  comments(){
+  comments(pst:Posts){
     if(this.hidden){
       this.hidden =false;
     }else{
       this.hidden =true;
     }
-  }
+    this.postService.getReplys(pst).subscribe(
+      replys =>{
+        console.log(replys);
+        this.postsreply=replys;
+
+      }
+
+    )};
+
+    addpost(){
+      const pst =new Posts();
+
+      pst.postAuthor =this.authService.getUser().userName;
+      pst.postbody=this.postbody;
+      pst.posttitle=this.Postheading;
+      this.postService.addPosts(pst);
+
+    }
+
+    addreply(){
+      const reply =new Postreply();
+
+
+    }
 
 }

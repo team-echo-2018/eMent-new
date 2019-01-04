@@ -21,9 +21,9 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
          <div class="w3-card w3-round w3-white">
            <div class="w3-container w3-padding">
              <h6 class="w3-opacity">Welcome to the ement Forum</h6>
-             <p contenteditable="true" class="w3-border w3-padding">Heading</p>
-             <p contenteditable="true" class="w3-border w3-padding">body</p>
-             <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i>  Post</button>
+             <p contenteditable="true" class="w3-border w3-padding"[(ngModel)]="Postheading" placeholder="Heading">_</p>
+             <p contenteditable="true" class="w3-border w3-padding" [(ngModel)]="postbody" placeholder="body">_</p>
+             <button type="button" class="w3-button w3-theme" (click)="addpost()"><i class="fa fa-pencil"></i>  Post</button>
            </div>
          </div>
        </div>
@@ -40,20 +40,19 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
         <p>{{post.postbody}}</p>
         <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" (click)="writecomment()"><i class="fa fa-thumbs-up"></i>  Like</button>
 
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" (click)="comments()"><i class="fa fa-comment"></i>  Comment</button>
+        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" (click)="comments(post)"><i class="fa fa-comment"></i>  Comment</button>
         <div *ngIf="hiddenwrite">
          <div class="w3-container w3-padding">
            <h6 class="w3-opacity">Welcome to the ement Forum</h6>
-           <p contenteditable="true" class="w3-border w3-padding">Heading</p>
-           <p contenteditable="true" class="w3-border w3-padding">body</p>
+           <p contenteditable="true" class="w3-border w3-padding" [(ngModel)]="postreply">body</p>
            <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i>  Post</button>
          </div>
        </div>
         <div *ngIf="hidden">
-           <ul>
+           <ul *ngFor="let reply of postsreply | async">
              <li>
-               <h6>user 004</h6>
-               <p>nice comment!!</p>
+               <h6>{{reply.Author}}</h6>
+               <p>{{reply.body}}</p>
              </li>
            </ul>
          </div>
