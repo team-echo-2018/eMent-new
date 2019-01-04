@@ -23,6 +23,7 @@ export class UserService {
   }
 
   setCurrentUser (loggedUser: User ,user: Object) {
+    console.log(user);
     switch(loggedUser.userType){
       case 'S':
         this.setUserForStudent(user);
