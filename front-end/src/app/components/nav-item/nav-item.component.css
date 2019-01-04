@@ -1,11 +1,13 @@
 .nav-item {
     height: 50px;
     line-height: 50px;
+    z-index: 1;
 }
 
 .nav-item :hover {
     cursor: pointer;
     background-color: #666c72;
+    z-index: 2;
 }
 
 .text-white :hover {

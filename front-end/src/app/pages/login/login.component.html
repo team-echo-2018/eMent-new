@@ -1,63 +1,52 @@
-<div class="container" >
+<div class="container">
     <div class="space-maker"></div>
 
     <article class="form-section">
-    
+
         <header>
-          <div class="header-text">
-              <span><i class="fa fa-lock" aria-hidden="true"></i></span>
-              <h4>Login</h4>
-          </div>
-          <span class="down-arrow">
-              <i class="fa fa-caret-down" aria-hidden="true"></i>
-          </span>
+            <div class="header-text">
+                <span><i class="fa fa-lock" aria-hidden="true"></i></span>
+                <h4>Login</h4>
+            </div>
+            <span class="down-arrow">
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+            </span>
         </header>
         <!--header ends-->
-      
+
         <div class="form-wrapper">
-          <form #loginForm="ngForm" (ngSubmit)="submitForm()" method="POST" action="www" ngNativeValidate>
-              <div class="form-group">
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+            <form #loginForm="ngForm" (ngSubmit)="submitForm()" method="POST" action="www" ngNativeValidate>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                        </div>
+                        <input [(ngModel)]="username" id="inputUsernameLogin" name="inputUsernameLogin" type="text"
+                            class="form-control" placeholder="User Name" required="true" title="Enter your user name" />
                     </div>
-                    <input [(ngModel)]="username"  
-                          id="inputUsernameLogin" 
-                          name="inputUsernameLogin" 
-                          type="text" 
-                          class="form-control"  
-                          placeholder="User Name" 
-                          required="true"
-                          title="Enter your user name"/>
-                  </div>
-              </div>   
-      
-              <div class="form-group">
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text"><i class="fa fa-lock" aria-hidden="true"></i></div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa fa-lock" aria-hidden="true"></i></div>
+                        </div>
+                        <input [(ngModel)]="password" id="inputPasswordLogin" name="inputPasswordLogin" class="form-control"
+                            type="password" placeholder="Password" required="true" />
                     </div>
-                    <input [(ngModel)]="password"  
-                          id="inputPasswordLogin" 
-                          name="inputPasswordLogin" 
-                          class="form-control" 
-                          type="password"  
-                          placeholder="Password" 
-                          required="true"/>
-                  </div>
-              </div>   
-            
-              <div class="submit-button text-center">
-                  <button type="submit" class="btn btn-block">
-                      Login
-                  </button>
-              </div>
-          </form>
-          <!--form ends-->
-      
+                </div>
+
+                <div class="submit-button text-center">
+                    <button type="submit" class="btn btn-block">
+                        Login
+                    </button>
+                </div>
+            </form>
+            <!--form ends-->
+
         </div>
         <!--form-wrapper ends-->
-        
-      </article>
-      <!--article ends-->
+
+    </article>
+    <!--article ends-->
 </div>
