@@ -1,0 +1,11 @@
+.nav-link {
+    border: none;
+    outline: none;
+    background-color: Transparent;
+    text-align: left;
+}
+
+.line {
+    background-color:white;
+    height: 1px;
+}
