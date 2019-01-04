@@ -114,7 +114,7 @@ router.route('/posts/getPost').get(function (req, res) {
 
 /* get reply fro posts */
 
-router.route('/posts/getPostReply').post(function (req, res) {
+router.route('/posts/getPostReply').get(function (req, res) {
     backendController.getreplyPosts(req.body,function(res,error){
         if(error){
             res.status(404);
