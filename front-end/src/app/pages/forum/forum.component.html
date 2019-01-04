@@ -38,7 +38,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
         <h5>{{post.posttitle}}</h5>
         <hr class="w3-clear">
         <p>{{post.postbody}}</p>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" (click)="writecomment()"><i class="fa fa-thumbs-up"></i>  Like</button>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" (click)="writecomment(post)"><i class="fa fa-thumbs-up"></i>  Like</button>
 
         <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" (click)="comments(post)"><i class="fa fa-comment"></i>  Comment</button>
         <div *ngIf="hiddenwrite">

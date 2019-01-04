@@ -16,6 +16,7 @@ export class ForumComponent implements OnInit {
   Postheading:string;
   postbody:string;
   postreply:string;
+  author:string;
 
   constructor(private authService: AuthenticationService,private postService :PostserviceService) { }
 
@@ -25,6 +26,7 @@ export class ForumComponent implements OnInit {
   ngOnInit():void {
     this.authService.isUserLogged();
     this.retrevePosts();
+    this.author =this.authService.getUser().userName;
   }
 
   retrevePosts(){
@@ -61,16 +63,19 @@ export class ForumComponent implements OnInit {
     addpost(){
       const pst =new Posts();
 
-      pst.postAuthor =this.authService.getUser().userName;
+      pst.postAuthor =this.author;
       pst.postbody=this.postbody;
       pst.posttitle=this.Postheading;
       this.postService.addPosts(pst);
 
     }
 
-    addreply(){
+    addreply(pst:Posts){
       const reply =new Postreply();
-
+      reply.Author=this.author;
+      reply.replyid=this.postreply;
+      reply.postId =pst.postId;
+      this.postService.InsertReplys(reply);
 
     }
 
