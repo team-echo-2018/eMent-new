@@ -108,6 +108,30 @@ router.route('/company/getall').post(function (req, res) {
     });
 });
 
+/* Router for getting mentors details */
+router.route('/mentor/getall').post(function (req, res) {
+    backendController.getMentors(function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.json(result);
+        }
+    });
+});
+
+/* Router for getting students details */
+router.route('/student/getall').post(function (req, res) {
+    backendController.getStudents(function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.json(result);
+        }
+    });
+});
+
 
 /* Routes for post CRUD operations */
 
