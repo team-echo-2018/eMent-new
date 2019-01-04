@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Posts } from '../../entities/posts';
 import { Postreply } from '../../entities/postreply';
+import { PostserviceService } from '../../services/postservice.service';
 
 @Component({
   selector: 'app-forum',
@@ -10,12 +11,33 @@ import { Postreply } from '../../entities/postreply';
 })
 export class ForumComponent implements OnInit {
 
-  constructor(private authService: AuthenticationService) { }
+  posts : Posts[];
 
-  hidden:boolean =true;
+  constructor(private authService: AuthenticationService,private postService :PostserviceService) { }
 
-  ngOnInit() {
+  hidden:boolean =false;
+  hiddenwrite :boolean =false;
+
+  ngOnInit():void {
     this.authService.isUserLogged();
+    this.retrevePosts();
+  }
+
+  retrevePosts(){
+    this.postService.get_Posts()
+          .subscribe(posts => {
+            console.log(posts);
+            this.posts=posts;
+        });
+  }
+
+
+  writecomment(){
+    if(this.hiddenwrite){
+      this.hiddenwrite =false;
+    }else{
+      this.hiddenwrite =true;
+    }
   }
   comments(){
     if(this.hidden){

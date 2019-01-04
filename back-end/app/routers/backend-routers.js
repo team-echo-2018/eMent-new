@@ -99,7 +99,7 @@ router.route('/profile/update').post(function (req, res) {
 /* Routes for post CRUD operations */
 
 /* get posts */
-router.route('/posts/getPost').post(function (req, res) {
+router.route('/posts/getPost').get(function (req, res) {
     backendController.getPosts(req.body,function(res,error){
         if(error){
             res.status(404);

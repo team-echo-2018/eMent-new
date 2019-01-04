@@ -45,20 +45,8 @@ export class PostserviceService {
   }
 
 
+
   /* GET POSTS */
-  getPosts(){
-    this.httpBackendRequest.realizarHttpPost(HttpEnum.BASEURL +"getPost",null).subscribe(
-      (results)=>{
-        if(results ==null){
-          console.log("error in getting posts --no posts");
-
-        }else{
-          return results;
-        }
-
-      }
-    )
-  }
 
 /* GET REPLY FOR POSTS */
 
