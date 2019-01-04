@@ -14,7 +14,7 @@ import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: HomeComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'home', component: HomeComponent },
   { path: 'projects', component: ProjectComponent },
