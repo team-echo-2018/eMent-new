@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
+import { CompanyService } from '../../services/company.service';
+import { Company } from '../../entities/company';
 
 @Component({
   selector: 'app-admin-panel',
@@ -15,10 +17,15 @@ export class AdminPanelComponent implements OnInit {
   notificationsActive:boolean;
   title: string;
 
-  constructor(private authService: AuthenticationService) { }
+  companyList: Company[];
+
+  constructor(private authService: AuthenticationService,
+    private companyService: CompanyService) { }
 
   ngOnInit() {
     this.activateDashboard();
+    this.companyService.getCompanies();
+    this.companyList = this.companyService.companiesList;
   }
 
   // page contents managing functions

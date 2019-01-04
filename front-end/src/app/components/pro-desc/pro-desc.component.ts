@@ -22,6 +22,9 @@ export class ProDescComponent implements OnInit {
 
   imageAddress: string;
 
+  rating: number;
+  stars: number[];
+
   constructor(private authService: AuthenticationService,
     private userService: UserService) { }
 
@@ -45,6 +48,9 @@ export class ProDescComponent implements OnInit {
     this.description = this.user.getDescription();
 
     this.imageAddress = HttpEnum.BASEURL + this.image;
+
+    this.rating = 4.8;
+    this.stars = Array(Math.round(this.rating));
   }
 
 }

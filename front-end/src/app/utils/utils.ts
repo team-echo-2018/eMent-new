@@ -3,6 +3,7 @@ import { Student } from '../entities/student';
 import { Mentor } from '../entities/mentor';
 import { Postreply } from '../entities/postreply';
 import { Posts } from '../entities/posts';
+import { Company } from '../entities/company';
 
 export class Utils {
 
@@ -56,25 +57,39 @@ export class Utils {
 
     public static convertDatabasereplytoPosts(datapost: any): Posts {
 
-      const posts = new Posts();
+        const posts = new Posts();
 
-      posts.postId = datapost.postId;
-      posts.postAuthor = datapost.postAuthor;
-      posts.posttitle = datapost.posttitle;
-      posts.postbody = datapost.postbody;
+        posts.postId = datapost.postId;
+        posts.postAuthor = datapost.postAuthor;
+        posts.posttitle = datapost.posttitle;
+        posts.postbody = datapost.postbody;
 
-      return posts;
-  }
+        return posts;
+    }
 
-  public static convertDatabasetoPostsreply(datapost: any): Postreply {
+    public static convertDatabasetoPostsreply(datapost: any): Postreply {
 
-    const repposts = new Postreply();
+        const repposts = new Postreply();
 
-    repposts.replyid = datapost.replyid;
-    repposts.postId = datapost.postId;
-    repposts.Author = datapost.Author;
-    repposts.body = datapost.body;
+        repposts.replyid = datapost.replyid;
+        repposts.postId = datapost.postId;
+        repposts.Author = datapost.Author;
+        repposts.body = datapost.body;
 
-    return repposts;
-}
+        return repposts;
+    }
+
+    public static convertDatabaseCompanyToCompany(dataCompany: any): Company {
+
+        const company = new Company();
+
+        company.companyId = dataCompany.companyId;
+        company.companyName = dataCompany.companyName;
+        company.companyAddress = dataCompany.companyAddress;
+        company.companyPhone = dataCompany.companyPhone;
+        company.companyEmail = dataCompany.companyEmail;
+        company.companyDescription = dataCompany.companyDescription;
+
+        return company;
+    }
 }

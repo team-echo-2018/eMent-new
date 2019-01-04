@@ -96,15 +96,28 @@ router.route('/profile/update').post(function (req, res) {
 });
 
 
+/* Router for getting companies details */
+router.route('/company/getall').post(function (req, res) {
+    backendController.getCompanies(function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.json(result);
+        }
+    });
+});
+
+
 /* Routes for post CRUD operations */
 
 /* get posts */
 router.route('/posts/getPost').post(function (req, res) {
-    backendController.getPosts(req.body,function(res,error){
-        if(error){
+    backendController.getPosts(req.body, function (res, error) {
+        if (error) {
             res.status(404);
             res.send(error);
-        }else{
+        } else {
             res.status(200);
             res.json(result);
         }
@@ -115,11 +128,11 @@ router.route('/posts/getPost').post(function (req, res) {
 /* get reply fro posts */
 
 router.route('/posts/getPostReply').post(function (req, res) {
-    backendController.getreplyPosts(req.body,function(res,error){
-        if(error){
+    backendController.getreplyPosts(req.body, function (res, error) {
+        if (error) {
             res.status(404);
             res.send(error);
-        }else{
+        } else {
             res.status(200);
             res.json(result);
         }
@@ -130,25 +143,26 @@ router.route('/posts/getPostReply').post(function (req, res) {
 
 /* update posts  --changes are needed*/
 router.route('/posts/updatePost').post(function (req, res) {
-    backendController.updatePost(req.body,func(req.body,function(result,err){
-            if(err){
-                res.status(404);
-                res.send(err);
-            }else{
-                req.status(200);
-                res.send('update completed');
-            }
-        })
-        )});
+    backendController.updatePost(req.body, func(req.body, function (result, err) {
+        if (err) {
+            res.status(404);
+            res.send(err);
+        } else {
+            req.status(200);
+            res.send('update completed');
+        }
+    })
+    )
+});
 
 
 /* Delete Posts */
 router.route('/posts/deletePost').post(function (req, res) {
-    backendController.deletePosts(req.body,function(res,error){
-        if(error){
+    backendController.deletePosts(req.body, function (res, error) {
+        if (error) {
             res.status(404);
             res.send(error);
-        }else{
+        } else {
             res.status(200);
             res.send("ok");
         }
@@ -158,11 +172,11 @@ router.route('/posts/deletePost').post(function (req, res) {
 
 /* insert a Reply for post */
 router.route('/posts/insertReply').post(function (req, res) {
-    backendController.insertReply(req.body,function(res,error){
-        if(error){
+    backendController.insertReply(req.body, function (res, error) {
+        if (error) {
             res.status(404);
             res.send(error);
-        }else{
+        } else {
             res.status(200);
             res.json(result);
         }
@@ -173,11 +187,11 @@ router.route('/posts/insertReply').post(function (req, res) {
 /* insert post reply */
 
 router.route('/posts/insertPost').post(function (req, res) {
-    backendController.insertPost(req.body,function(res,error){
-        if(error){
+    backendController.insertPost(req.body, function (res, error) {
+        if (error) {
             res.status(404);
             res.send(error);
-        }else{
+        } else {
             res.status(200);
             res.json(result);
         }

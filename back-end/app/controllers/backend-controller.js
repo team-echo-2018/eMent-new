@@ -185,6 +185,21 @@ BackendController.prototype.updateMentor = function (req, callback) {
 
 
 // Company Object related functions ..............................................................
+// Get companies objects from DB model
+BackendController.prototype.getCompanies = function (callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.getCompanies(function (result, err) {
+        console.log("Enter to the get companies function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
 // Get company by id object from DB model
 BackendController.prototype.getCompany = function (req, callback) {
 

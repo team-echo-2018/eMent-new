@@ -287,6 +287,27 @@ DatabaseMySql.prototype.updateMentor = function (mentor, callback) {
 
 
 // Company Model related functions ..............................................................
+// get companies' objects
+DatabaseMySql.prototype.getCompanies = function (callback) {
+
+  var utils = new Utils();
+
+  var sqlSelectAllCompanies = utils.getSqlSelectAllCompanies();
+
+  connection.query(sqlSelectAllCompanies, function (err, resultCompany) {
+    if (err || resultCompany.length == 0) {
+      callback(null, err);
+    } else {
+      var i=0; var resCom=[];
+      while(resultCompany[i]) {
+        resCom.push(utils.generateCompany(resultCompany[i]));
+        i = i + 1;
+      }
+      callback(resCom);
+    }
+  });
+}
+
 // get company object by company id
 DatabaseMySql.prototype.getCompany = function (companyId, callback) {
 

@@ -40,7 +40,6 @@ import { HttpBackendRequestService } from './services/http-backend-request.servi
 import { AuthenticationService } from './services/authentication.service';
 import { ProDescComponent } from './components/pro-desc/pro-desc.component';
 import { NotificationComponent } from './components/notification/notification.component';
-import { RankingComponent } from './components/ranking/ranking.component';
 import { environment } from 'src/environments/environment';
 import { WorkingProjComponent } from './components/working-proj/working-proj.component';
 import { OtherProjComponent } from './components/other-proj/other-proj.component';
@@ -70,7 +69,6 @@ import { LoadingScreenComponent } from './pages/loading-screen/loading-screen.co
     InboxComponent,
     ProDescComponent,
     NotificationComponent,
-    RankingComponent,
     WorkingProjComponent,
     OtherProjComponent,
     LoadingScreenComponent
