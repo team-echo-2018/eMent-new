@@ -156,7 +156,7 @@ router.route('/posts/deletePost').post(function (req, res) {
     });
 });
 
-/* insert a Reply for post */
+/* insert a Reply  */
 router.route('/posts/insertReply').post(function (req, res) {
     backendController.insertReply(req.body,function(res,error){
         if(error){
@@ -170,7 +170,7 @@ router.route('/posts/insertReply').post(function (req, res) {
     });
 });
 
-/* insert post reply */
+/* insert post post */
 
 router.route('/posts/insertPost').post(function (req, res) {
     backendController.insertPost(req.body,function(res,error){
