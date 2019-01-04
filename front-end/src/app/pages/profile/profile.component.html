@@ -7,55 +7,56 @@
   <div class="container page-box mb-5">
 
     <div class="row p-4 cover">
-            <div class="border" style="width: 200px; height: 200px; overflow: hidden;">
-                <img src="{{imageAddress}}" width="200" />
-              </div>
-        
-              <div *ngIf="!editable" >
-                  <span class="align-bottom">
-                    <label class="btn btn-default">
-                      <input type="file" (change)="selectFile($event)">
-                  </label>
-                  <button class="btn btn-success" [disabled]="!selectedFiles" (click)="uploadFile()">Upload</button>
-                  </span>
-              </div>
+      <div class="border" style="width: 200px; height: 200px; overflow: hidden;">
+        <img src="{{imageAddress}}" width="200" />
+      </div>
+
+      <div *ngIf="!editable">
+        <span class="align-bottom">
+          <label class="btn btn-default">
+            <input type="file" (change)="selectFile($event)">
+          </label>
+          <button class="btn btn-success" [disabled]="!selectedFiles" (click)="uploadFile()">Upload</button>
+        </span>
+      </div>
     </div>
 
     <div class="row">
-        <div class="col-4">
-            <div class="row border">skills</div>
-        </div> 
-        <div class="col-8">
-            
-            <!-- <div class="row">
+      <div class="col-4">
+        <div class="row border">skills</div>
+      </div>
+      <div class="col-8">
+
+        <!-- <div class="row">
               <img src="../../../assets/img/dash-bg-03.jpg" width="700" height="200">
             </div> -->
-          
-            <div class="row">
-                <form #loginForm="ngForm" (ngSubmit)="submitForm()" method="POST" action="www" class="w-100 border">
-                  <div class="row mx-auto w-75">
-                    <div class="col-6 mt-4 pl-0">
-                        <input [(ngModel)]="fname" name="fname" type="text" class="form-control ml-0" [disabled]="editable"/>
-                    </div>
-                    <div class="col-6 mt-4 pr-0">
-                        <input [(ngModel)]="lname" name="lname" type="text" class="form-control mr-0" [disabled]="editable"/>
-                    </div>
-                  </div>
-                    
-                    <input [(ngModel)]="address" name="address" type="text" class="form-control w-75 mx-auto my-4" [disabled]="editable"/>
-                    <input [(ngModel)]="email" name="email" type="text" class="form-control w-75 mx-auto my-4" [disabled]="editable"/>
-                    <input [(ngModel)]="phone" name="phone" type="text" class="form-control w-75 mx-auto my-4" [disabled]="editable"/>
-                    <input [(ngModel)]="description" name="description" type="text" class="form-control w-75 mx-auto my-4" [disabled]="editable"/>
-                    <div class="w-75 mx-auto my-4">
-                      <button type="submit" class="btn btn-primary w-25">{{btnCaption}}</button>
-                    </div>
-                  </form>
+
+        <div class="row">
+          <form #loginForm="ngForm" (ngSubmit)="submitForm()" method="POST" action="www" class="w-100 border">
+            <div class="row mx-auto w-75">
+              <div class="col-6 mt-4 pl-0">
+                <input [(ngModel)]="fname" name="fname" type="text" class="form-control ml-0" [disabled]="editable" />
+              </div>
+              <div class="col-6 mt-4 pr-0">
+                <input [(ngModel)]="lname" name="lname" type="text" class="form-control mr-0" [disabled]="editable" />
+              </div>
             </div>
-            <div class="row border">reviews</div>
-        </div> 
+
+            <input [(ngModel)]="address" name="address" type="text" class="form-control w-75 mx-auto my-4" [disabled]="editable" />
+            <input [(ngModel)]="email" name="email" type="text" class="form-control w-75 mx-auto my-4" [disabled]="editable" />
+            <input [(ngModel)]="phone" name="phone" type="text" class="form-control w-75 mx-auto my-4" [disabled]="editable" />
+            <input [(ngModel)]="description" name="description" type="text" class="form-control w-75 mx-auto my-4"
+              [disabled]="editable" />
+            <div class="w-75 mx-auto my-4">
+              <button type="submit" class="btn btn-primary w-25">{{btnCaption}}</button>
+            </div>
+          </form>
+        </div>
+        <div class="row border">reviews</div>
+      </div>
     </div>
   </div>
-  
+
 </div>
 
 <!-- Add the app footer section -->

@@ -41,12 +41,7 @@ export class AuthenticationService {
           this.setUser(result);
           this.setLoggedUserObject();
           console.log("Login credentials ok")
-          
-          if (this.userAuth.userType == 'S' || this.userAuth.userType == 'M') {
-            this.router.navigate(['/home']);
-          } else if (this.userAuth.userType == 'A') {
-            this.router.navigate(['/admin-panel']);
-          }
+          this.router.navigate(['/loading']);
         }
       },
       (err) => alert('Error occured.. Contact Administrations!')
@@ -60,6 +55,7 @@ export class AuthenticationService {
         if (result === null) {
           alert('error.');
         } else {
+          console.log("dfsfs");
           this.userService.setCurrentUser(this.userAuth ,result);
         }
       },

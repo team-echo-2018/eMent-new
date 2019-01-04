@@ -44,6 +44,7 @@ import { RankingComponent } from './components/ranking/ranking.component';
 import { environment } from 'src/environments/environment';
 import { WorkingProjComponent } from './components/working-proj/working-proj.component';
 import { OtherProjComponent } from './components/other-proj/other-proj.component';
+import { LoadingScreenComponent } from './pages/loading-screen/loading-screen.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { OtherProjComponent } from './components/other-proj/other-proj.component
     NotificationComponent,
     RankingComponent,
     WorkingProjComponent,
-    OtherProjComponent
+    OtherProjComponent,
+    LoadingScreenComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseconfig),

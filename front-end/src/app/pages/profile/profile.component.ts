@@ -13,7 +13,7 @@ import { HttpEnum } from '../../utils/httpEnum';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  
+
   user: any;
   editable: boolean;
   btnCaption: string;
@@ -32,9 +32,9 @@ export class ProfileComponent implements OnInit {
 
 
   constructor(
-    private authService: AuthenticationService, 
+    private authService: AuthenticationService,
     private userService: UserService,
-    private uploadService: UploadFileService ) {  }
+    private uploadService: UploadFileService) { }
 
   ngOnInit() {
     // if user is not logged, redirect to login page
@@ -49,7 +49,7 @@ export class ProfileComponent implements OnInit {
     this.email = this.user.getEmail();
     this.phone = this.user.getPhone();
     this.image = this.user.getImgLink();
-    if(this.image==null || this.image=="") {
+    if (this.image == null || this.image == "") {
       this.image = "default.jpg";
     }
     this.description = this.user.getDescription();
@@ -60,7 +60,7 @@ export class ProfileComponent implements OnInit {
   }
 
   submitForm() {
-    if(this.editable) {
+    if (this.editable) {
       // change to save activating mode
       this.editable = false;
       this.btnCaption = "Save";
@@ -69,7 +69,7 @@ export class ProfileComponent implements OnInit {
       let authUser = this.authService.getUser();
       let user = this.updatedUserObject();
       this.userService.updateCurrentUserDetails(authUser, user);
-      
+
       // change to edit activating mode
       this.editable = true;
       this.btnCaption = "Edit";
@@ -93,7 +93,7 @@ export class ProfileComponent implements OnInit {
     this.selectedFiles = event.target.files;
   }
 
-  uploadFile() { 
+  uploadFile() {
     this.currentFileUpload = this.selectedFiles.item(0);
     this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
       if (event instanceof HttpResponse) {
@@ -102,7 +102,7 @@ export class ProfileComponent implements OnInit {
         console.log('File is completely uploaded!');
       }
     });
- 
+
     this.selectedFiles = undefined;
   }
 }
