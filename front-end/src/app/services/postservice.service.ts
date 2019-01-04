@@ -14,8 +14,36 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class PostserviceService {
+  private getPostsUrl =HttpEnum.BASEURL+"getPost";
+  private insertPostsUrl =HttpEnum.BASEURL +"insertPost";
+  private deletePostsUrl =HttpEnum.BASEURL +"deletePost";
+  private getreplyUrl =HttpEnum.BASEURL +"getPostReply";
+  private insertreplyUrl =HttpEnum.BASEURL+"insertReply";
 
-  constructor( private httpBackendRequest: HttpBackendRequestService) { }
+  constructor( private httpBackendRequest: HttpBackendRequestService,private Http :HttpClient) { }
+
+  /* THE NEW CONTROLLER SERVICES FOR THE FORUM POSTS BACKEND  */
+  /* GET ALL POSTS */
+  get_Posts (): Observable<Posts[]> {
+    return this.Http.get<Posts[]>(this.getPostsUrl);
+  }
+  /* GET ALL REPLYS */
+
+  getReplys (replyposts: Postreply): Observable<Postreply[]> {
+    return this.Http.post<Postreply[]>(this.getreplyUrl,httpOptions);
+  }
+
+  addPosts (posts: Posts): Observable<Posts> {
+    return this.Http.post<Posts>(this.insertPostsUrl, posts, httpOptions);
+  }
+
+  addReply (replyposts: Postreply): Observable<Postreply> {
+    return this.Http.post<Postreply>(this.insertreplyUrl, replyposts, httpOptions);
+  }
+  deleteCustomer (posts: Posts): Observable<Posts> {
+    return this.Http.post<Posts>(this.deletePostsUrl, httpOptions);
+  }
+
 
   /* GET POSTS */
   getPosts(){
@@ -70,7 +98,7 @@ export class PostserviceService {
 
     )
   }
-  /* INSERT REPLY */
+  /* INSERT REPLYS */
 
   InsertReplys(ReplyDetails:Postreply){
     this.httpBackendRequest.realizarHttpPost(HttpEnum.BASEURL+"insertReply",ReplyDetails).subscribe(
