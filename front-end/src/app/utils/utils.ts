@@ -1,6 +1,8 @@
 import { User } from '../entities/user';
 import { Student } from '../entities/student';
 import { Mentor } from '../entities/mentor';
+import { Postreply } from '../entities/postreply';
+import { Posts } from '../entities/posts';
 
 export class Utils {
 
@@ -14,7 +16,7 @@ export class Utils {
         user.userName = dataUser.userName;
         user.userPassword = dataUser.userPassword;
         user.userType = dataUser.userType;
-        
+
         return user;
     }
 
@@ -51,4 +53,28 @@ export class Utils {
         return mentor;
 
     }
+
+    public static convertDatabasereplytoPosts(datapost: any): Posts {
+
+      const posts = new Posts();
+
+      posts.postId = datapost.postId;
+      posts.postAuthor = datapost.postAuthor;
+      posts.posttitle = datapost.posttitle;
+      posts.postbody = datapost.postbody;
+
+      return posts;
+  }
+
+  public static convertDatabasetoPostsreply(datapost: any): Postreply {
+
+    const repposts = new Postreply();
+
+    repposts.replyid = datapost.replyid;
+    repposts.postId = datapost.postId;
+    repposts.Author = datapost.Author;
+    repposts.body = datapost.body;
+
+    return repposts;
+}
 }
