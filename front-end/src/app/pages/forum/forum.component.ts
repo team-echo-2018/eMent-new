@@ -17,7 +17,7 @@ export class ForumComponent implements OnInit {
   postbody:string;
   postreply:string;
   author:string;
-  type:string;
+  type:boolean;
 
   constructor(private authService: AuthenticationService,private postService :PostserviceService) { }
 
@@ -28,7 +28,7 @@ export class ForumComponent implements OnInit {
     this.authService.isUserLogged();
     this.retrevePosts();
     this.author =this.authService.getUser().userName;
-    this.type =this.authService.getUser().userType;
+    this.type =(this.authService.getUser().userType==='A');
   }
 
   retrevePosts(){

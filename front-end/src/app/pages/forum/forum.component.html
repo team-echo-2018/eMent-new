@@ -41,7 +41,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
         <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" (click)="writecomment(post)"><i class="fa fa-thumbs-up"></i> Reply</button>
 
         <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" (click)="comments(post)"><i class="fa fa-comment"></i>  Comments</button>
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" (click)="deleteposts(post)"><i class="fa fa-comment"></i> Delete comment</button>
+        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" (click)="deleteposts(post)" *ngIf="type"><i class="fa fa-comment"></i> Delete comment</button>
 
         <div *ngIf="hiddenwrite">
          <div class="w3-container w3-padding">
