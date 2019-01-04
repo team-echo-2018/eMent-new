@@ -41,11 +41,15 @@ export class AuthenticationService {
           this.setUser(result);
           this.setLoggedUserObject();
           console.log("Login credentials ok")
-          this.router.navigate(['/home']);
+          
+          if (this.userAuth.userType == 'S' || this.userAuth.userType == 'M') {
+            this.router.navigate(['/home']);
+          } else if (this.userAuth.userType == 'A') {
+            this.router.navigate(['/admin-panel']);
+          }
         }
       },
       (err) => alert('Error occured.. Contact Administrations!')
-      // Verificar erro backend > (err) => alert('Ocorreu um erro: ' + err)
     );
   }
 
