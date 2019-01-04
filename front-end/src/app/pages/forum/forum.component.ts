@@ -17,6 +17,7 @@ export class ForumComponent implements OnInit {
   postbody:string;
   postreply:string;
   author:string;
+  type:string;
 
   constructor(private authService: AuthenticationService,private postService :PostserviceService) { }
 
@@ -27,6 +28,7 @@ export class ForumComponent implements OnInit {
     this.authService.isUserLogged();
     this.retrevePosts();
     this.author =this.authService.getUser().userName;
+    this.type =this.authService.getUser().userType;
   }
 
   retrevePosts(){
@@ -77,6 +79,10 @@ export class ForumComponent implements OnInit {
       reply.postId =pst.postId;
       this.postService.InsertReplys(reply);
 
+    }
+
+    deletecomments(post:Posts){
+      this.postService.deleteposts(post);
     }
 
 }

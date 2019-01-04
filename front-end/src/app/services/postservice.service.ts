@@ -41,7 +41,7 @@ export class PostserviceService {
   addReply (replyposts: Postreply): Observable<Postreply> {
     return this.Http.post<Postreply>(this.insertreplyUrl, replyposts, httpOptions);
   }
-  deleteCustomer (posts: Posts): Observable<Posts> {
+  deleteposts (posts: Posts): Observable<Posts> {
     return this.Http.post<Posts>(this.deletePostsUrl, httpOptions);
   }
 
