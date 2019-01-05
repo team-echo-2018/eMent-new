@@ -96,9 +96,47 @@ router.route('/profile/update').post(function (req, res) {
 });
 
 
+/* Router for getting companies details */
+router.route('/company/getall').post(function (req, res) {
+    backendController.getCompanies(function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.json(result);
+        }
+    });
+});
+
+/* Router for getting mentors details */
+router.route('/mentor/getall').post(function (req, res) {
+    backendController.getMentors(function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.json(result);
+        }
+    });
+});
+
+/* Router for getting students details */
+router.route('/student/getall').post(function (req, res) {
+    backendController.getStudents(function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.json(result);
+        }
+    });
+});
+
+
 /* Routes for post CRUD operations */
 
 /* get posts */
+<<<<<<< HEAD
 router.route('/posts/getPost').get(function (req, res) {
     console.log(req.body);
     backendController.getPosts(req.body,function(res,error){
@@ -110,6 +148,16 @@ router.route('/posts/getPost').get(function (req, res) {
                 res.status(200);
                 res.json(result);
             }
+=======
+router.route('/posts/getPost').post(function (req, res) {
+    backendController.getPosts(req.body, function (res, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.status(200);
+            res.json(result);
+>>>>>>> 554351f1c3a0f58ec8507536e9d171f9995cf15b
         }
 
     });
@@ -117,12 +165,18 @@ router.route('/posts/getPost').get(function (req, res) {
 
 /* get reply fro posts */
 
+<<<<<<< HEAD
 router.route('/posts/getPostReply').get(function (req, res) {
     backendController.getreplyPosts(req.body,function(res,error){
         if(error){
+=======
+router.route('/posts/getPostReply').post(function (req, res) {
+    backendController.getreplyPosts(req.body, function (res, error) {
+        if (error) {
+>>>>>>> 554351f1c3a0f58ec8507536e9d171f9995cf15b
             res.status(404);
             res.send(error);
-        }else{
+        } else {
             res.status(200);
             res.json(result);
         }
@@ -133,25 +187,26 @@ router.route('/posts/getPostReply').get(function (req, res) {
 
 /* update posts  --changes are needed*/
 router.route('/posts/updatePost').post(function (req, res) {
-    backendController.updatePost(req.body,func(req.body,function(result,err){
-            if(err){
-                res.status(404);
-                res.send(err);
-            }else{
-                req.status(200);
-                res.send('update completed');
-            }
-        })
-        )});
+    backendController.updatePost(req.body, func(req.body, function (result, err) {
+        if (err) {
+            res.status(404);
+            res.send(err);
+        } else {
+            req.status(200);
+            res.send('update completed');
+        }
+    })
+    )
+});
 
 
 /* Delete Posts */
 router.route('/posts/deletePost').post(function (req, res) {
-    backendController.deletePosts(req.body,function(res,error){
-        if(error){
+    backendController.deletePosts(req.body, function (res, error) {
+        if (error) {
             res.status(404);
             res.send(error);
-        }else{
+        } else {
             res.status(200);
             res.send("ok");
         }
@@ -161,11 +216,11 @@ router.route('/posts/deletePost').post(function (req, res) {
 
 /* insert a Reply  */
 router.route('/posts/insertReply').post(function (req, res) {
-    backendController.insertReply(req.body,function(res,error){
-        if(error){
+    backendController.insertReply(req.body, function (res, error) {
+        if (error) {
             res.status(404);
             res.send(error);
-        }else{
+        } else {
             res.status(200);
             res.json(result);
         }
@@ -176,11 +231,11 @@ router.route('/posts/insertReply').post(function (req, res) {
 /* insert post post */
 
 router.route('/posts/insertPost').post(function (req, res) {
-    backendController.insertPost(req.body,function(res,error){
-        if(error){
+    backendController.insertPost(req.body, function (res, error) {
+        if (error) {
             res.status(404);
             res.send(error);
-        }else{
+        } else {
             res.status(200);
             res.json(result);
         }

@@ -64,6 +64,13 @@ Utils.prototype.getSqlDeleteUser = function (user) {
 
 
 // Student Entity related functions................................................................
+// SQL query for select all students
+Utils.prototype.getSqlSelectAllStudents = function () {
+
+    var sqlSelectStudent = "SELECT * FROM student";
+    return sqlSelectStudent;
+};
+
 // SQL query for select student by student id
 Utils.prototype.getSqlSelectStudent = function (studentId) {
 
@@ -119,6 +126,13 @@ Utils.prototype.getSqlDeleteStudent = function (student) {
 
 
 // Mentor Entity related functions................................................................
+// SQL query for select all mentors
+Utils.prototype.getSqlSelectAllMentors = function () {
+
+    var sqlSelectMentor = "SELECT * FROM mentor";
+    return sqlSelectMentor;
+};
+
 // SQL query for select mentor by mentor id
 Utils.prototype.getSqlSelectMentor = function (mentorId) {
 
@@ -174,6 +188,13 @@ Utils.prototype.getSqlDeleteMentor = function (mentor) {
 
 
 // Company Entity related functions..........................................................
+// SQL query for select all companies
+Utils.prototype.getSqlSelectAllCompanies = function () {
+
+    var sqlSelectCompany = "SELECT * FROM company";
+    return sqlSelectCompany;
+};
+
 // SQL query for select company by company id
 Utils.prototype.getSqlSelectCompany = function (companyId) {
 
@@ -524,12 +545,12 @@ Utils.prototype.generateCompany = function (resultCompany) {
     var company = null;
     if (resultCompany) {
         company = new Company(
-            resultCompany.companyId,
-            resultCompany.companyName,
-            resultCompany.companyAddress,
-            resultCompany.companyPhone,
-            resultCompany.companyEmail,
-            resultCompany.companyDescription);
+            resultCompany.company_id,
+            resultCompany.company_name,
+            resultCompany.company_address,
+            resultCompany.company_phone,
+            resultCompany.company_email,
+            resultCompany.company_description);
     }
     return company;
 }

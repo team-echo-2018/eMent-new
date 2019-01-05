@@ -91,6 +91,21 @@ BackendController.prototype.auth = function (req, callback) {
 
 
 // Student Object related functions ..............................................................
+// Get students' objects from DB model
+BackendController.prototype.getStudents = function (callback) {
+
+    var daoMsql = new DAOMySql();
+    daoMsql.getStudents(function (result, err) {
+        console.log("Enter to the get students function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
 // Get student by id object from DB model
 BackendController.prototype.getStudent = function (req, callback) {
 
@@ -138,6 +153,22 @@ BackendController.prototype.updateStudent = function (req, callback) {
 
 
 // Mentor Object related functions ..............................................................
+// Get mentors' objects from DB model
+BackendController.prototype.getMentors = function (callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.getMentors(function (result, err) {
+        console.log("Enter to the get mentors function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
 // Get mentor by id object from DB model
 BackendController.prototype.getMentor = function (req, callback) {
 
@@ -185,6 +216,21 @@ BackendController.prototype.updateMentor = function (req, callback) {
 
 
 // Company Object related functions ..............................................................
+// Get companies objects from DB model
+BackendController.prototype.getCompanies = function (callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.getCompanies(function (result, err) {
+        console.log("Enter to the get companies function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
 // Get company by id object from DB model
 BackendController.prototype.getCompany = function (req, callback) {
 

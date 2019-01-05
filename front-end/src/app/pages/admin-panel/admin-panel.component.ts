@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
+import { CompanyService } from '../../services/company.service';
+import { Company } from '../../entities/company';
+import { MentorService } from '../../services/mentor.service';
+import { Mentor } from '../../entities/mentor';
+import { Student } from '../../entities/student';
+import { StudentService } from '../../services/student.service';
 
 @Component({
   selector: 'app-admin-panel',
@@ -15,10 +21,24 @@ export class AdminPanelComponent implements OnInit {
   notificationsActive:boolean;
   title: string;
 
-  constructor(private authService: AuthenticationService) { }
+  companyList: Company[];
+  mentorList: Mentor[];
+  studentList: Student[];
+
+  constructor(private authService: AuthenticationService,
+    private companyService: CompanyService, private mentorService: MentorService,
+    private studentService: StudentService) { }
 
   ngOnInit() {
     this.activateDashboard();
+
+    this.companyService.getCompanies();
+    this.mentorService.getMentors();
+    this.studentService.getStudents();
+
+    this.companyList = this.companyService.companiesList;
+    this.mentorList = this.mentorService.mentorsList;
+    this.studentList = this.studentService.studentsList;
   }
 
   // page contents managing functions

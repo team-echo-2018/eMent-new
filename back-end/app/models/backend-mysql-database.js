@@ -97,6 +97,27 @@ DatabaseMySql.prototype.updateUser = function (user, callback) {
 
 
 // Student Model related functions ..............................................................
+// get students' objects
+DatabaseMySql.prototype.getStudents = function (callback) {
+
+  var utils = new Utils();
+
+  var sqlSelectAllStudents = utils.getSqlSelectAllStudents();
+
+  connection.query(sqlSelectAllStudents, function (err, resultStudent) {
+    if (err || resultStudent.length == 0) {
+      callback(null, err);
+    } else {
+      var i=0; var resCom=[];
+      while(resultStudent[i]) {
+        resCom.push(utils.generateStudent(resultStudent[i]));
+        i = i + 1;
+      }
+      callback(resCom);
+    }
+  });
+}
+
 // get student object by student id
 DatabaseMySql.prototype.getStudent = function (studentId, callback) {
 
@@ -192,6 +213,27 @@ DatabaseMySql.prototype.updateStudent = function (student, callback) {
 
 
 // Mentor Model related functions ..............................................................
+// get mentors' objects
+DatabaseMySql.prototype.getMentors = function (callback) {
+
+  var utils = new Utils();
+
+  var sqlSelectAllMentors = utils.getSqlSelectAllMentors();
+
+  connection.query(sqlSelectAllMentors, function (err, resultMentor) {
+    if (err || resultMentor.length == 0) {
+      callback(null, err);
+    } else {
+      var i=0; var resCom=[];
+      while(resultMentor[i]) {
+        resCom.push(utils.generateMentor(resultMentor[i]));
+        i = i + 1;
+      }
+      callback(resCom);
+    }
+  });
+}
+
 // get mentor object by mentor id
 DatabaseMySql.prototype.getMentor = function (mentorId, callback) {
 
@@ -287,6 +329,27 @@ DatabaseMySql.prototype.updateMentor = function (mentor, callback) {
 
 
 // Company Model related functions ..............................................................
+// get companies' objects
+DatabaseMySql.prototype.getCompanies = function (callback) {
+
+  var utils = new Utils();
+
+  var sqlSelectAllCompanies = utils.getSqlSelectAllCompanies();
+
+  connection.query(sqlSelectAllCompanies, function (err, resultCompany) {
+    if (err || resultCompany.length == 0) {
+      callback(null, err);
+    } else {
+      var i=0; var resCom=[];
+      while(resultCompany[i]) {
+        resCom.push(utils.generateCompany(resultCompany[i]));
+        i = i + 1;
+      }
+      callback(resCom);
+    }
+  });
+}
+
 // get company object by company id
 DatabaseMySql.prototype.getCompany = function (companyId, callback) {
 
