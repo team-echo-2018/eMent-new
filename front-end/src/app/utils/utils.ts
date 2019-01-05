@@ -60,8 +60,8 @@ export class Utils {
         const posts = new Posts();
 
         posts.postId = datapost.postId;
-        posts.postAuthor = datapost.postAuthor;
-        posts.posttitle = datapost.posttitle;
+        posts.postAuthor = datapost.postauthor;
+        posts.posttitle = datapost.postheading;
         posts.postbody = datapost.postbody;
 
         return posts;

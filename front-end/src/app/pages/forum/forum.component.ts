@@ -27,11 +27,13 @@ export class ForumComponent implements OnInit {
   ngOnInit():void {
     this.authService.isUserLogged();
     this.retrevePosts();
-    this.author =this.authService.getUser().userName;
+
     this.type =(this.authService.getUser().userType==='A');
   }
 
   retrevePosts(){
+    this.postService.getPosts();
+    this.author =this.authService.getUser().userName;
     this.posts =this.postService.postlist;
     console.log(this.posts);
 

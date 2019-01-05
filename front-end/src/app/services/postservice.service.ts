@@ -56,8 +56,11 @@ export class PostserviceService {
 
 /* GET REPLY FOR POSTS */
 
-  getPosts(){
+  getPosts():Posts[]{
+    console.log("posts service called");
+
     this.httpBackendRequest.realizarHttpPost(this.getPostsUrl,null).subscribe(
+
       (result) => {
         if (result === null) {
           console.log("respond error");

@@ -21,19 +21,21 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
          <div class="w3-card w3-round w3-white">
            <div class="w3-container w3-padding">
              <h6 class="w3-opacity">Welcome to the ement Forum</h6>
-             <p contenteditable="true" class="w3-border w3-padding"[(ngModel)]="Postheading" placeholder="Heading">Heading</p>
-             <p contenteditable="true" class="w3-border w3-padding" [(ngModel)]="postbody" placeholder="body">Body</p>
-             <button type="button" class="w3-button w3-theme" (click)="addpost()"><i class="fa fa-pencil"></i>  Post</button>
+             <div class="sender-msg-list" style="width: 50%;height: 100%;float:right; padding: 10px">
+              <input type="text" [(ngModel)]="Postheading" name="Postheading" placeholder="Post heading ">
+              <input type="text" [(ngModel)]="postbody" name="postbody" placeholder="Enter postbody">
+              <button type="button" class="w3-button w3-theme" (click)="addpost()"><i class="fa fa-pencil"></i>  Post</button>
+            </div>
            </div>
          </div>
        </div>
      </div>
-     <div *ngFor="let post of posts |async">
+     <div *ngFor="let post of posts">
       <div class="w3-container w3-card w3-white w3-round w3-margin">
         <br>
         <img src="../../../assets/img/default.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">16 min</span>
-        <h4>{{post.postAuthor}}</h4>
+
+        <h4>{{post.author}}</h4>
         <br>
         <h5>{{post.posttitle}}</h5>
         <hr class="w3-clear">
