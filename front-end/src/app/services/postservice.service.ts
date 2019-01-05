@@ -68,6 +68,8 @@ export class PostserviceService {
             this.postlist.push(post);
             i = i + 1;
           }
+          //console.log(this.postlist);
+
         }
       },
       (err) => alert('getting Posts error occured.. !')

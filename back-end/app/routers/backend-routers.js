@@ -137,12 +137,11 @@ router.route('/student/getall').post(function (req, res) {
 
 /* get posts */
 router.route('/posts/getPost').post(function (req, res) {
-    backendController.getPosts(req.body, function (res, error) {
+    backendController.getPosts(req.body, function (result, error) {
         if (error) {
             res.status(404);
             res.send(error);
         } else {
-            res.status(200);
             res.json(result);
         }
 

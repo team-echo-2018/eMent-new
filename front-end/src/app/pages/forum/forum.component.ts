@@ -32,7 +32,7 @@ export class ForumComponent implements OnInit {
   }
 
   retrevePosts(){
-    this.posts =this.postService.getPosts();
+    this.posts =this.postService.postlist;
     console.log(this.posts);
 
   }
