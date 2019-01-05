@@ -6,6 +6,7 @@ import { HttpEnum } from '../utils/httpEnum';
 import { HttpBackendRequestService } from './http-backend-request.service';
 import { Postreply } from '../entities/postreply';
 import { Utils } from '../utils/utils';
+import { post } from 'selenium-webdriver/http';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -28,26 +29,26 @@ export class PostserviceService {
 
   /* THE NEW CONTROLLER SERVICES FOR THE FORUM POSTS BACKEND  */
   /* GET ALL POSTS */
-  get_Posts (): Observable<Posts[]> {
-    return this.Http.get<Posts[]>(this.getPostsUrl);
-  }
-  /* GET ALL REPLYS */
+  // get_Posts (): Observable<Posts[]> {
+  //   return this.Http.get<Posts[]>(this.getPostsUrl);
+  // }
+  // /* GET ALL REPLYS */
 
-  getReplys (posts: Posts): Observable<Postreply[]> {
-    return this.Http.post<Postreply[]>(this.getreplyUrl,httpOptions);
-  }
+  // getReplys (posts: Posts): Observable<Postreply[]> {
+  //   return this.Http.post<Postreply[]>(this.getreplyUrl,httpOptions);
+  // }
 
-  addPosts (posts: Posts): Observable<Posts> {
-    console.log("addpost called");
-    return this.Http.post<Posts>(this.insertPostsUrl, posts, httpOptions);
-  }
+  // addPosts (posts: Posts): Observable<Posts> {
+  //   console.log("addpost called");
+  //   return this.Http.post<Posts>(this.insertPostsUrl, posts, httpOptions);
+  // }
 
-  addReply (replyposts: Postreply): Observable<Postreply> {
-    return this.Http.post<Postreply>(this.insertreplyUrl, replyposts, httpOptions);
-  }
-  deleteposts (posts: Posts): Observable<Posts> {
-    return this.Http.post<Posts>(this.deletePostsUrl, httpOptions);
-  }
+  // addReply (replyposts: Postreply): Observable<Postreply> {
+  //   return this.Http.post<Postreply>(this.insertreplyUrl, replyposts, httpOptions);
+  // }
+  // deleteposts (posts: Posts): Observable<Posts> {
+  //   return this.Http.post<Posts>(this.deletePostsUrl, httpOptions);
+  // }
 
 
 
@@ -71,10 +72,11 @@ export class PostserviceService {
       },
       (err) => alert('getting Posts error occured.. !')
     )
+    return this.postlist;
   }
   //get replys
-  getPostsreply(){
-    this.httpBackendRequest.realizarHttpPost(this.getPostsUrl,null).subscribe(
+  getPostsreply(postdetails:Posts){
+    this.httpBackendRequest.realizarHttpPost(this.getPostsUrl,postdetails).subscribe(
       (result) => {
         if (result === null) {
           console.log("respond error");
@@ -89,6 +91,7 @@ export class PostserviceService {
       },
       (err) => alert('getting Posts error occured.. !')
     )
+    return this.replylist;
   }
 
 

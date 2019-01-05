@@ -32,11 +32,9 @@ export class ForumComponent implements OnInit {
   }
 
   retrevePosts(){
-    this.postService.get_Posts()
-          .subscribe(posts => {
-            console.log(posts);
-            this.posts=posts;
-        });
+    this.posts =this.postService.getPosts();
+    console.log(this.posts);
+
   }
 
 
@@ -53,14 +51,7 @@ export class ForumComponent implements OnInit {
     }else{
       this.hidden =true;
     }
-    this.postService.getReplys(pst).subscribe(
-      replys =>{
-        console.log(replys);
-        this.postsreply=replys;
-
-      }
-
-    )};
+    };
 
     addpost(){
       const pst =new Posts();
@@ -68,7 +59,7 @@ export class ForumComponent implements OnInit {
       pst.postAuthor =this.author;
       pst.postbody=this.postbody;
       pst.posttitle=this.Postheading;
-      this.postService.addPosts(pst);
+      this.postService.InsertPosts(pst);
 
     }
 
@@ -82,7 +73,7 @@ export class ForumComponent implements OnInit {
     }
 
     deletecomments(post:Posts){
-      this.postService.deleteposts(post);
+      this.postService.deletePosts(post);
     }
 
 }
