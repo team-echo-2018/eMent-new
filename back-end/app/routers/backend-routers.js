@@ -138,6 +138,8 @@ router.route('/student/getall').post(function (req, res) {
 /* get posts */
 router.route('/posts/getPost').post(function (req, res) {
     backendController.getPosts(req.body, function (result, error) {
+        console.log(result);
+        
         if (error) {
             res.status(404);
             res.send(error);
