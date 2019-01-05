@@ -44,6 +44,7 @@ import { environment } from 'src/environments/environment';
 import { WorkingProjComponent } from './components/working-proj/working-proj.component';
 import { OtherProjComponent } from './components/other-proj/other-proj.component';
 import { LoadingScreenComponent } from './pages/loading-screen/loading-screen.component';
+import { FeaturesComponent } from './pages/features/features.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { LoadingScreenComponent } from './pages/loading-screen/loading-screen.co
     NotificationComponent,
     WorkingProjComponent,
     OtherProjComponent,
-    LoadingScreenComponent
+    LoadingScreenComponent,
+    FeaturesComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseconfig),

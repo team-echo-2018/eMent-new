@@ -11,6 +11,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { LoadingScreenComponent } from './pages/loading-screen/loading-screen.component';
+import { FeaturesComponent } from './pages/features/features.component';
 
 
 export const routes: Routes = [
@@ -25,6 +26,7 @@ export const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: 'help', component: HelpComponent },
   { path: 'admin-panel', component: AdminPanelComponent },
+  { path: 'features', component: FeaturesComponent },
   { path: 'loading', component: LoadingScreenComponent },
   { path: '**', component: Error404Component }
 ];
