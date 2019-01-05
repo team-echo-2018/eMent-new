@@ -96,6 +96,8 @@ export class PostserviceService {
             i = i + 1;
           }
         }
+        console.log(this.replylist);
+
       },
       (err) => alert('getting Posts error occured.. !')
     )

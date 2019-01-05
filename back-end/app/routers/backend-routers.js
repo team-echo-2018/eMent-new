@@ -156,7 +156,7 @@ router.route('/posts/getPost').post(function (req, res) {
 router.route('/posts/getPostReply').post(function (req, res) {
     console.log("route for replys called");
     
-    backendController.getreplyPosts(req.body, function (res, error) {
+    backendController.getreplyPosts(req.body, function (result, error) {
         console.log(result);
         
         if (error) {

@@ -856,17 +856,21 @@ DatabaseMySql.prototype.getPost = function (err, callback) {
 
 /* get Post reply object in db */
 
-DatabaseMySql.prototype.getReply =function(reply,callback){
+DatabaseMySql.prototype.getReply =function(rep,callback){
 
-  var Utils =new Utils();
+  var utils = new Utils();
+  console.log("from backend mysql");
+  
 
-  var sqlselectreply =Utils.getReply(reply);
+  var sqlselectreply = utils.getReply(rep);
 
   connection.query(sqlselectreply,function(err,resultsreply){
+    console.log(resultsreply);
+    
     if(err|| resultsreply.length ==0){
       callback(null,err);
     }else{
-      return resultsreply;
+      callback(resultsreply);
     }
   })
 }

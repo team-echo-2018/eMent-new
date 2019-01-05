@@ -77,6 +77,7 @@ export class ForumComponent implements OnInit {
       reply.Author=this.author;
       reply.replyid=this.postreply;
       reply.postId =pst.postId;
+      this.postsreply.push(reply);
       this.postService.InsertReplys(reply);
 
     }

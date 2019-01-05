@@ -561,12 +561,12 @@ BackendController.prototype.getreplyPosts =function(req,callback){
     var daoMsql = new DAOMySql();
 
     daoMsql.getReply(req, function(result,err){
-        console.log("gettig reply for posts");
         console.log("connecting to database and getting replys");
         if(err || !result){
             console.log("** error or no result");
             callback(null, err);
         }else{
+            console.log("getting reply for posts");
             callback(result);
         }
     })

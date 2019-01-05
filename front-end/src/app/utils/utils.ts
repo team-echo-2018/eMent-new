@@ -4,6 +4,7 @@ import { Mentor } from '../entities/mentor';
 import { Postreply } from '../entities/postreply';
 import { Posts } from '../entities/posts';
 import { Company } from '../entities/company';
+import { message } from '../entities/message';
 
 export class Utils {
 
@@ -91,5 +92,14 @@ export class Utils {
         company.companyDescription = dataCompany.companyDescription;
 
         return company;
+    }
+
+    public static convertimessagetomessage(imessage:any):message{
+      const msg =new message();
+      msg.message =imessage.message;
+      msg.recieverId =imessage.recieverId;
+      msg.senderId =imessage.senderId;
+
+      return msg;
     }
 }
