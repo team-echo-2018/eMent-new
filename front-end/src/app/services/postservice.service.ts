@@ -14,11 +14,11 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class PostserviceService {
-  private getPostsUrl =HttpEnum.BASEURL+"posts/getPost";
-  private insertPostsUrl =HttpEnum.BASEURL +"posts/insertPost";
-  private deletePostsUrl =HttpEnum.BASEURL +"posts/deletePost";
-  private getreplyUrl =HttpEnum.BASEURL +"posts/getPostReply";
-  private insertreplyUrl =HttpEnum.BASEURL+"posts/insertReply";
+  private getPostsUrl =HttpEnum.BASEURL+"api/posts/getPost";
+  private insertPostsUrl =HttpEnum.BASEURL +"api/posts/insertPost";
+  private deletePostsUrl =HttpEnum.BASEURL +"api/posts/deletePost";
+  private getreplyUrl =HttpEnum.BASEURL +"api/posts/getPostReply";
+  private insertreplyUrl =HttpEnum.BASEURL+"api/posts/insertReply";
 
   constructor( private httpBackendRequest: HttpBackendRequestService,private Http :HttpClient) { }
 

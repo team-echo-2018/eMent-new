@@ -100,13 +100,16 @@ router.route('/profile/update').post(function (req, res) {
 
 /* get posts */
 router.route('/posts/getPost').get(function (req, res) {
+    console.log(req.body);
     backendController.getPosts(req.body,function(res,error){
-        if(error){
-            res.status(404);
-            res.send(error);
-        }else{
-            res.status(200);
-            res.json(result);
+        if(res){
+            if(error){
+                res.status(404);
+                res.send(error);
+            }else{
+                res.status(200);
+                res.json(result);
+            }
         }
 
     });
