@@ -136,7 +136,7 @@ router.route('/student/getall').post(function (req, res) {
 /* Routes for post CRUD operations */
 
 /* get posts */
-<<<<<<< HEAD
+
 router.route('/posts/getPost').get(function (req, res) {
     console.log(req.body);
     backendController.getPosts(req.body,function(res,error){
@@ -148,7 +148,6 @@ router.route('/posts/getPost').get(function (req, res) {
                 res.status(200);
                 res.json(result);
             }
-=======
 router.route('/posts/getPost').post(function (req, res) {
     backendController.getPosts(req.body, function (res, error) {
         if (error) {
@@ -157,7 +156,6 @@ router.route('/posts/getPost').post(function (req, res) {
         } else {
             res.status(200);
             res.json(result);
->>>>>>> 554351f1c3a0f58ec8507536e9d171f9995cf15b
         }
 
     });
@@ -165,15 +163,10 @@ router.route('/posts/getPost').post(function (req, res) {
 
 /* get reply fro posts */
 
-<<<<<<< HEAD
-router.route('/posts/getPostReply').get(function (req, res) {
-    backendController.getreplyPosts(req.body,function(res,error){
-        if(error){
-=======
+
 router.route('/posts/getPostReply').post(function (req, res) {
     backendController.getreplyPosts(req.body, function (res, error) {
         if (error) {
->>>>>>> 554351f1c3a0f58ec8507536e9d171f9995cf15b
             res.status(404);
             res.send(error);
         } else {
@@ -248,3 +241,4 @@ router.route('/file/upload').post(upload.single("file"), fileWorker.uploadFile);
 
 
 module.exports = router;
+        

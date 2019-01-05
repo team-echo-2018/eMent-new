@@ -5,6 +5,7 @@ import { Posts } from '../entities/posts';
 import { HttpEnum } from '../utils/httpEnum';
 import { HttpBackendRequestService } from './http-backend-request.service';
 import { Postreply } from '../entities/postreply';
+import { Utils } from '../utils/utils';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,6 +20,9 @@ export class PostserviceService {
   private deletePostsUrl =HttpEnum.BASEURL +"api/posts/deletePost";
   private getreplyUrl =HttpEnum.BASEURL +"api/posts/getPostReply";
   private insertreplyUrl =HttpEnum.BASEURL+"api/posts/insertReply";
+
+  postlist:Posts[] =new Array();
+  replylist:Postreply[] =new  Array();
 
   constructor( private httpBackendRequest: HttpBackendRequestService,private Http :HttpClient) { }
 
@@ -51,17 +55,39 @@ export class PostserviceService {
 
 /* GET REPLY FOR POSTS */
 
-  getPostsreply(){
-    this.httpBackendRequest.realizarHttpPost(HttpEnum.BASEURL +"getPostReply",null).subscribe(
-      (results)=>{
-        if(results ==null){
-          console.log("error in getting posts --no posts");
-
-        }else{
-          return results;
+  getPosts(){
+    this.httpBackendRequest.realizarHttpPost(this.getPostsUrl,null).subscribe(
+      (result) => {
+        if (result === null) {
+          console.log("respond error");
+        } else {
+          let i = 0;
+          while (result[i]) {
+            let post = Utils.convertDatabasereplytoPosts(result[i]);
+            this.postlist.push(post);
+            i = i + 1;
+          }
         }
-
-      }
+      },
+      (err) => alert('getting Posts error occured.. !')
+    )
+  }
+  //get replys
+  getPostsreply(){
+    this.httpBackendRequest.realizarHttpPost(this.getPostsUrl,null).subscribe(
+      (result) => {
+        if (result === null) {
+          console.log("respond error");
+        } else {
+          let i = 0;
+          while (result[i]) {
+            let rep = Utils.convertDatabasetoPostsreply(result[i]);
+            this.replylist.push(rep);
+            i = i + 1;
+          }
+        }
+      },
+      (err) => alert('getting Posts error occured.. !')
     )
   }
 
