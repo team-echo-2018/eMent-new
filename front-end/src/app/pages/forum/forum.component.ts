@@ -53,6 +53,10 @@ export class ForumComponent implements OnInit {
     }else{
       this.hidden =true;
     }
+    this.postService.getPostsreply(pst);
+    this.postsreply=this.postService.replylist;
+    console.log(this.postreply);
+
     };
 
     addpost(){
@@ -61,7 +65,10 @@ export class ForumComponent implements OnInit {
       pst.postAuthor =this.author;
       pst.postbody=this.postbody;
       pst.posttitle=this.Postheading;
+      this.posts.push(pst);
       this.postService.InsertPosts(pst);
+      console.log(pst+"added");
+
 
     }
 

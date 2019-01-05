@@ -154,12 +154,16 @@ router.route('/posts/getPost').post(function (req, res) {
 /* get reply fro posts */
 
 router.route('/posts/getPostReply').post(function (req, res) {
+    console.log("route for replys called");
+    
     backendController.getreplyPosts(req.body, function (res, error) {
+        console.log(result);
+        
         if (error) {
             res.status(404);
             res.send(error);
         } else {
-            res.status(200);
+            //res.status(200);
             res.json(result);
         }
 

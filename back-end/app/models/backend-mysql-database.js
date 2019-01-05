@@ -856,7 +856,7 @@ DatabaseMySql.prototype.getPost = function (err, callback) {
 
 /* get Post reply object in db */
 
-DatabaseMySql.prototype.getPostReply =function(reply,callback){
+DatabaseMySql.prototype.getReply =function(reply,callback){
 
   var Utils =new Utils();
 
