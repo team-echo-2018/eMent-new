@@ -777,6 +777,7 @@ DatabaseMySql.prototype.updateTask = function (task, callback) {
 // get Post object in DB
 DatabaseMySql.prototype.getPost = function (err, callback) {
 
+  console.log("backendmysql controller");
   var utils = new Utils();
 
   var sqlSelectPost = utils.selectPosts();
@@ -785,8 +786,7 @@ DatabaseMySql.prototype.getPost = function (err, callback) {
     if (err || resultPosts.length == 0) {
       callback(null, err);
     } else {
-      //callback (utils.generateStudent(resultStudent[0]));
-      return resultPosts;
+      callback (resultPosts);
     }
   });
 }
