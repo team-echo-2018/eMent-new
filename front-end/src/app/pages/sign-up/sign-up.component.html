@@ -78,11 +78,11 @@
                     </div>
                     <div class="form-group">
                         <input [(ngModel)]="email" name="email" type="text" class="form-control form-control-lg"
-                            required="" placeholder="Email" required="false" title="Enter your email address"
+                            required="" placeholder="Email" required="false" pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" title="Enter your email address"
                             autocomplete="off" />
                     </div>
                     <div class="form-group">
-                        <input [(ngModel)]="phone" name="phone" type="text" class="form-control form-control-lg"
+                        <input [(ngModel)]="phone" name="phone" type="tel" pattern="^\d{10}$" class="form-control form-control-lg"
                             required="" placeholder="Phone" required="false" title="Enter your phone number"
                             autocomplete="off" />
                     </div>
@@ -119,7 +119,7 @@
                             placeholder="Password" autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <input [(ngModel)]="confirm" class="form-control form-control-lg" required="true" name="confirm" placeholder="Confirm Password"
+                        <input [(ngModel)]="confirm" class="form-control form-control-lg" required="true" type="password" name="confirm" placeholder="Confirm Password"
                             autocomplete="off">
                     </div>
                     <!-- <div class="form-group">
