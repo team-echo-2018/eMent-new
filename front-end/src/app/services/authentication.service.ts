@@ -31,6 +31,21 @@ export class AuthenticationService {
     this.userAuth = Utils.convertDatabaseUserToUser(userAuth);
   }
 
+  getLoggingUser(authData: Auth) {
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.AUTH, authData)
+    .subscribe(
+      (result) => {
+        if (result === null) {
+          alert('Login credentials are not correct.');
+        } else {
+          this.setUser(result);
+          console.log("Login credentials ok");
+        }
+      },
+      (err) => alert('Error occured.. Contact Administrations!')
+    );
+  }
+
   loginUser(authData: Auth) {
     this.httpBackendRequest.realizarHttpPost(HttpEnum.AUTH, authData)
     .subscribe(

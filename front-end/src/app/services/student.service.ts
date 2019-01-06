@@ -32,4 +32,15 @@ export class StudentService {
         (err) => alert('getting companies error occured.. !')
       );
   }
+
+  // insert student details
+  insertStudent(student) {
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.GETSTUDENTS, student)
+      .subscribe(
+        (result) => {
+          alert("Successfully Student Inserted.");
+        },
+        (err) => alert('Error occured.. Contact Administrations!')
+      );
+  }
 }
