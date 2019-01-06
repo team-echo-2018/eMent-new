@@ -180,6 +180,24 @@ DatabaseMySql.prototype.insertStudent = function (student, callback) {
   });
 }
 
+DatabaseMySql.prototype.deleteStudent = function (student, callback) {
+
+  var utils = new Utils();
+
+  var sqldeletestudent = utils.getSqlDeleteStudent(student);
+
+  connection.query(sqldeletestudent, function (err, resultPosts) {
+    if (err || resultPosts.length == 0) {
+      callback(null, err);
+    } else {
+      //callback (utils.generateStudent(resultStudent[0]));
+      console.log("before delete student backend mysql controller" +resultPosts);
+      
+      callback(resultPosts);
+    }
+  });
+}
+
 // update student object in DB
 DatabaseMySql.prototype.updateStudent = function (student, callback) {
 

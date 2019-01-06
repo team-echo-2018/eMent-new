@@ -147,6 +147,24 @@ router.route('/student/getall').post(function (req, res) {
     });
 });
 
+/** delete student */
+router.route('/student/deleteStudent').post(function (req, res) {
+    console.log(req.body);
+    
+    backendController.deleteStudent(req.body, function (result, error) {
+        if (!result) {
+            res.status(404);
+            res.send(error);
+        } else {
+            //res.status(200);
+            res.send("ok");
+        }
+
+    });
+});
+
+
+
 
 /* Routes for post CRUD operations */
 
