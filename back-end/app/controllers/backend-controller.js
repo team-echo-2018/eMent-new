@@ -542,10 +542,10 @@ BackendController.prototype.insertPost =function(req,callback){
 BackendController.prototype.getPosts = function(req, callback){
 
    var daoMsql = new DAOMySql();
-
+   console.log(req);
    daoMsql.getPost(req,  function(result, err) { 
        console.log("connecting to database and getting posts");
-       if(err || !result){
+    if(err || !result){
         console.log("** error or no result");
         callback(null, err);
     }else{
