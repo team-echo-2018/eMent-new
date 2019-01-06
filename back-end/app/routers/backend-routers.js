@@ -234,12 +234,12 @@ router.route('/posts/deletePost').post(function (req, res) {
 
 /* insert a Reply for post */
 router.route('/posts/insertReply').post(function (req, res) {
-    backendController.insertReply(req.body, function (res, error) {
+    backendController.insertReply(req.body, function (result, error) {
         if (error) {
             res.status(404);
             res.send(error);
         } else {
-            res.status(200);
+           // res.status(200);
             res.json(result);
         }
 

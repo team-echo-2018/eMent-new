@@ -535,21 +535,18 @@ BackendController.prototype.updateTask = function (req, callback) {
 /* insert reply post */
 
 BackendController.prototype.insertReply = function (req, callback) {
-    var reply = new Reply(
-        req.replyId,
-        req.postId,
-        req.author,
-        req.body
-    );
+   
 
     var daoMsql = new DAOMySql();
 
-    daoMsql.insertreply(reply, function (req, err) {
+    daoMsql.insertreply(req, function (result, err) {
         if (err || !result) {
             console.log("error in inserting reply");
             callback(null, err);
 
         } else {
+            console.log(result);
+            
             callback(result);
         }
     })

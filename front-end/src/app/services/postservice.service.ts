@@ -129,11 +129,14 @@ export class PostserviceService {
   /* INSERT REPLYS */
 
   InsertReplys(ReplyDetails:Postreply){
+    console.log("insert reply called");
     this.httpBackendRequest.realizarHttpPost(this.insertreplyUrl,ReplyDetails).subscribe(
       (error)=>{
         console.log("error in inserting replys to system");
 
-      }
+      },
+      (err)=>alert("inserted reply"+err)
+
     )
   }
 
