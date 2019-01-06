@@ -16,5 +16,13 @@ export class NavBarComponent implements OnInit {
   logout() {
     this.authService.logoutUser();
   }
+  myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }
 
 }
