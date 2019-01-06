@@ -27,12 +27,14 @@ export class ForumComponent implements OnInit {
   ngOnInit():void {
     this.authService.isUserLogged();
     this.retrevePosts();
-    this.author =this.authService.getUser().userName;
+
     this.type =(this.authService.getUser().userType==='A');
   }
 
   retrevePosts(){
-    this.posts =this.postService.getPosts();
+    this.postService.getPosts();
+    this.author =this.authService.getUser().userName;
+    this.posts =this.postService.postlist;
     console.log(this.posts);
 
   }
@@ -51,6 +53,10 @@ export class ForumComponent implements OnInit {
     }else{
       this.hidden =true;
     }
+    this.postService.getPostsreply(pst);
+    this.postsreply=this.postService.replylist;
+    console.log(this.postreply);
+
     };
 
     addpost(){
@@ -59,7 +65,10 @@ export class ForumComponent implements OnInit {
       pst.postAuthor =this.author;
       pst.postbody=this.postbody;
       pst.posttitle=this.Postheading;
+      this.posts.push(pst);
       this.postService.InsertPosts(pst);
+      console.log(pst+"added");
+
 
     }
 
@@ -68,6 +77,7 @@ export class ForumComponent implements OnInit {
       reply.Author=this.author;
       reply.replyid=this.postreply;
       reply.postId =pst.postId;
+      this.postsreply.push(reply);
       this.postService.InsertReplys(reply);
 
     }

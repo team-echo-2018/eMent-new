@@ -127,6 +127,7 @@ router.route('/student/getall').post(function (req, res) {
             res.status(404);
             res.send(error);
         } else {
+            console.log(result);
             res.json(result);
         }
     });
@@ -137,12 +138,13 @@ router.route('/student/getall').post(function (req, res) {
 
 /* get posts */
 router.route('/posts/getPost').post(function (req, res) {
-    backendController.getPosts(req.body, function (res, error) {
+    backendController.getPosts(req.body, function (result, error) {
+        console.log(result);
+        
         if (error) {
             res.status(404);
             res.send(error);
         } else {
-            res.status(200);
             res.json(result);
         }
 
@@ -152,12 +154,16 @@ router.route('/posts/getPost').post(function (req, res) {
 /* get reply fro posts */
 
 router.route('/posts/getPostReply').post(function (req, res) {
-    backendController.getreplyPosts(req.body, function (res, error) {
+    console.log("route for replys called");
+    
+    backendController.getreplyPosts(req.body, function (result, error) {
+        console.log(result);
+        
         if (error) {
             res.status(404);
             res.send(error);
         } else {
-            res.status(200);
+            //res.status(200);
             res.json(result);
         }
 

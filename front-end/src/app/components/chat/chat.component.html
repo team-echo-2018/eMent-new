@@ -2,7 +2,7 @@
   <div class="reciever-msg-list" style="width: 50%;height: 100%; float: left;padding: 10px; padding-top: 100px">
     <ul *ngFor="let post of posts |async">
       <li (click)="getPost(post.senderID)">
-        <strong>Messages from  {{post.senderID}}</strong>
+        <strong>  Messages from  {{post.senderID}}</strong>
 
 
       </li>
@@ -18,9 +18,9 @@
 
     <ul *ngFor="let msg of messages |async">
         <li>
-          <strong>{{msg.recieverID}}</strong>
+          <strong>  {{msg.senderId}}</strong>
           <br>
-          {{msg.message}}
+            {{msg.message}}
         </li>
     </ul>
 

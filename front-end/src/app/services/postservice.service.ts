@@ -56,8 +56,11 @@ export class PostserviceService {
 
 /* GET REPLY FOR POSTS */
 
-  getPosts(){
+  getPosts():Posts[]{
+    console.log("posts service called");
+
     this.httpBackendRequest.realizarHttpPost(this.getPostsUrl,null).subscribe(
+
       (result) => {
         if (result === null) {
           console.log("respond error");
@@ -68,6 +71,8 @@ export class PostserviceService {
             this.postlist.push(post);
             i = i + 1;
           }
+          //console.log(this.postlist);
+
         }
       },
       (err) => alert('getting Posts error occured.. !')
@@ -75,8 +80,11 @@ export class PostserviceService {
     return this.postlist;
   }
   //get replys
-  getPostsreply(postdetails:Posts){
-    this.httpBackendRequest.realizarHttpPost(this.getPostsUrl,postdetails).subscribe(
+  getPostsreply(postdetails:Posts):Postreply[]{
+    console.log("get reply called");
+
+    this.replylist =new Array();
+    this.httpBackendRequest.realizarHttpPost(this.getreplyUrl,postdetails).subscribe(
       (result) => {
         if (result === null) {
           console.log("respond error");
@@ -88,6 +96,8 @@ export class PostserviceService {
             i = i + 1;
           }
         }
+        console.log(this.replylist);
+
       },
       (err) => alert('getting Posts error occured.. !')
     )
@@ -98,7 +108,7 @@ export class PostserviceService {
 /* DELETE POSTS */
 
   deletePosts(Postdetails:Posts){
-    this.httpBackendRequest.realizarHttpPost(HttpEnum.BASEURL+"deletePost",Postdetails).subscribe(
+    this.httpBackendRequest.realizarHttpPost(this.deletePostsUrl,Postdetails).subscribe(
       (error)=>{
         console.log("problem deleting posts");
 
@@ -108,7 +118,7 @@ export class PostserviceService {
   }
 /* INSERT POSTS */
   InsertPosts(Postdetails:Posts){
-    this.httpBackendRequest.realizarHttpPost(HttpEnum.BASEURL+"insertPost",Postdetails).subscribe(
+    this.httpBackendRequest.realizarHttpPost(this.insertPostsUrl,Postdetails).subscribe(
       (error)=>{
         console.log("problem inserting posts");
 
@@ -119,7 +129,7 @@ export class PostserviceService {
   /* INSERT REPLYS */
 
   InsertReplys(ReplyDetails:Postreply){
-    this.httpBackendRequest.realizarHttpPost(HttpEnum.BASEURL+"insertReply",ReplyDetails).subscribe(
+    this.httpBackendRequest.realizarHttpPost(this.insertreplyUrl,ReplyDetails).subscribe(
       (error)=>{
         console.log("error in inserting replys to system");
 

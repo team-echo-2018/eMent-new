@@ -516,16 +516,18 @@ BackendController.prototype.insertReply =function(req,callback){
 
 //insert posts
 BackendController.prototype.insertPost =function(req,callback){
-    var Post =new Post(
+    //console.log(req);
+    
+    const post =new Post(
         req.postId,
-        req.postauthor,
-        req.postheading,
+        req.postAuthor,
+        req.posttitle,
         req.postbody
     );
    
    var daoMsql = new DAOMySql();
 
-   daoMsql.insertPost(Post,function(req,err){
+   daoMsql.insertPost(post,function(req,err){
        if(err || !result){
            console.log("error in inserting post");
            callback(null,err);
@@ -555,12 +557,18 @@ BackendController.prototype.getPosts = function(req, callback){
 }
 
 BackendController.prototype.getreplyPosts =function(req,callback){
-
+    console.log("backend controller called by getreply");
     var daoMsql = new DAOMySql();
 
-    daoMsql.getreplyPosts(req, function(result,err){
-        console.log("gettig reply for posts");
-        
+    daoMsql.getReply(req, function(result,err){
+        console.log("connecting to database and getting replys");
+        if(err || !result){
+            console.log("** error or no result");
+            callback(null, err);
+        }else{
+            console.log("getting reply for posts");
+            callback(result);
+        }
     })
 }
        
