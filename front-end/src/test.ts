@@ -15,6 +15,7 @@ getTestBed().initTestEnvironment(
   platformBrowserDynamicTesting()
 );
 // Then we find all the tests.
-const context = require.context('app-chat', true, /\.component.spec\.ts$/);
+const context = require.context('./', true, /login\.component\.spec\.ts$/);
+
 // And load the modules.
 context.keys().map(context);

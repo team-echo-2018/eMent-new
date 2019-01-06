@@ -19,6 +19,14 @@ export class ProjectComponent implements OnInit {
   ngOnInit() {
     this.authService.isUserLogged();
   }
+
+  isMentor() {
+    return this.authService.getUser().userType == 'M';
+  }
+
+  isStudent() {
+    return this.authService.getUser().userType == 'S';
+  }
  
   // selectFile(event) {
   //   this.selectedFiles = event.target.files;
