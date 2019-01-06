@@ -43,91 +43,98 @@
 
 </div> -->
 
-<div class="container my-5">
+<div class="container-fluid my-5">
     <div class="card">
-        <div class="row card-header">
-            <h3 class="mb-1">Registrations Form</h3>
+        <div class="card-header">
+            <h2 class="mb-1">REGISTRATION FORM</h2>
             <p>Please enter your user information.</p>
         </div>
-        <form class="row">
-            <div class="col-6">
-                <div class="card-body">
-                    <div class="form-group">
-                        <input class="form-control form-control-lg" type="text" name="nick" required="" placeholder="Username"
-                            autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control form-control-lg" type="email" name="email" required="" placeholder="E-mail"
-                            autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control form-control-lg" id="pass1" type="password" required="" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control form-control-lg" required="" placeholder="Confirm">
-                    </div>
-                    <div class="form-group pt-2">
-                        <button class="btn btn-block btn-primary" type="submit">Register My Account</button>
-                    </div>
-                    <div class="form-group">
-                        <label class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox"><span class="custom-control-label">By
-                                creating
-                                an account, you agree the <a href="#">terms and conditions</a></span>
-                        </label>
-                    </div>
-                    <div class="form-group row pt-0">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
-                            <button class="btn btn-block btn-social btn-facebook " type="button">Facebook</button>
-                        </div>
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <button class="btn  btn-block btn-social btn-twitter" type="button">Twitter</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer bg-white">
-                    <p>Already member? <a href="#" class="text-secondary">Login Here.</a></p>
+        <form class="row" #signUpForm="ngForm" (ngSubmit)="submitForm()" method="POST" action="www" ngNativeValidate>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 px-5">
+                <div class="mx-auto mt-4 border" style="width: 200px; height: 200px; overflow: hidden;">
+                    <img src="{{imageAddress}}" width="200" />
                 </div>
 
+                <label class="btn btn-default mt-2">
+                    <input type="file" (change)="selectFile($event)">
+                </label>
+                <button class="btn btn-success btn-block" [disabled]="!selectedFiles" (click)="uploadFile()">Upload</button>
             </div>
-            <div class="col-6 pl-0">
-
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="card-body">
                     <div class="form-group">
-                        <input class="form-control form-control-lg" type="text" name="nick" required="" placeholder="Username"
+                        <input [(ngModel)]="fname" name="fname" type="text" class="form-control form-control-lg"
+                            required="" placeholder="First Name" required="true" title="Enter your first name"
+                            autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="lname" name="lname" type="text" class="form-control form-control-lg"
+                            required="" placeholder="Last Name" required="false" title="Enter your last name"
+                            autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="address" name="address" type="text" class="form-control form-control-lg"
+                            required="" placeholder="Addresse" required="false" title="Enter your address" autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="email" name="email" type="text" class="form-control form-control-lg"
+                            required="" placeholder="Email" required="false" title="Enter your email address"
+                            autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="phone" name="phone" type="text" class="form-control form-control-lg"
+                            required="" placeholder="Phone" required="false" title="Enter your phone number"
+                            autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="description" name="description" type="text" class="form-control form-control-lg"
+                            required="" placeholder="Status" required="false" title="Enter your status" autocomplete="off" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="card-body">
+                    <div class="form-group">
+                        <div class="row px-3">
+                            <label class="col-4 custom-control custom-radio">
+                                <input class="custom-control-input" name="regType" type="radio" (click)="setUserType('S')" required><span
+                                    class="custom-control-label"> Student </span>
+                            </label>
+                            <label class="col-4 custom-control custom-radio">
+                                <input class="custom-control-input" name="regType" type="radio" (click)="setUserType('M')" required><span
+                                    class="custom-control-label"> Mentor </span>
+                            </label>
+                            <label class="col-4 custom-control custom-radio">
+                                <input class="custom-control-input" name="regType" type="radio" (click)="setUserType('CA')" required><span
+                                    class="custom-control-label"> Company Admin </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="username" class="form-control form-control-lg" type="text" name="username" required="true"
+                            placeholder="Username" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="password" class="form-control form-control-lg" id="pass1" type="password" name="password" required="true"
+                            placeholder="Password" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="confirm" class="form-control form-control-lg" required="true" name="confirm" placeholder="Confirm Password"
                             autocomplete="off">
                     </div>
-                    <div class="form-group">
-                        <input class="form-control form-control-lg" type="email" name="email" required="" placeholder="E-mail"
-                            autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control form-control-lg" id="pass1" type="password" required="" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control form-control-lg" required="" placeholder="Confirm">
-                    </div>
-                    <div class="form-group pt-2">
-                        <button class="btn btn-block btn-primary" type="submit">Register My Account</button>
-                    </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="custom-control custom-checkbox">
                             <input class="custom-control-input" type="checkbox"><span class="custom-control-label">By
                                 creating
                                 an account, you agree the <a href="#">terms and conditions</a></span>
                         </label>
-                    </div>
-                    <div class="form-group row pt-0">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2">
-                            <button class="btn btn-block btn-social btn-facebook " type="button">Facebook</button>
-                        </div>
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <button class="btn  btn-block btn-social btn-twitter" type="button">Twitter</button>
-                        </div>
+                    </div> -->
+                    <div class="form-group pt-2">
+                        <button class="btn btn-block btn-primary" type="submit">Register My Account</button>
                     </div>
                 </div>
-                <div class="card-footer bg-white">
-                    <p>Already member? <a href="#" class="text-secondary">Login Here.</a></p>
+                <div class="mb-3 bg-white">
+                    <p>Already member? <a href="/login" class="text-secondary">Login Here.</a></p>
                 </div>
 
             </div>

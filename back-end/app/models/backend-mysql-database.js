@@ -57,7 +57,7 @@ DatabaseMySql.prototype.insertUser = function (user, callback) {
             callback(null, err);
           }
           console.log('Transaction Complete.');
-          callback("User successfully inserted into the system!");
+          callback(user.userName);
         });
       }
     });

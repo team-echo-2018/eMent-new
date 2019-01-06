@@ -23,21 +23,45 @@ var DAOMySql = require('../models/backend-mysql-database');
 function BackendController() { }
 
 // not used yet... don't change..
-BackendController.prototype.insert = function (req, callback) {
+BackendController.prototype.insertUser = function (req, callback) {
 
-    var user = new User(req.nome,
-        req.user_name,
-        req.senha,
-        req.dataNascimento,
-        addressUser);
+    var user = new User(0,
+        req.userName,
+        req.userPassword,
+        req.userType);
 
     var daoMsql = new DAOMySql();
 
-    daoMsql.insert(user, function (result, err) {
+    daoMsql.insertUser(user, function (result, err) {
         if (err) {
             callback(null, err);
         } else {
-            callback(result)
+            callback(result);
+        }
+    })
+}
+
+// not used yet... don't change..
+BackendController.prototype.insertStudent = function (req, callback) {
+
+    var student = new Student(
+        req.studentId,
+        req.studentFname,
+        req.studentLname,
+        req.studentAddress,
+        req.studentPhone,
+        req.studentEmail,
+        req.studentImgLink,
+        req.studentDescription
+    );
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.insertStudent(student, function (result, err) {
+        if (err) {
+            callback(null, err);
+        } else {
+            callback(result);
         }
     })
 }
@@ -492,123 +516,123 @@ BackendController.prototype.updateTask = function (req, callback) {
 // Controller related to posts ..................................................................
 /* insert reply post */
 
-BackendController.prototype.insertReply =function(req,callback){
-    var reply =new Reply(
+BackendController.prototype.insertReply = function (req, callback) {
+    var reply = new Reply(
         req.replyId,
         req.postId,
         req.author,
         req.body
     );
-   
-   var daoMsql = new DAOMySql();
 
-   daoMsql.insertreply(reply,function(req,err){
-       if(err || !result){
-           console.log("error in inserting reply");
-           callback(null,err);
-           
-       } else{
-           callback(result);
-       }
-   })
+    var daoMsql = new DAOMySql();
+
+    daoMsql.insertreply(reply, function (req, err) {
+        if (err || !result) {
+            console.log("error in inserting reply");
+            callback(null, err);
+
+        } else {
+            callback(result);
+        }
+    })
 
 }
 
 //insert posts
-BackendController.prototype.insertPost =function(req,callback){
+BackendController.prototype.insertPost = function (req, callback) {
     //console.log(req);
-    
-    const post =new Post(
+
+    const post = new Post(
         req.postId,
         req.postAuthor,
         req.posttitle,
         req.postbody
     );
-   
-   var daoMsql = new DAOMySql();
 
-   daoMsql.insertPost(post,function(req,err){
-       if(err || !result){
-           console.log("error in inserting post");
-           callback(null,err);
-           
-       } else{
-           callback(result);
-       }
-   })
+    var daoMsql = new DAOMySql();
+
+    daoMsql.insertPost(post, function (req, err) {
+        if (err || !result) {
+            console.log("error in inserting post");
+            callback(null, err);
+
+        } else {
+            callback(result);
+        }
+    })
 
 }
 
 //get posts from database
 
-BackendController.prototype.getPosts = function(req, callback){
+BackendController.prototype.getPosts = function (req, callback) {
 
-   var daoMsql = new DAOMySql();
-   console.log(req);
-   daoMsql.getPost(req,  function(result, err) { 
-       console.log("connecting to database and getting posts");
-    if(err || !result){
-        console.log("** error or no result");
-        callback(null, err);
-    }else{
-        callback(result);
-    }
-   });
+    var daoMsql = new DAOMySql();
+    console.log(req);
+    daoMsql.getPost(req, function (result, err) {
+        console.log("connecting to database and getting posts");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
 }
 
-BackendController.prototype.getreplyPosts =function(req,callback){
+BackendController.prototype.getreplyPosts = function (req, callback) {
     console.log("backend controller called by getreply");
     var daoMsql = new DAOMySql();
 
-    daoMsql.getReply(req, function(result,err){
+    daoMsql.getReply(req, function (result, err) {
         console.log("connecting to database and getting replys");
-        if(err || !result){
+        if (err || !result) {
             console.log("** error or no result");
             callback(null, err);
-        }else{
+        } else {
             console.log("getting reply for posts");
             callback(result);
         }
     })
 }
-       
 
 
-BackendController.prototype.deletePosts = function(req, callback){
+
+BackendController.prototype.deletePosts = function (req, callback) {
 
     var daoMsql = new DAOMySql();
 
-    daoMsql.deletePost (req,  function(result, err) { 
+    daoMsql.deletePost(req, function (result, err) {
         console.log("connecting to database and getting posts");
-        if(err || !result){
+        if (err || !result) {
             console.log("** error or no result");
             callback(null, err);
-        }else{
+        } else {
             callback(result);
         }
     });
 }
 
 
-BackendController.prototype.updatePost =function(req,callback){
+BackendController.prototype.updatePost = function (req, callback) {
 
     var daoMsql = new DAOMySql();
 
-    var Post =new Post(
+    var Post = new Post(
         req.postId,
         req.postauthor,
         req.postheading,
         req.postbody
     );
 
-    daoMsql.updatePost =function(req,callback){
+    daoMsql.updatePost = function (req, callback) {
         var daoMsql = new DAOMySql();
 
-        daoMsql.updatePost(Post,function(result,err){
-            if(err || !result){
+        daoMsql.updatePost(Post, function (result, err) {
+            if (err || !result) {
                 console.log("** error or no result");
                 callback(null, err);
-            }else{
+            } else {
                 callback(result);
             }
         })
