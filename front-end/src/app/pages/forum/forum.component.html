@@ -49,7 +49,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
          <div class="w3-container w3-padding">
            <h6 class="w3-opacity">Welcome to the ement Forum</h6>
            <input type="text" [(ngModel)]="postreply"  placeholder="Enter comment">
-           <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i>  Post</button>
+           <button type="button" class="w3-button w3-theme" (click)="addreply(post)"><i class="fa fa-pencil"></i>  Post</button>
          </div>
        </div>
         <div *ngIf="hidden">
