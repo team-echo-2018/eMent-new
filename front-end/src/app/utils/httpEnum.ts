@@ -12,5 +12,5 @@ export enum HttpEnum {
 
     GETSTUDENTS = 'http://localhost:8000/api/student/getall',
 
-    ADDSTUDENTS = 'http://localhost:8000/api/student/addStudent'
+    ADDSTUDENT = 'http://localhost:8000/api/student/addStudent'
 }

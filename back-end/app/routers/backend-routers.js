@@ -32,6 +32,20 @@ router.route('/addUser').post(function (req, res) {
     });
 });
 
+// not used yet...
+router.route('/student/addStudent').post(function (req, res) {
+    console.log(req.body);
+    backendController.insertStudent(req.body, function (result, error) {
+        
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.json(result);
+        }
+    });
+});
+
 /* Router for User Authentications */
 router.route('/auth').post(function (req, res) {
 

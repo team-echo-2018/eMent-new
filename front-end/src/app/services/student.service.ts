@@ -3,6 +3,7 @@ import { Student } from '../entities/student';
 import { HttpBackendRequestService } from './http-backend-request.service';
 import { HttpEnum } from '../utils/httpEnum';
 import { Utils } from '../utils/utils';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class StudentService {
 
   studentsList: Student[] = new Array();
 
-  constructor(private httpBackendRequest: HttpBackendRequestService) { }
+  constructor(private router: Router,
+    private httpBackendRequest: HttpBackendRequestService) { }
 
   // get all the students' details
   getStudents() {
@@ -35,10 +37,11 @@ export class StudentService {
 
   // insert student details
   insertStudent(student) {
-    this.httpBackendRequest.realizarHttpPost(HttpEnum.GETSTUDENTS, student)
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.ADDSTUDENT, student)
       .subscribe(
         (result) => {
           alert("Successfully Student Inserted.");
+          this.router.navigate(['/login']);
         },
         (err) => alert('Error occured.. Contact Administrations!')
       );

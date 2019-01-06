@@ -41,6 +41,31 @@ BackendController.prototype.insertUser = function (req, callback) {
     })
 }
 
+// not used yet... don't change..
+BackendController.prototype.insertStudent = function (req, callback) {
+
+    var student = new Student(
+        req.studentId,
+        req.studentFname,
+        req.studentLname,
+        req.studentAddress,
+        req.studentPhone,
+        req.studentEmail,
+        req.studentImgLink,
+        req.studentDescription
+    );
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.insertStudent(student, function (result, err) {
+        if (err) {
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    })
+}
+
 
 /* User Authentcation function */
 BackendController.prototype.auth = function (req, callback) {

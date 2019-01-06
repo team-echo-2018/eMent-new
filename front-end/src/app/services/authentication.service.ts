@@ -70,7 +70,6 @@ export class AuthenticationService {
         if (result === null) {
           alert('error.');
         } else {
-          console.log("dfsfs");
           this.userService.setCurrentUser(this.userAuth ,result);
         }
       },
