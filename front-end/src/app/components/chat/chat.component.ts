@@ -4,6 +4,9 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { message } from '../../entities/message';
+import { Utils } from 'src/app/utils/utils';
+import { utils } from 'protractor';
 
 interface isendEvent {
   recieverID: string;
@@ -27,6 +30,7 @@ export class ChatComponent implements OnInit {
   posts: Observable<isendEvent[]>;
   messages:Observable<imessage[]>;
   senderset =new Set();
+  messagelist:imessage[];
 
 
   message: string;
@@ -64,6 +68,22 @@ export class ChatComponent implements OnInit {
 
     this.messageCol =this.afs.collection('messages',ref => ref.where('recieverID','==',this.owner).where('senderID','==',this.senderId));
     this.messages =this.messageCol.valueChanges();
+    this.messages.subscribe(
+      (result)=>{
+        if (result === null) {
+          console.log("respond error");
+        } else {
+          let i = 0;
+          while (result[i]) {
+            let rep = Utils.convertimessagetomessage(result[i]);
+            this.messagelist.push(rep);
+            i = i + 1;
+          }
+        }
+        console.log(this.messagelist);
+
+      }
+    )
     //this.data.changesMessage(senderID);
   }
 
@@ -99,6 +119,8 @@ export class ChatComponent implements OnInit {
       console.log("duplicate sender reciever pairs found !!");
 
     }
+    this.messagelist.push(Utils.convertimessagetomessage({'message':this.message,'recieverID':this.recieverid,'senderID':this.senderId}));
+
 
 
 

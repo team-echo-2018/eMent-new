@@ -840,6 +840,7 @@ DatabaseMySql.prototype.updateTask = function (task, callback) {
 // get Post object in DB
 DatabaseMySql.prototype.getPost = function (err, callback) {
 
+  console.log("backendmysql controller");
   var utils = new Utils();
 
   var sqlSelectPost = utils.selectPosts();
@@ -848,25 +849,28 @@ DatabaseMySql.prototype.getPost = function (err, callback) {
     if (err || resultPosts.length == 0) {
       callback(null, err);
     } else {
-      //callback (utils.generateStudent(resultStudent[0]));
-      return resultPosts;
+      callback (resultPosts);
     }
   });
 }
 
 /* get Post reply object in db */
 
-DatabaseMySql.prototype.getPostReply =function(reply,callback){
+DatabaseMySql.prototype.getReply =function(rep,callback){
 
-  var Utils =new Utils();
+  var utils = new Utils();
+  console.log("from backend mysql");
+  
 
-  var sqlselectreply =Utils.getReply(reply);
+  var sqlselectreply = utils.getReply(rep);
 
   connection.query(sqlselectreply,function(err,resultsreply){
+    console.log(resultsreply);
+    
     if(err|| resultsreply.length ==0){
       callback(null,err);
     }else{
-      return resultsreply;
+      callback(resultsreply);
     }
   })
 }

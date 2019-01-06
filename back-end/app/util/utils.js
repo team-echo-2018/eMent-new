@@ -490,7 +490,7 @@ Utils.prototype.generateMentor = function (resultMentor) {
 Utils.prototype.addPosts =function(Post)
 {
     var sqlInsertPost = "INSERT INTO posts (postId,postauthor,postheading,postbody) VALUES ("+
-        "'"+Post.postId +"',"+
+        "NULL,"+
         "'"+Post.postauthor +"',"+
         "'"+Post.postheading +"',"+
         "'"+Post.postbody +"')";
@@ -513,7 +513,7 @@ Utils.prototype.updatePosts =function(Post)
 //select all posts
 
 Utils.prototype.selectPosts =function(){
-    var selectSqlPost = "SELECT * FROM Post";
+    var selectSqlPost = "SELECT * FROM Posts";
 
     return selectSqlPost;
 }
@@ -527,7 +527,7 @@ Utils.prototype.deletePost =function(Post){
 
 /* insert reply */
 Utils.prototype.insertReply =function(reply){
-    var insertreply ="INSERT INTO postsreply VALUES("+reply.replyId+","+reply.postId+",'"+reply.author+"','"+reply.body+"')";
+    var insertreply ="INSERT INTO postsreply VALUES(NULL"+","+reply.postId+",'"+reply.author+"','"+reply.body+"')";
 
     return insertreply;
 

@@ -6,15 +6,17 @@ input,textarea{
   background: none;
   border-bottom: 1px solid #414a59 !important;
   border: 0;
-  color: aliceblue
+  color: black;
 }
 input[type='submit'] {
-  background-color:#ffcc00;
+  background-color:lightblue;
   cursor:pointer;
   color:#000;
   font-weight:bold;
   margin-bottom:50px;
   padding:20px;
+  border-color: #000;
+  margin: 10px;
 }
 
 ul {
@@ -23,11 +25,14 @@ ul {
   margin:0;padding:0;
 }
 ul li {
-  background-color:#ffcc00;
+  background-color:#2c2b29d3;
   padding:20px;
   margin-bottom:2px;
-  color:#151618;
+  color:#8f949ee8;
   text-emphasis-color: rgb(78, 78, 78);
+  border: 2px solid black;
+  padding: 10px;
+  border-radius: 25px;
 }
 ul li a {
   color:#ffcc00;
