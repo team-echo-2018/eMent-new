@@ -1,14 +1,38 @@
 <!-- navbar -->
 <div class="topnav" id="myTopnav">
-    <a href="projects" class="active">projects</a>
-    <a href="forum">Forum</a>
-    <a href="messaging">messaging</a>
-    <a href="features">Features</a>
-    <a href="profile">profile</a>
-    <a href="login"></a>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-      <i class="fa fa-bars"></i>
-    </a>
+    <ul class="navbar-nav flex-column">
+        <li class="nav-divider">
+            Menu
+        </li>
+        <li class="nav-item ">
+            <div class="col-lg-3 p-0 dropdown">
+                <app-nav-item class="p-0" _itemName="Projects" [routerLink]="['/projects']" routerLinkActive="router-link-active" ></app-nav-item>
+            </div>
+        </li>
+        <li class="nav-item">
+            <div class="col-lg-3 p-0 dropdown">
+                <app-nav-item class="p-0" _itemName="Messaging" [routerLink]="['/messaging']" routerLinkActive="router-link-active" ></app-nav-item>
+                <div class="dropdown-content w-100">
+                  <app-nav-item class="p-0 bg-color" _itemName="Forum" [routerLink]="['/forum']" routerLinkActive="router-link-active" ></app-nav-item>
+                </div>
+              </div>
+        </li>
+        <li class="nav-item">
+            <div class="col-lg-3 p-0 dropdown">
+                <app-nav-item class="p-0" _itemName="Features" [routerLink]="['/features']" routerLinkActive="router-link-active"></app-nav-item>
+            </div>
+        </li>
+        <li class="nav-item ">
+            <div class="col-lg-3 p-0 dropdown">
+                <app-nav-item class="p-0" _itemName="Profile" [routerLink]="['/profile']" routerLinkActive="router-link-active" ></app-nav-item>
+                <div class="dropdown-content w-100">
+                  <app-nav-item class="p-0 bg-color" _itemName="About Us" [routerLink]="['/about-us']" routerLinkActive="router-link-active" ></app-nav-item>
+                  <app-nav-item class="p-0 bg-color" _itemName="Help" [routerLink]="['/help']" routerLinkActive="router-link-active" ></app-nav-item>
+                  <app-nav-item class="p-0 bg-color" _itemName="Log Out" (click)="logout()"></app-nav-item>
+                </div>
+            </div>
+        </li>
+    </ul>
   </div>
 <!-- end navbar -->
 

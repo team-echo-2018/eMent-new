@@ -88,5 +88,8 @@ body {
     width: 100%;
     text-align: left;
   }
+  .navbar-nav flex-column{
+    display: inline;
+  }
 }
 
