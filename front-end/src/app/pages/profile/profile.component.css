@@ -2,3 +2,24 @@
     background: url('../../../assets/img/cover.jpg');
     background-size: cover;
 }
+
+input{
+    outline: none;
+    border: none;
+    background-color: white;
+}
+
+input[type=file]{ 
+    color:transparent;
+    border: none;
+    outline: none;
+}
+
+.form-control {
+    background-color: white;
+}
+
+.text-large {
+    font-size: 36px;
+    font-weight: bold;
+}
