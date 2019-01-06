@@ -25,13 +25,12 @@
       <i *ngFor="let star of stars" class="fa fa-fw fa-star"></i>
     </div>
   </div>
-  <div class="card-body border-top">
+  <div *ngIf="isSachintha()" class="card-body border-top">
     <h3 class="font-16">Social Channels</h3>
     <div class="">
       <ul class="mb-0 list-unstyled">
-        <li class="mb-1"><a href="#"><i class="fab fa-fw fa-facebook-square mr-1 facebook-color"></i>fb.me/michaelchristy</a></li>
-        <li class="mb-1"><a href="#"><i class="fab fa-fw fa-twitter-square mr-1 twitter-color"></i>twitter.com/michaelchristy</a></li>
-        <li class="mb-1"><a href="#"><i class="fab fa-fw fa-instagram mr-1 instagram-color"></i>instagram.com/michaelchristy</a></li>
+        <li class="mb-1"><a href="#"><i class="fab fa-fw fa-github-square mr-1 github-color"></i>github.com/RavinduSachintha</a></li>
+        <li class="mb-1"><a href="#"><i class="fab fa-fw fa-twitter-square mr-1 twitter-color"></i>twitter.com/RavinduSachintha</a></li>
       </ul>
     </div>
   </div>
