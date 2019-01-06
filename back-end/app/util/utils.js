@@ -491,8 +491,8 @@ Utils.prototype.addPosts =function(Post)
 {
     var sqlInsertPost = "INSERT INTO posts (postId,postauthor,postheading,postbody) VALUES ("+
         "NULL,"+
-        "'"+Post.postauthor +"',"+
-        "'"+Post.postheading +"',"+
+        "'"+Post.postAuthor +"',"+
+        "'"+Post.posttitle +"',"+
         "'"+Post.postbody +"')";
     return sqlInsertPost;
 }
@@ -527,7 +527,7 @@ Utils.prototype.deletePost =function(Post){
 
 /* insert reply */
 Utils.prototype.insertReply =function(reply){
-    var insertreply ="INSERT INTO postsreply VALUES(NULL"+","+reply.postId+",'"+reply.author+"','"+reply.body+"')";
+    var insertreply ="INSERT INTO postsreply VALUES(NULL"+","+reply.postId+",'"+reply.Author+"','"+reply.body+"')";
 
     return insertreply;
 

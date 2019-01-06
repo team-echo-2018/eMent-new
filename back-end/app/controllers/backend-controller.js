@@ -557,16 +557,9 @@ BackendController.prototype.insertReply = function (req, callback) {
 BackendController.prototype.insertPost = function (req, callback) {
     //console.log(req);
 
-    const post = new Post(
-        req.postId,
-        req.postAuthor,
-        req.posttitle,
-        req.postbody
-    );
-
     var daoMsql = new DAOMySql();
 
-    daoMsql.insertPost(post, function (req, err) {
+    daoMsql.insertsPosts(req, function (result, err) {
         if (err || !result) {
             console.log("error in inserting post");
             callback(null, err);
