@@ -16,9 +16,5 @@ getTestBed().initTestEnvironment(
 );
 // Then we find all the tests.
 const context = require.context('./', true, /login\.component\.spec\.ts$/);
-<<<<<<< HEAD
-=======
-
->>>>>>> 62be9f3c4736ba6132b7131872167679dd9287cf
 // And load the modules.
 context.keys().map(context);
