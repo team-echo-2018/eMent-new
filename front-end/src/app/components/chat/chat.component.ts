@@ -97,6 +97,8 @@ export class ChatComponent implements OnInit {
 
 
     this.afs.collection('messages').add({'message':this.message,'recieverID':this.recieverid,'senderID':this.owner});
+    //comment before code review
+    this.afs.collection('messages').add({'message':this.message,'recieverID':this.owner,'senderID':this.recieverid});
 
 
     if(!duplicates){
