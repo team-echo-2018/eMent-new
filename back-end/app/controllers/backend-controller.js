@@ -65,6 +65,24 @@ BackendController.prototype.insertStudent = function (req, callback) {
         }
     })
 }
+/** DELETE STUDENT */
+BackendController.prototype.deleteStudent = function (req, callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.deleteStudent(req, function (result, err) {
+        console.log("connecting to database and deleting student"+result);
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            console.log("student deleted");
+            
+            callback(result);
+        }
+    });
+}
+
 
 
 /* User Authentcation function */

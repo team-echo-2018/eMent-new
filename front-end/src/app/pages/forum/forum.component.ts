@@ -73,12 +73,14 @@ export class ForumComponent implements OnInit {
     }
 
     addreply(pst:Posts){
-      const reply =new Postreply();
-      reply.Author=this.author;
-      reply.replyid=this.postreply;
-      reply.postId =pst.postId;
-      this.postsreply.push(reply);
-      this.postService.InsertReplys(reply);
+      const rep =new Postreply();
+      rep.Author=this.author;
+      rep.body=this.postreply;
+      rep.replyid=null;
+      rep.postId =pst.postId;
+      console.log(rep.body);
+      this.postsreply.push(rep);
+      this.postService.InsertReplys(rep);
 
     }
 

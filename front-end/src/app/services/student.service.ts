@@ -46,4 +46,15 @@ export class StudentService {
         (err) => alert('Error occured.. Contact Administrations!')
       );
   }
+  deleteStudent(student:Student){
+    console.log("delete student called on "+student.studentId);
+
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.DELSTUDENT,student).subscribe(
+      (result)=>{
+        console.log(result);
+
+      },
+      (err)=>alert("cannot delete student"+err)
+    );
+  }
 }
