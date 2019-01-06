@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { UploadFileService } from '../../services/upload-file.service';
 import { HttpEnum } from '../../utils/httpEnum';
 import { HttpResponse } from '@angular/common/http';
+import { User } from '../../entities/user';
+import { Student } from '../../entities/student';
+import { UserService } from '../../services/user.service';
+import { AuthenticationService } from '../../services/authentication.service';
+import { StudentService } from '../../services/student.service';
+import { Auth } from '../../entities/auth';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,11 +24,22 @@ export class SignUpComponent implements OnInit {
   image: string;
   description: string;
 
+  usertype: string;
+  username: string;
+  password: string;
+  confirm: string;
+
+  // typeStudent: string;
+  // typeMentor: string;
+  // typeCompanyAdmin: string;
+
   selectedFiles: FileList;
   currentFileUpload: File;
   imageAddress: string;
 
-  constructor(private uploadService: UploadFileService) { }
+  constructor(private uploadService: UploadFileService,
+    private userService: UserService, private authService: AuthenticationService,
+    private studentService: StudentService) { }
 
   ngOnInit() {
     this.image = "default.jpg";
@@ -30,6 +47,16 @@ export class SignUpComponent implements OnInit {
   }
 
   submitForm() {
+    let unm = this.userService.insertUser(this.createUser());
+    let auth = new Auth(this.username,this.password);
+
+    let student = this.createStudent();
+    this.authService.getLoggingUser(auth);
+    
+    
+    student.setId(this.authService.getUser().userId);
+    console.log(student);
+    this.studentService.insertStudent(student);
     
   }
 
@@ -62,5 +89,31 @@ export class SignUpComponent implements OnInit {
   //   User.setDescription(this.description);
   //   return User;
   // }
+
+  createUser() {
+    let user = new User();
+    user.userName = this.username;
+    user.userPassword = this.password;
+    user.userType = this.usertype;
+    return user;
+  }
+
+  createStudent() {
+    let student = new Student();
+    student.setFirstName(this.fname);
+    student.setLastName(this.lname);
+    student.setAddress(this.address);
+    student.setEmail(this.email);
+    student.setPhone(this.phone);
+    student.setImgLink(this.image);
+    student.setDescription(this.description);
+    return student;
+  }
+
+  
+
+  setUserType(type) {
+    this.usertype = type;
+  }
 
 }

@@ -22,7 +22,21 @@ var backendController = new BackendController();
 
 // not used yet...
 router.route('/addUser').post(function (req, res) {
-    backendController.insert(req.body, function (result, error) {
+    backendController.insertUser(req.body, function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.json(result);
+        }
+    });
+});
+
+// not used yet...
+router.route('/student/addStudent').post(function (req, res) {
+    console.log(req.body);
+    backendController.insertStudent(req.body, function (result, error) {
+        
         if (error) {
             res.status(404);
             res.send(error);

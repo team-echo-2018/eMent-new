@@ -23,7 +23,6 @@ export class UserService {
   }
 
   setCurrentUser (loggedUser: User ,user: Object) {
-    console.log(user);
     switch(loggedUser.userType){
       case 'S':
         this.setUserForStudent(user);
@@ -40,6 +39,18 @@ export class UserService {
 
   private setUserForMentor(curMentor: Object) {
     this.currentUser = Utils.convertDatabaseMentorToMentor(curMentor);
+  }
+
+  insertUser(user){
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.ADDUSER, user)
+    .subscribe(
+      (result) => {
+        return result;
+      },
+      (err) => alert('Error occured.. Contact Administrations!')
+      // Verificar erro backend > (err) => alert('Ocorreu um erro: ' + err)
+    );
+
   }
 
   updateCurrentUserDetails(loggedUser: User ,user: any) {
