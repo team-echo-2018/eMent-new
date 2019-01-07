@@ -36,7 +36,7 @@ router.route('/addUser').post(function (req, res) {
 router.route('/student/addStudent').post(function (req, res) {
     console.log(req.body);
     backendController.insertStudent(req.body, function (result, error) {
-        
+
         if (error) {
             res.status(404);
             res.send(error);
@@ -88,7 +88,7 @@ router.route('/profile').post(function (req, res) {
 /* Router for update user profile */
 router.route('/profile/update').post(function (req, res) {
     if (req.body.studentId) {
-        
+
         backendController.updateStudent(req.body, function (result, error) {
             if (error) {
                 res.status(404);
@@ -150,7 +150,7 @@ router.route('/student/getall').post(function (req, res) {
 /** delete student */
 router.route('/student/deleteStudent').post(function (req, res) {
     console.log(req.body);
-    
+
     backendController.deleteStudent(req.body, function (result, error) {
         if (!result) {
             res.status(404);
@@ -172,7 +172,7 @@ router.route('/student/deleteStudent').post(function (req, res) {
 router.route('/posts/getPost').post(function (req, res) {
     backendController.getPosts(req.body, function (result, error) {
         console.log(result);
-        
+
         if (error) {
             res.status(404);
             res.send(error);
@@ -187,10 +187,10 @@ router.route('/posts/getPost').post(function (req, res) {
 
 router.route('/posts/getPostReply').post(function (req, res) {
     console.log("route for replys called");
-    
+
     backendController.getreplyPosts(req.body, function (result, error) {
         console.log(result);
-        
+
         if (error) {
             res.status(404);
             res.send(error);
@@ -263,6 +263,31 @@ router.route('/posts/insertPost').post(function (req, res) {
 
 /* Router for file uploading */
 router.route('/file/upload').post(upload.single("file"), fileWorker.uploadFile);
+
+
+/* Router for getting project idea by idea id*/
+router.route('/projectideas/get/id').post(function (req, res) {
+    backendController.getProjectIdea(req.body, function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.json(result);
+        }
+    });
+});
+
+/* Router for inserting project idea */
+router.route('/projectideas/addIdea').post(function (req, res) {
+    backendController.insertProjectIdea(req.body, function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.json(result);
+        }
+    });
+});
 
 
 module.exports = router;

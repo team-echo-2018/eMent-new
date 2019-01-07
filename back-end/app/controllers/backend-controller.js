@@ -71,13 +71,13 @@ BackendController.prototype.deleteStudent = function (req, callback) {
     var daoMsql = new DAOMySql();
 
     daoMsql.deleteStudent(req, function (result, err) {
-        console.log("connecting to database and deleting student"+result);
+        console.log("connecting to database and deleting student" + result);
         if (err || !result) {
             console.log("** error or no result");
             callback(null, err);
         } else {
             console.log("student deleted");
-            
+
             callback(result);
         }
     });
@@ -446,6 +446,7 @@ BackendController.prototype.updateProjectIdea = function (req, callback) {
 
 
 
+
 // Skill Object related functions ..............................................................
 // Get skill by id object from DB model
 BackendController.prototype.getSkill = function (req, callback) {
@@ -645,6 +646,27 @@ BackendController.prototype.updatePost = function (req, callback) {
             }
         })
     }
+}
+
+/* insert project idea */
+
+BackendController.prototype.insertProjectIdea = function (req, callback) {
+
+    var projectidea = new ProjectIdea(0,
+        req.ideaName,
+        req.ideaDescription,
+        req.ideaOwner,
+        req.ideaCategory);
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.insertProjectIdea(projectidea, function (result, err) {
+        if (err) {
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    })
 }
 
 module.exports = BackendController;
