@@ -586,10 +586,10 @@ Utils.prototype.generateProjectIdea = function (resultProjectIdea) {
     var projectIdea = null;
     if (resultProjectIdea) {
         projectIdea = new ProjectIdea(
-            resultProjectIdea.projectIdeaId,
-            resultProjectIdea.projectIdeaDate,
-            resultProjectIdea.projectIdeaOwner,
-            resultProjectIdea.projectIdeaCategory);
+            resultProjectIdea.idea_id,
+            resultProjectIdea.date,
+            resultProjectIdea.owner,
+            resultProjectIdea.category);
     }
     return projectIdea;
 };
