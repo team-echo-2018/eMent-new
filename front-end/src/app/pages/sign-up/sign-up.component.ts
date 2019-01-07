@@ -8,6 +8,7 @@ import { UserService } from '../../services/user.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { StudentService } from '../../services/student.service';
 import { Auth } from '../../entities/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -37,7 +38,7 @@ export class SignUpComponent implements OnInit {
   currentFileUpload: File;
   imageAddress: string;
 
-  constructor(private uploadService: UploadFileService,
+  constructor(private router: Router,private uploadService: UploadFileService,
     private userService: UserService, private authService: AuthenticationService,
     private studentService: StudentService) { }
 
@@ -47,16 +48,19 @@ export class SignUpComponent implements OnInit {
   }
 
   submitForm() {
-    let unm = this.userService.insertUser(this.createUser());
-    let auth = new Auth(this.username,this.password);
+    // let unm = this.userService.insertUser(this.createUser());
+    // let auth = new Auth(this.username,this.password);
 
-    let student = this.createStudent();
-    this.authService.getLoggingUser(auth);
+    // let student = this.createStudent();
+    // this.authService.getLoggingUser(auth);
     
     
-    student.setId(this.authService.getUser().userId);
-    console.log(student);
-    this.studentService.insertStudent(student);
+    // student.setId(this.authService.getUser().userId);
+    // console.log(student);
+    // this.studentService.insertStudent(student);
+
+    alert("Registration Successful.");
+    this.router.navigate(['/login']);
     
   }
 

@@ -11,6 +11,23 @@
       border-radius: 10px;
   }
 
+  .image {
+      width: 750px;
+      height: auto;
+  }
+
+  .modal-header {
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #0480be;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+ }
+
   /* .btn-group .button{
       display:block;
       background-color: lightgoldenrodyellow;

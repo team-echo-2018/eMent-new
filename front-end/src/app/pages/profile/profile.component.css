@@ -23,3 +23,9 @@ input[type=file]{
     font-size: 36px;
     font-weight: bold;
 }
+
+#selectedFile {
+    box-shadow: none;
+    border: none;
+    outline: none;
+}

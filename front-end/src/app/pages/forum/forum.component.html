@@ -1,79 +1,78 @@
 <!-- Add the app header section -->
 <app-header></app-header>
 
-<!--stylesheets and resources -->
+stylesheets and resources
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!--global styles-->
+global styles
 <style>
-html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
+  html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 </style>
 
-<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px"> </div>
-<div class="col-lg-10 col-md-10 offset-lg-1 offset-md-10 my-5 pb-3 page-box">
-  <body class="w3-theme-l5">
-    <div class="w3-col m7">
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+  <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-10 my-5 pb-3 page-box">
+      <div class="w3-col m7">
 
-     <div class="w3-row-padding">
-       <div class="w3-col m12">
-         <div class="w3-card w3-round w3-white">
-           <div class="w3-container w3-padding">
-             <h4 class="w3-opacity">Welcome to the ement Forum</h4>
-             <div class="w3-container w3-padding" style="align-self:left;" class="sender-msg-list" style="width: 50%;height: 100%;padding: 10px">
-              <input style="border-right: 400px; padding: 10px; width: 400px" type="text" [(ngModel)]="Postheading"  placeholder="Post heading ">
-              <input style="border-right: 400px; padding: 10px; width: 400px" type="text" [(ngModel)]="postbody"  placeholder="Enter postbody">
-              <button type="button" class="w3-button w3-theme" (click)="addpost()"><i class="fa fa-pencil"></i>  Post</button>
+        <div class="w3-row-padding">
+          <div class="w3-col m12">
+            <div class="w3-card w3-round w3-white">
+              <div class="w3-container w3-padding">
+                <h4 class="w3-opacity">Welcome to the ement Forum</h4>
+                <div class="w3-container w3-padding" style="align-self:left;" class="sender-msg-list" style="width: 50%;height: 100%;padding: 10px">
+                  <input style="border-right: 400px; padding: 10px; width: 400px" type="text" [(ngModel)]="Postheading"
+                    placeholder="Post heading ">
+                  <input style="border-right: 400px; padding: 10px; width: 400px" type="text" [(ngModel)]="postbody"
+                    placeholder="Enter postbody">
+                  <button type="button" class="w3-button w3-theme" (click)="addpost()"><i class="fa fa-pencil"></i>
+                    Post</button>
+                </div>
+              </div>
             </div>
-           </div>
-         </div>
-       </div>
-     </div>
-     <div *ngFor="let post of posts">
-      <div class="w3-container w3-card w3-white w3-round w3-margin">
-        <br>
-        <img src="../../../assets/img/default.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+          </div>
+        </div>
+        <div *ngFor="let post of posts">
+          <div class="w3-container w3-card w3-white w3-round w3-margin">
+            <br>
+            <img src="../../../assets/img/default.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
 
-        <h4>{{post.postAuthor}}</h4>
-        <br>
-        <h5>{{post.posttitle}}</h5>
-        <hr class="w3-clear">
-        <p>{{post.postbody}}</p>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" (click)="writecomment(post)"><i class="fa fa-thumbs-up"></i> Reply</button>
+            <h4>{{post.postAuthor}}</h4>
+            <br>
+            <h5>{{post.posttitle}}</h5>
+            <hr class="w3-clear">
+            <p>{{post.postbody}}</p>
+            <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" (click)="writecomment(post)"><i class="fa fa-thumbs-up"></i>
+              Reply</button>
 
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" (click)="comments(post)"><i class="fa fa-comment"></i> Read Comments</button>
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" (click)="deleteposts(post)" *ngIf="type"><i class="fa fa-comment"></i> Delete comment</button>
+            <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" (click)="comments(post)"><i class="fa fa-comment"></i>
+              Read Comments</button>
+            <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" (click)="deleteposts(post)" *ngIf="type"><i
+                class="fa fa-comment"></i> Delete comment</button>
 
-        <div *ngIf="hiddenwrite">
-         <div class="w3-container w3-padding">
-           <h6 class="w3-opacity">Welcome to the ement Forum</h6>
-           <input type="text" [(ngModel)]="postreply"  placeholder="Enter comment">
-           <button type="button" class="w3-button w3-theme" (click)="addreply(post)"><i class="fa fa-pencil"></i>  Post</button>
-         </div>
-       </div>
-        <div *ngIf="hidden">
-           <ul *ngFor="let reply of postsreply ">
-             <li>
-               <h6>{{reply.Author}}</h6>
-               <p>{{reply.body}}</p>
-             </li>
-           </ul>
-         </div>
-       </div>
-
-     </div>
-
+            <div *ngIf="hiddenwrite">
+              <div class="w3-container w3-padding">
+                <h6 class="w3-opacity">Welcome to the ement Forum</h6>
+                <input type="text" [(ngModel)]="postreply" placeholder="Enter comment">
+                <button type="button" class="w3-button w3-theme" (click)="addreply(post)"><i class="fa fa-pencil"></i>
+                  Post</button>
+              </div>
+            </div>
+            <div *ngIf="hidden">
+              <ul *ngFor="let reply of postsreply ">
+                <li>
+                  <h6>{{reply.Author}}</h6>
+                  <p>{{reply.body}}</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
 
 </div>
-</body>
-</div>
 
-
-
-<!-- Add the app footer section -->
-
-<app-footer></app-footer>
 <!-- Add the app footer section -->
 
 <app-footer></app-footer>

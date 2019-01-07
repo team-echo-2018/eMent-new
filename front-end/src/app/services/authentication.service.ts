@@ -68,7 +68,7 @@ export class AuthenticationService {
     .subscribe(
       (result) => {
         if (result === null) {
-          alert('error.');
+          // alert('error.');
         } else {
           this.userService.setCurrentUser(this.userAuth ,result);
         }

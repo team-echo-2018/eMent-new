@@ -33,24 +33,43 @@ export class ProDescComponent implements OnInit {
     this.authService.isUserLogged();
 
     // if user is logged, get the current user
-    this.user = this.userService.getCurrentUser();
-    // console.log(this.user);
+    if (this.authService.getUser().userName != "Janaka") {
+      this.user = this.userService.getCurrentUser();
 
-    this.fname = this.user.getFirstName();
-    this.lname = this.user.getLastName();
-    this.address = this.user.getAddress();
-    this.email = this.user.getEmail();
-    this.phone = this.user.getPhone();
-    this.image = this.user.getImgLink();
-    if (this.image == null || this.image == "") {
-      this.image = "default.jpg";
+      this.fname = this.user.getFirstName();
+      this.lname = this.user.getLastName();
+      this.address = this.user.getAddress();
+      this.email = this.user.getEmail();
+      this.phone = this.user.getPhone();
+      this.image = this.user.getImgLink();
+      if (this.image == null || this.image == "") {
+        this.image = "default.jpg";
+      }
+      this.description = this.user.getDescription();
+
+      this.imageAddress = HttpEnum.BASEURL + this.image;
+
+      this.rating = 4.8;
+      this.stars = Array(Math.round(this.rating));
+    } else {
+      this.fname = this.userService.sp_student1.getFirstName();
+      this.lname = this.userService.sp_student1.getLastName();
+      this.address = this.userService.sp_student1.getAddress();
+      this.email = this.userService.sp_student1.getEmail();
+      this.phone = this.userService.sp_student1.getPhone();
+      this.image = this.userService.sp_student1.getImgLink();
+      if (this.image == null || this.image == "") {
+        this.image = "default.jpg";
+      }
+      this.description = this.userService.sp_student1.getDescription();
+
+      this.imageAddress = HttpEnum.BASEURL + this.image;
     }
-    this.description = this.user.getDescription();
+    // console.log(this.user);
+  }
 
-    this.imageAddress = HttpEnum.BASEURL + this.image;
-
-    this.rating = 4.8;
-    this.stars = Array(Math.round(this.rating));
+  isSachintha() {
+    return this.authService.getUser().userName == "Sachintha";
   }
 
 }

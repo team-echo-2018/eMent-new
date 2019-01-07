@@ -11,20 +11,27 @@
         Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
     </div>
 
-    <div class="row product-size border-bottom">
-      <button type="button" class="col-lg-6 col-md-6 col-sm-12 btn btn-primary">Project Idea</button>
-      <p class="col-lg-6 col-md-6 col-sm-12">Idea Owner : Student 01</p>
+    <div class="product-size border-bottom">
+      <div class="row">
+        <button type="button" class="col-lg-6 col-md-6 col-sm-12 btn btn-info">Project Idea</button>
+        <p class="col-lg-6 col-md-6 col-sm-12 mt-2 text-center"> <b>Idea Owner : Student 01</b></p>
+      </div>
     </div>
 
     <div class="product-colors border-bottom">
-      <h4>Team</h4>
+      <h4>Project Team</h4>
       <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12">
-          <h6>Mentors</h6>
+        <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+          <h5><u>Mentors</u></h5>
+          <li>mentor 1</li>
           <li>mentor 1</li>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12">
-          <h6>Students</h6>
+        <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+          <h5><u>Students</u></h5>
+          <li>student 1</li>
+          <li>student 1</li>
+          <li>student 1</li>
+          <li>student 1</li>
           <li>student 1</li>
         </div>
       </div>
@@ -34,18 +41,42 @@
       <h4>Time Schedule</h4>
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12">
-          <p>Starting Date</p>
+          <p><b>Starting Date :</b> 01-01-2018 </p>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12">
-          <p>Ending Date</p>
+          <p><b>Ending Date :</b> 01-07-2018 </p>
         </div>
       </div>
     </div>
 
     <div class="product-colors border-bottom">
-      <h4>Project Links</h4>
-      <li><a href="">GitHub Project Repository</a></li>
-      <li><a href="">GitHub Project Issue List</a></li>
+      <div class="row">
+        <div class="col-6">
+          <h4>Project Links</h4>
+          <li><a href="">GitHub Project Repository</a></li>
+          <li><a href="">GitHub Project Issue List</a></li>
+        </div>
+        <div class="col-6 pt-4">
+          <button class="btn btn-block btn-secondary" data-toggle="modal" data-target="#myModal">Task Schedule</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Task Scheduler</h4>
+      </div>
+      <div class="modal-body ml-2">
+        <img src="../../../assets/img/tscheduler.PNG" class="image mx-auto">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
 </div>

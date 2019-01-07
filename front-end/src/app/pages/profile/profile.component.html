@@ -70,7 +70,7 @@
               <div *ngIf="!editable">
                 <span class="align-bottom">
                   <label class="btn btn-default">
-                    <input type="file" (change)="selectFile($event)">
+                    <input type="file" id="selectedFile" (change)="selectFile($event)">
                   </label>
                   <button class="btn btn-success" [disabled]="!selectedFiles" (click)="uploadFile()">Upload</button>
                 </span>
@@ -82,11 +82,13 @@
               <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 col-12">
                 <div class="user-avatar-info">
                   <div class="m-b-20 border-bottom pb-3">
-                    <div class="user-avatar-name">
-                        <input [(ngModel)]="fname" name="fname" type="text" placeholder="First Name" class="form-control mb-1 text-large" [disabled]="editable" />
-                        <input [(ngModel)]="lname" name="lname" type="text" placeholder="Last Name" class="form-control mb-1 text-large" [disabled]="editable" />
+                    <div class="user-avatar-name border-bottom mb-2">
+                      <input [(ngModel)]="fname" name="fname" type="text" placeholder="First Name" class="form-control mb-1 text-large"
+                        [disabled]="editable" />
+                      <input [(ngModel)]="lname" name="lname" type="text" placeholder="Last Name" class="form-control mb-1 text-large"
+                        [disabled]="editable" />
                     </div>
-                    <div class="rating-star  d-inline-block">
+                    <div *ngIf="!isJanaka()" class="rating-star  d-inline-block">
                       <i class="fa fa-fw fa-star"></i>
                       <i class="fa fa-fw fa-star"></i>
                       <i class="fa fa-fw fa-star"></i>
@@ -97,19 +99,23 @@
                   </div>
 
                   <div class="user-avatar-address">
-                      <h5>Contact Details</h5>
+                    <h5>Contact Details</h5>
                     <p class="border-bottom pb-3">
-                        <input [(ngModel)]="address" name="address" placeholder="Address" type="text" class="form-control mb-1" [disabled]="editable" />
-                        <input [(ngModel)]="email" name="email" placeholder="Email" type="text" class="form-control mb-1" [disabled]="editable" />
-                        <input [(ngModel)]="phone" name="phone" placeholder="Phone Number" type="text" class="form-control" [disabled]="editable" />
+                      <input [(ngModel)]="address" name="address" placeholder="Address" type="text" class="form-control mb-1"
+                        [disabled]="editable" />
+                      <input [(ngModel)]="email" name="email" placeholder="Email" type="text" class="form-control mb-1"
+                        [disabled]="editable" />
+                      <input [(ngModel)]="phone" name="phone" placeholder="Phone Number" type="text" class="form-control"
+                        [disabled]="editable" />
                     </p>
                     <div class="mt-3">
                       <h5>Status</h5>
-                        <input [(ngModel)]="description" name="description" placeholder="Status" type="text" class="form-control" [disabled]="editable" />
+                      <input [(ngModel)]="description" name="description" placeholder="Status" type="text" class="form-control"
+                        [disabled]="editable" />
                     </div>
 
                     <div class="mt-3">
-                        <button type="submit" class="btn btn-primary w-25">{{btnCaption}}</button>
+                      <button type="submit" class="btn btn-primary w-25">{{btnCaption}}</button>
                     </div>
 
                   </div>
@@ -123,90 +129,29 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-      <div class="card">
-        <div class="card-body">
-          <div class="d-inline-block">
-            <h5 class="text-muted">Total Views</h5>
-            <h2 class="mb-0"> 10,28,056</h2>
-          </div>
-          <div class="float-right icon-circle-medium  icon-box-lg  bg-info-light mt-1">
-            <i class="fa fa-eye fa-fw fa-sm text-info"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- ============================================================== -->
-    <!-- end total views   -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- total followers   -->
-    <!-- ============================================================== -->
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-      <div class="card">
-        <div class="card-body">
-          <div class="d-inline-block">
-            <h5 class="text-muted">Total Followers</h5>
-            <h2 class="mb-0"> 24,763</h2>
-          </div>
-          <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
-            <i class="fa fa-user fa-fw fa-sm text-primary"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- ============================================================== -->
-    <!-- end total followers   -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- partnerships   -->
-    <!-- ============================================================== -->
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-      <div class="card">
-        <div class="card-body">
-          <div class="d-inline-block">
-            <h5 class="text-muted">Partnerships</h5>
-            <h2 class="mb-0">14</h2>
-          </div>
-          <div class="float-right icon-circle-medium  icon-box-lg  bg-secondary-light mt-1">
-            <i class="fa fa-handshake fa-fw fa-sm text-secondary"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- ============================================================== -->
-    <!-- end partnerships   -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- total earned   -->
-    <!-- ============================================================== -->
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-      <div class="card">
-        <div class="card-body">
-          <div class="d-inline-block">
-            <h5 class="text-muted">Total Earned</h5>
-            <h2 class="mb-0"> $149.00</h2>
-          </div>
-          <div class="float-right icon-circle-medium  icon-box-lg  bg-brand-light mt-1">
-            <i class="fa fa-money-bill-alt fa-fw fa-sm text-brand"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- ============================================================== -->
-    <!-- end total earned   -->
-    <!-- ============================================================== -->
-  </div>
-
-  <div class="row">
+  <div *ngIf="isJanaka()" class="row">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
       <div class="card">
+        <div class="card-body">
+          <button class="btn btn-primary btn-block">Add Skills Details</button>
+          <button class="btn btn-primary btn-block">Add Educational Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!isJanaka()" class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <div class="card">
+        <div class="card-header h2">
+          Reviews & Recommendations
+        </div>
         <div class="card-body">
           <div class="review-block">
             <p class="review-text font-italic m-0">“Vestibulum cursus felis vel arcu convallis, viverra commodo felis
               bibendum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin
-              non auctor est, sed lacinia velit. Orci varius natoque penatibus et magnis dis parturient montes nascetur
+              non auctor est, sed lacinia velit. Orci varius natoque penatibus et magnis dis parturient montes
+              nascetur
               ridiculus mus.”</p>
             <div class="rating-star mb-4">
               <i class="fa fa-fw fa-star"></i>
@@ -220,7 +165,8 @@
           </div>
           <div class="review-block border-top mt-3 pt-3">
             <p class="review-text font-italic m-0">“Integer pretium laoreet mi ultrices tincidunt. Suspendisse eget
-              risus nec sapien malesuada ullamcorper eu ac sapien. Maecenas nulla orci, varius ac tincidunt non, ornare
+              risus nec sapien malesuada ullamcorper eu ac sapien. Maecenas nulla orci, varius ac tincidunt non,
+              ornare
               a sem. Aliquam sed massa volutpat, aliquet nibh sit amet, tincidunt ex. Donec interdum pharetra
               dignissim.”</p>
             <div class="rating-star mb-4">
@@ -234,7 +180,8 @@
           </div>
           <div class="review-block  border-top mt-3 pt-3">
             <p class="review-text font-italic m-0">“ Cras non rutrum neque. Sed lacinia ex elit, vel viverra nisl
-              faucibus eu. Aenean faucibus neque vestibulum condimentum maximus. In id porttitor nisi. Quisque sit amet
+              faucibus eu. Aenean faucibus neque vestibulum condimentum maximus. In id porttitor nisi. Quisque sit
+              amet
               commodo arcu, cursus pharetra elit. Nam tincidunt lobortis augueat euismod ante sodales non. ”</p>
             <div class="rating-star mb-4">
               <i class="fa fa-fw fa-star"></i>
@@ -243,7 +190,8 @@
               <i class="fa fa-fw fa-star"></i>
               <i class="fa fa-fw fa-star"></i>
             </div>
-            <span class="text-dark font-weight-bold">Gloria S. Castillo</span><small class="text-mute"> (Company name)</small>
+            <span class="text-dark font-weight-bold">Gloria S. Castillo</span><small class="text-mute"> (Company
+              name)</small>
           </div>
         </div>
       </div>
