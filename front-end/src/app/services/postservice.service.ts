@@ -99,7 +99,7 @@ export class PostserviceService {
         console.log(this.replylist);
 
       },
-      (err) => alert('getting Posts error occured.. !')
+      //(err) => alert('getting Posts error occured.. !')
     )
     return this.replylist;
   }
@@ -135,7 +135,7 @@ export class PostserviceService {
         console.log("error in inserting replys to system");
 
       },
-      (err)=>alert("inserted reply"+err)
+      //(err)=>alert("inserted reply"+err)
 
     )
   }
