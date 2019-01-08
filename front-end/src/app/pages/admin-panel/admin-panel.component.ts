@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef  } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { CompanyService } from '../../services/company.service';
 import { Company } from '../../entities/company';
@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-admin-panel',
   templateUrl: './admin-panel.component.html',
-  styleUrls: ['./admin-panel.component.css']
+  styleUrls: ['./admin-panel.component.css'],
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class AdminPanelComponent implements OnInit {
 
@@ -28,7 +29,8 @@ export class AdminPanelComponent implements OnInit {
 
   constructor(private authService: AuthenticationService,
     private companyService: CompanyService, private mentorService: MentorService,
-    private studentService: StudentService, private router: Router) { }
+    private studentService: StudentService, private router: Router,
+    private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.activateDashboard();
@@ -40,6 +42,7 @@ export class AdminPanelComponent implements OnInit {
     this.companyList = this.companyService.companiesList;
     this.mentorList = this.mentorService.mentorsList;
     this.studentList = this.studentService.studentsList;
+    this.cd.detectChanges();
   }
 
   // page contents managing functions
@@ -89,13 +92,12 @@ export class AdminPanelComponent implements OnInit {
   }
 
 
-  deleteStudent(std: Student) {
+  deleteUser(std: Student) {
     this.studentService.deleteStudent(std);
-    this.studentService.getStudents();    
+    this.studentService.getStudents();
     this.studentList = this.studentService.studentsList;
-    this.router.navigate(['/admin-panel']);
+    this.cd.detectChanges();
   }
-
 
   // logout funtion
   logout() {
