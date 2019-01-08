@@ -3,6 +3,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { Posts } from '../../entities/posts';
 import { Postreply } from '../../entities/postreply';
 import { PostserviceService } from '../../services/postservice.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-forum',
@@ -13,6 +14,7 @@ export class ForumComponent implements OnInit {
 
   user:any;
   posts : Posts[];
+  userprofilename:string;
   postsreply :Postreply[];
   Postheading:string;
   postbody:string;
@@ -22,7 +24,7 @@ export class ForumComponent implements OnInit {
   type:boolean;
   name:string;
 
-  constructor(private authService: AuthenticationService,private postService :PostserviceService) { }
+  constructor(private authService: AuthenticationService,private postService :PostserviceService,private userService:UserService) { }
 
   hidden:boolean =false;
   hiddenwrite :boolean =false;
@@ -30,11 +32,12 @@ export class ForumComponent implements OnInit {
   ngOnInit():void {
     this.authService.isUserLogged();
     this.retrevePosts();
-    this.user=this.authService.getUser();
+    this.user=this.userService.getCurrentUser();
     this.author =this.user.userName;
     //console.log(this.author);
     this.type =(this.user.userType==='A');
-
+    this.name =this.user.getFirstName()+" "+this.user.getLastName();
+    this.userprofilename =this.user.getImgLink();
 
   }
 
@@ -71,7 +74,7 @@ export class ForumComponent implements OnInit {
       pst.postAuthor =this.authService.getUser().userName;
       pst.postbody=this.postbody;
       pst.posttitle=this.Postheading;
-      this.posts.push(pst);
+      //this.posts.push(pst);
       this.postService.InsertPosts(pst);
       console.log(pst+"added");
 
@@ -85,7 +88,7 @@ export class ForumComponent implements OnInit {
       rep.replyid=null;
       rep.postId =pst.postId;
       console.log(rep.body);
-      this.postsreply.push(rep);
+     // this.postsreply.push(rep);
       this.postService.InsertReplys(rep);
 
     }
