@@ -11,13 +11,16 @@ import { PostserviceService } from '../../services/postservice.service';
 })
 export class ForumComponent implements OnInit {
 
+  user:any;
   posts : Posts[];
   postsreply :Postreply[];
   Postheading:string;
   postbody:string;
   postreply:string;
   author:string;
+  address:String;
   type:boolean;
+  name:string;
 
   constructor(private authService: AuthenticationService,private postService :PostserviceService) { }
 
@@ -27,8 +30,12 @@ export class ForumComponent implements OnInit {
   ngOnInit():void {
     this.authService.isUserLogged();
     this.retrevePosts();
-    this.author =this.authService.getUser().userName;
-    this.type =(this.authService.getUser().userType==='A');
+    this.user=this.authService.getUser();
+    this.author =this.user.userName;
+    //console.log(this.author);
+    this.type =(this.user.userType==='A');
+
+
   }
 
   retrevePosts(){
