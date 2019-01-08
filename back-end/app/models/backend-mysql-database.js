@@ -108,8 +108,8 @@ DatabaseMySql.prototype.getStudents = function (callback) {
     if (err || resultStudent.length == 0) {
       callback(null, err);
     } else {
-      var i=0; var resCom=[];
-      while(resultStudent[i]) {
+      var i = 0; var resCom = [];
+      while (resultStudent[i]) {
         resCom.push(utils.generateStudent(resultStudent[i]));
         i = i + 1;
       }
@@ -191,8 +191,8 @@ DatabaseMySql.prototype.deleteStudent = function (student, callback) {
       callback(null, err);
     } else {
       //callback (utils.generateStudent(resultStudent[0]));
-      console.log("before delete student backend mysql controller" +resultPosts);
-      
+      console.log("before delete student backend mysql controller" + resultPosts);
+
       callback(resultPosts);
     }
   });
@@ -242,8 +242,8 @@ DatabaseMySql.prototype.getMentors = function (callback) {
     if (err || resultMentor.length == 0) {
       callback(null, err);
     } else {
-      var i=0; var resCom=[];
-      while(resultMentor[i]) {
+      var i = 0; var resCom = [];
+      while (resultMentor[i]) {
         resCom.push(utils.generateMentor(resultMentor[i]));
         i = i + 1;
       }
@@ -358,8 +358,8 @@ DatabaseMySql.prototype.getCompanies = function (callback) {
     if (err || resultCompany.length == 0) {
       callback(null, err);
     } else {
-      var i=0; var resCom=[];
-      while(resultCompany[i]) {
+      var i = 0; var resCom = [];
+      while (resultCompany[i]) {
         resCom.push(utils.generateCompany(resultCompany[i]));
         i = i + 1;
       }
@@ -697,6 +697,22 @@ DatabaseMySql.prototype.updateProjectIdea = function (projectIdea, callback) {
   });
 }
 
+//Delete Project idea
+DatabaseMySql.prototype.deleteProjectIdea = function (projectIdea, callback) {
+
+  var utils = new Utils();
+
+  var sqldeleteProjectIdea = utils.getSqlDeleteProjectIdea(projectIdea);
+
+  connection.query(sqldeleteProjectIdea, function (err, resultProjectIdea) {
+    if (err || resultProjectIdea.length == 0) {
+      callback(null, err);
+    } else {
+      //callback (utils.generateStudent(resultStudent[0]));
+      callback(resultProjectIdea);
+    }
+  });
+}
 
 
 // Skill Model related functions ..............................................................
@@ -867,27 +883,27 @@ DatabaseMySql.prototype.getPost = function (err, callback) {
     if (err || resultPosts.length == 0) {
       callback(null, err);
     } else {
-      callback (resultPosts);
+      callback(resultPosts);
     }
   });
 }
 
 /* get Post reply object in db */
 
-DatabaseMySql.prototype.getReply =function(rep,callback){
+DatabaseMySql.prototype.getReply = function (rep, callback) {
 
   var utils = new Utils();
   console.log("from backend mysql");
-  
+
 
   var sqlselectreply = utils.getReply(rep);
 
-  connection.query(sqlselectreply,function(err,resultsreply){
+  connection.query(sqlselectreply, function (err, resultsreply) {
     console.log(resultsreply);
-    
-    if(err|| resultsreply.length ==0){
-      callback(null,err);
-    }else{
+
+    if (err || resultsreply.length == 0) {
+      callback(null, err);
+    } else {
       callback(resultsreply);
     }
   })
