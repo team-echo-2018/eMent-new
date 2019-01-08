@@ -15,6 +15,7 @@ export class MentorService {
 
   // get all the mentors' details
   getMentors() {
+    this.mentorsList = [];
     this.httpBackendRequest.realizarHttpPost(HttpEnum.GETMENTORS, null)
       .subscribe(
         (result) => {

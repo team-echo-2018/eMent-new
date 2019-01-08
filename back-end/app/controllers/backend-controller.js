@@ -41,7 +41,9 @@ BackendController.prototype.insertUser = function (req, callback) {
     })
 }
 
-// not used yet... don't change..
+/* CRUD operations for student */
+
+//insert student
 BackendController.prototype.insertStudent = function (req, callback) {
 
     var student = new Student(
@@ -64,6 +66,65 @@ BackendController.prototype.insertStudent = function (req, callback) {
             callback(result);
         }
     })
+}
+
+// Get student by id object from DB model
+BackendController.prototype.getStudent = function (req, callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.getStudent(req.userId, function (result, err) {
+        console.log("Enter to the get student function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+// Get ALL students' objects from DB model
+BackendController.prototype.getStudents = function (callback) {
+
+    var daoMsql = new DAOMySql();
+    daoMsql.getStudents(function (result, err) {
+        console.log("Enter to the get students function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+// Update student object from DB model
+BackendController.prototype.updateStudent = function (req, callback) {
+
+    // Student object with updated details
+    var student = new Student(
+        req.studentId,
+        req.studentFname,
+        req.studentLname,
+        req.studentAddress,
+        req.studentPhone,
+        req.studentEmail,
+        req.studentImgLink,
+        req.studentDescription
+    );
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.updateStudent(student, function (result, err) {
+        console.log("Enter to the update student function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
 }
 /** DELETE STUDENT */
 BackendController.prototype.deleteStudent = function (req, callback) {
@@ -132,70 +193,8 @@ BackendController.prototype.auth = function (req, callback) {
 // }
 
 
-// Student Object related functions ..............................................................
-// Get students' objects from DB model
-BackendController.prototype.getStudents = function (callback) {
-
-    var daoMsql = new DAOMySql();
-    daoMsql.getStudents(function (result, err) {
-        console.log("Enter to the get students function");
-        if (err || !result) {
-            console.log("** error or no result");
-            callback(null, err);
-        } else {
-            callback(result);
-        }
-    });
-}
-
-// Get student by id object from DB model
-BackendController.prototype.getStudent = function (req, callback) {
-
-    var daoMsql = new DAOMySql();
-
-    daoMsql.getStudent(req.userId, function (result, err) {
-        console.log("Enter to the get student function");
-        if (err || !result) {
-            console.log("** error or no result");
-            callback(null, err);
-        } else {
-            callback(result);
-        }
-    });
-}
-
-// Update student object from DB model
-BackendController.prototype.updateStudent = function (req, callback) {
-
-    // Student object with updated details
-    var student = new Student(
-        req.studentId,
-        req.studentFname,
-        req.studentLname,
-        req.studentAddress,
-        req.studentPhone,
-        req.studentEmail,
-        req.studentImgLink,
-        req.studentDescription
-    );
-
-    var daoMsql = new DAOMySql();
-
-    daoMsql.updateStudent(student, function (result, err) {
-        console.log("Enter to the update student function");
-        if (err || !result) {
-            console.log("** error or no result");
-            callback(null, err);
-        } else {
-            callback(result);
-        }
-    });
-}
-
-
-
 // Mentor Object related functions ..............................................................
-// Get mentors' objects from DB model
+// Get ALL mentors' objects from DB model
 BackendController.prototype.getMentors = function (callback) {
 
     var daoMsql = new DAOMySql();
@@ -255,10 +254,27 @@ BackendController.prototype.updateMentor = function (req, callback) {
     });
 }
 
+//Delete mentor object from DB model
+BackendController.prototype.deleteMentor = function (req, callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.deleteMentor(req, function (result, err) {
+        console.log("connecting to database and deleting mentor" + result);
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            console.log("mentor deleted");
+
+            callback(result);
+        }
+    });
+}
 
 
 // Company Object related functions ..............................................................
-// Get companies objects from DB model
+// Get ALLcompanies objects from DB model
 BackendController.prototype.getCompanies = function (callback) {
 
     var daoMsql = new DAOMySql();
@@ -315,6 +331,23 @@ BackendController.prototype.updateCompany = function (req, callback) {
     });
 }
 
+//Delete company object from DB model
+BackendController.prototype.deleteCompany = function (req, callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.deleteCompany(req, function (result, err) {
+        console.log("connecting to database and deleting company" + result);
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            console.log("company deleted");
+
+            callback(result);
+        }
+    });
+}
 
 
 // Milestone Object related functions ..............................................................
@@ -358,6 +391,23 @@ BackendController.prototype.updateMilestone = function (req, callback) {
     });
 }
 
+//Delete milestone object from DB model
+BackendController.prototype.deleteMilestone = function (req, callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.deleteMilestone(req, function (result, err) {
+        console.log("connecting to database and deleting Milestone" + result);
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            console.log("Milestone deleted");
+
+            callback(result);
+        }
+    });
+}
 
 
 // Project Object related functions ..............................................................
@@ -401,6 +451,23 @@ BackendController.prototype.updateProject = function (req, callback) {
     });
 }
 
+//Delete project object from DB model
+BackendController.prototype.deleteProject = function (req, callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.deleteProject(req, function (result, err) {
+        console.log("connecting to database and deleting Project" + result);
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            console.log("Project deleted");
+
+            callback(result);
+        }
+    });
+}
 
 
 // Skill Object related functions ..............................................................
@@ -444,7 +511,23 @@ BackendController.prototype.updateSkill = function (req, callback) {
     });
 }
 
+//Delete skill object from DB model
+BackendController.prototype.deleteSkill = function (req, callback) {
 
+    var daoMsql = new DAOMySql();
+
+    daoMsql.deleteSkill(req, function (result, err) {
+        console.log("connecting to database and deleting skill" + result);
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            console.log("skill deleted");
+
+            callback(result);
+        }
+    });
+}
 
 // Task Object related functions ..............................................................
 // Get task by id object from DB model
@@ -483,6 +566,24 @@ BackendController.prototype.updateTask = function (req, callback) {
             console.log("** error or no result");
             callback(null, err);
         } else {
+            callback(result);
+        }
+    });
+}
+
+//Delete task object from DB model
+BackendController.prototype.deleteTask = function (req, callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.deleteTask(req, function (result, err) {
+        console.log("connecting to database and deleting task" + result);
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            console.log("task deleted");
+
             callback(result);
         }
     });
@@ -561,7 +662,7 @@ BackendController.prototype.getreplyPosts = function (req, callback) {
     })
 }
 
-
+//delete postd from database
 
 BackendController.prototype.deletePosts = function (req, callback) {
 
@@ -578,7 +679,7 @@ BackendController.prototype.deletePosts = function (req, callback) {
     });
 }
 
-
+//update post
 BackendController.prototype.updatePost = function (req, callback) {
 
     var daoMsql = new DAOMySql();

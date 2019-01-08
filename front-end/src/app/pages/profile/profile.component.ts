@@ -37,41 +37,25 @@ export class ProfileComponent implements OnInit {
     private uploadService: UploadFileService) { }
 
   ngOnInit() {
- // if user is not logged, redirect to login page
- this.authService.isUserLogged();
+    // if user is not logged, redirect to login page
+    this.authService.isUserLogged();
 
- // if user is logged, get the current user
- if (this.authService.getUser().userName != "Janaka") {
-   this.user = this.userService.getCurrentUser();
+    // if user is logged, get the current user
+    this.user = this.userService.getCurrentUser();
 
-   this.fname = this.user.getFirstName();
-   this.lname = this.user.getLastName();
-   this.address = this.user.getAddress();
-   this.email = this.user.getEmail();
-   this.phone = this.user.getPhone();
-   this.image = this.user.getImgLink();
-   if (this.image == null || this.image == "") {
-     this.image = "default.jpg";
-   }
-   this.description = this.user.getDescription();
+    this.fname = this.user.getFirstName();
+    this.lname = this.user.getLastName();
+    this.address = this.user.getAddress();
+    this.email = this.user.getEmail();
+    this.phone = this.user.getPhone();
+    this.image = this.user.getImgLink();
+    if (this.image == null || this.image == "") {
+      this.image = "default.jpg";
+    }
+    this.description = this.user.getDescription();
 
-   this.imageAddress = HttpEnum.BASEURL + this.image;
+    this.imageAddress = HttpEnum.BASEURL + this.image;
 
- } else {
-   this.fname = this.userService.sp_student1.getFirstName();
-   this.lname = this.userService.sp_student1.getLastName();
-   this.address = this.userService.sp_student1.getAddress();
-   this.email = this.userService.sp_student1.getEmail();
-   this.phone = this.userService.sp_student1.getPhone();
-   this.image = this.userService.sp_student1.getImgLink();
-   if (this.image == null || this.image == "") {
-     this.image = "default.jpg";
-   }
-   this.description = this.userService.sp_student1.getDescription();
-
-   this.imageAddress = HttpEnum.BASEURL + this.image;
- }
- // console.log(this.user);
 
 
 
@@ -94,7 +78,7 @@ export class ProfileComponent implements OnInit {
 
     this.editable = true;
     this.btnCaption = "Edit";
-    
+
   }
 
   isJanaka() {
