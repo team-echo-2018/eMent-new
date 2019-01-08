@@ -17,6 +17,7 @@ export class StudentService {
 
   // get all the students' details
   getStudents() {
+    this.studentsList = [];
     this.httpBackendRequest.realizarHttpPost(HttpEnum.GETSTUDENTS, null)
       .subscribe(
         (result) => {
@@ -46,15 +47,20 @@ export class StudentService {
         (err) => alert('Error occured.. Contact Administrations!')
       );
   }
-  deleteStudent(student:Student){
-    console.log("delete student called on "+student.studentId);
 
-    this.httpBackendRequest.realizarHttpPost(HttpEnum.DELSTUDENT,student).subscribe(
-      (result)=>{
-        console.log(result);
+  // delete student details
+  deleteStudent(student: Student) {
+    console.log("delete student called on " + student.studentId);
 
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.DELSTUDENT, student).subscribe(
+      (result) => {
+        alert("Student Successfully Deleted.");
       },
-      (err)=>alert("cannot delete student"+err)
+
+      (err) => {
+        alert("cannot delete student" + err);
+        console.log(err);
+      }
     );
   }
 }

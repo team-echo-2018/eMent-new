@@ -71,8 +71,8 @@ router.route('/student/deleteStudent').post(function (req, res) {
             res.status(404);
             res.send(error);
         } else {
-            //res.status(200);
-            res.send("ok");
+            res.status(200);
+            res.json(result);
         }
 
     });
@@ -142,6 +142,7 @@ router.route('/profile/update').post(function (req, res) {
     }
 });
 
+/* Routes for company CRUD operations */
 
 /* Router for getting companies details */
 router.route('/company/getall').post(function (req, res) {
@@ -154,6 +155,8 @@ router.route('/company/getall').post(function (req, res) {
         }
     });
 });
+
+/* Routes for mentor CRUD operations */
 
 /* Router for getting mentors details */
 router.route('/mentor/getall').post(function (req, res) {

@@ -15,6 +15,7 @@ export class CompanyService {
 
   // get all the companies' details
   getCompanies() {
+    this.companiesList = [];
     this.httpBackendRequest.realizarHttpPost(HttpEnum.GETCOMPANIES, null)
       .subscribe(
         (result) => {
