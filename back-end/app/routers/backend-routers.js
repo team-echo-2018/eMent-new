@@ -20,7 +20,9 @@ var backendController = new BackendController();
 
 /* ---------  ROUTERS - POST METHODS   -----------*/
 
-// not used yet...
+/* Routes for User CRUD operations */
+
+/* Route for insert user */
 router.route('/addUser').post(function (req, res) {
     backendController.insertUser(req.body, function (result, error) {
         if (error) {
@@ -32,7 +34,9 @@ router.route('/addUser').post(function (req, res) {
     });
 });
 
-// not used yet...
+/* Routes for student CRUD operations */
+
+/* Route for insert student */
 router.route('/student/addStudent').post(function (req, res) {
     console.log(req.body);
     backendController.insertStudent(req.body, function (result, error) {
@@ -45,6 +49,35 @@ router.route('/student/addStudent').post(function (req, res) {
         }
     });
 });
+/* Router for getting students details */
+router.route('/student/getall').post(function (req, res) {
+    backendController.getStudents(function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            console.log(result);
+            res.json(result);
+        }
+    });
+});
+
+/** delete student */
+router.route('/student/deleteStudent').post(function (req, res) {
+    console.log(req.body);
+
+    backendController.deleteStudent(req.body, function (result, error) {
+        if (!result) {
+            res.status(404);
+            res.send(error);
+        } else {
+            //res.status(200);
+            res.send("ok");
+        }
+
+    });
+});
+
 
 /* Router for User Authentications */
 router.route('/auth').post(function (req, res) {
@@ -133,38 +166,6 @@ router.route('/mentor/getall').post(function (req, res) {
         }
     });
 });
-
-/* Router for getting students details */
-router.route('/student/getall').post(function (req, res) {
-    backendController.getStudents(function (result, error) {
-        if (error) {
-            res.status(404);
-            res.send(error);
-        } else {
-            console.log(result);
-            res.json(result);
-        }
-    });
-});
-
-/** delete student */
-router.route('/student/deleteStudent').post(function (req, res) {
-    console.log(req.body);
-
-    backendController.deleteStudent(req.body, function (result, error) {
-        if (!result) {
-            res.status(404);
-            res.send(error);
-        } else {
-            //res.status(200);
-            res.send("ok");
-        }
-
-    });
-});
-
-
-
 
 /* Routes for post CRUD operations */
 
@@ -265,19 +266,12 @@ router.route('/posts/insertPost').post(function (req, res) {
 router.route('/file/upload').post(upload.single("file"), fileWorker.uploadFile);
 
 
-/* Router for getting project idea by idea id*/
-router.route('/projectideas/get/id').post(function (req, res) {
-    backendController.getProjectIdea(req.body, function (result, error) {
-        if (error) {
-            res.status(404);
-            res.send(error);
-        } else {
-            res.json(result);
-        }
-    });
-});
+
+
+/* Routes for project idea CRUD operations */
 
 /* Router for inserting project idea */
+
 router.route('/projectideas/addIdea').post(function (req, res) {
     backendController.insertProjectIdea(req.body, function (result, error) {
         if (error) {
@@ -289,5 +283,47 @@ router.route('/projectideas/addIdea').post(function (req, res) {
     });
 });
 
+/* Router for getting project idea by idea id*/
+
+router.route('/projectideas/get/id').post(function (req, res) {
+    backendController.getProjectIdea(req.body, function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.json(result);
+        }
+    });
+});
+
+/* Router for updating project idea */
+router.route('/projectideas/update/projectIdea').post(function (req, res) {
+    backendController.updateProjectIdea(req.body, function (result, err) {
+        if (err) {
+            res.status(404);
+            res.send(err);
+        } else {
+            res.status(200);
+            res.send('update completed');
+        }
+    });
+});
+
+/** Router for delete project idea */
+router.route('/projectideas/delete/projectIdea').post(function (req, res) {
+
+    backendController.deleteProjectIdea(req.body, function (result, error) {
+        if (!result) {
+            res.status(404);
+            res.send(error);
+        } else {
+            //res.status(200);
+            res.send("ok");
+        }
+
+    });
+});
+
+/* Routes for task CRUD operations */
 
 module.exports = router;
