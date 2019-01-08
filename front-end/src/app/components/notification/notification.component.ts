@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { NortificationService } from '../../services/nortification.service';
-import { from } from 'rxjs';
 import { nortification } from 'src/app/entities/nortification';
 
 @Component({
@@ -16,6 +15,10 @@ export class NotificationComponent implements OnInit {
 
   ngOnInit() {
     this.nortification_list =this.nortservice.getnortifications();
+    console.log("nortification component");
+
+    console.log(this.nortification_list);
+
   }
 
 }

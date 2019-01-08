@@ -10,7 +10,7 @@ import { nortification} from '../entities/nortification';
   providedIn: 'root'
 })
 export class NortificationService {
-  noritfications:nortification[];
+  noritfications:nortification[] =new Array();
 
   constructor( private httpBackendRequest: HttpBackendRequestService,private Http :HttpClient) { }
 
@@ -26,7 +26,7 @@ export class NortificationService {
           let i = 0;
           while (result[i]) {
             let post = Utils.convertnortificationtonortify(result[i]);
-            console.log(post);
+           // console.log(post);
 
             this.noritfications.push(post);
             i = i + 1;
