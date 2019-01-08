@@ -34,6 +34,19 @@ router.route('/addUser').post(function (req, res) {
     });
 });
 
+//Route for delete user
+router.route('/deleteUser').post(function (req, res) {
+    backendController.deleteUser(req.body, function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.json(result);
+        }
+    });
+});
+
+
 /* Routes for student CRUD operations */
 
 /* Route for insert student */

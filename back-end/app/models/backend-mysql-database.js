@@ -93,7 +93,25 @@ DatabaseMySql.prototype.updateUser = function (user, callback) {
     });
   });
 }
+//delete user
 
+DatabaseMySql.prototype.deleteUser = function (user, callback) {
+
+  var utils = new Utils();
+
+  var sqldeleteuser = utils.getSqlDeleteUser(user);
+
+  connection.query(sqldeleteuser, function (err, resultUser) {
+    if (err || resultUser.length == 0) {
+      callback(null, err);
+    } else {
+      //callback (utils.generateStudent(resultStudent[0]));
+      console.log("before delete user backend mysql controller" + resultUser);
+
+      callback(resultUser);
+    }
+  });
+}
 
 
 // Student Model related functions ..............................................................
@@ -179,6 +197,8 @@ DatabaseMySql.prototype.insertStudent = function (student, callback) {
     });
   });
 }
+
+//Delete student
 
 DatabaseMySql.prototype.deleteStudent = function (student, callback) {
 
