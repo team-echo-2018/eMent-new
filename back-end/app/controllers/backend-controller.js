@@ -22,7 +22,7 @@ var DAOMySql = require('../models/backend-mysql-database');
 
 function BackendController() { }
 
-// not used yet... don't change..
+// insert user
 BackendController.prototype.insertUser = function (req, callback) {
 
     var user = new User(0,
@@ -39,6 +39,24 @@ BackendController.prototype.insertUser = function (req, callback) {
             callback(result);
         }
     })
+}
+
+/** DELETE user */
+BackendController.prototype.deleteUser = function (req, callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.deleteUser(req, function (result, err) {
+        console.log("connecting to database and deleting user" + result);
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            console.log("user deleted");
+
+            callback(result);
+        }
+    });
 }
 
 /* CRUD operations for student */
@@ -778,6 +796,24 @@ BackendController.prototype.deleteProjectIdea = function (req, callback) {
         } else {
             console.log("project idea deleted");
 
+            callback(result);
+        }
+    });
+}
+
+/* crud controller for nortificatons */
+
+BackendController.prototype.getnortificationss = function (req,callback) {
+
+    var daoMsql = new DAOMySql();
+    daoMsql.getnortifications(function (result, err) {
+        console.log("Enter to the get nortifications");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            console.log("returning from controller");
+            
             callback(result);
         }
     });
