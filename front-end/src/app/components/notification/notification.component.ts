@@ -18,7 +18,4 @@ export class NotificationComponent implements OnInit {
     this.nortification_list =this.nortservice.getnortifications();
   }
 
-  isJanaka() {
-    return this.authService.getUser().userName == "Janaka";
-  }
 }

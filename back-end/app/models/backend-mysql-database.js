@@ -899,7 +899,7 @@ DatabaseMySql.prototype.getReply = function (rep, callback) {
   var sqlselectreply = utils.getReply(rep);
 
   connection.query(sqlselectreply, function (err, resultsreply) {
-    console.log(resultsreply);
+   // console.log(resultsreply);
 
     if (err || resultsreply.length == 0) {
       callback(null, err);
@@ -1030,6 +1030,43 @@ function insertSql(query, callback) {
     }
   });
 }
+
+/* CRUD MODELS FOR NORTIFICATIONS */
+//GET NORTIFICATIONS
+
+// DatabaseMySql.prototype.getnortifications = function (err, callback) {
+
+//   console.log("backendmysql controller");
+//   var utils = new Utils(); 
+
+//   var sqlSelectnortifications = utils.selectNortifications();
+//  // console.log(sqlSelectnortifications);
+
+//   connection.query(sqlSelectnortifications, function (err, resultPosts) {
+//     if (err || resultPosts.length == 0) {
+//       callback(null, err);
+//     } else {
+//       callback(resultPosts);
+//     }
+//   });
+// }
+
+DatabaseMySql.prototype.getnortifications = function ( callback) {
+
+  console.log("backendmysql controller nortifications");
+  var utils = new Utils();
+
+  var sqlSelectPost = utils.selectNortifications();
+
+  connection.query(sqlSelectPost, function (err, resultPosts) {
+    if (err || resultPosts.length == 0) {
+      callback(null, err);
+    } else {
+      callback(resultPosts);
+    }
+  });
+}
+
 
 
 

@@ -26,6 +26,8 @@ export class NortificationService {
           let i = 0;
           while (result[i]) {
             let post = Utils.convertnortificationtonortify(result[i]);
+            console.log(post);
+
             this.noritfications.push(post);
             i = i + 1;
           }
@@ -33,7 +35,7 @@ export class NortificationService {
 
         }
       },
-      (err) => alert('getting Posts error occured.. !')
+      (err) => alert('getting nortifications from nortifications service error occured.. !'+err)
     )
     return this.noritfications;
 

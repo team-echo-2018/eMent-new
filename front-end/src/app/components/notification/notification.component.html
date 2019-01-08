@@ -1,7 +1,7 @@
 <div class="notification-title"> Notification</div>
 <div class="notification-list">
   <div class="list-group">
-    <a *ngIf="isJanaka()" href="#" class="list-group-item list-group-item-action">
+    <!-- <a  href="#" class="list-group-item list-group-item-action">
       <div class="notification-info">
         <div class="notification-list-user-img"><img src="assets/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
         <div class="notification-list-user-block"><span class="notification-list-user-name"><b>Welcome Janaka</b></span>
@@ -9,18 +9,17 @@
           <div class="notification-date">5 days ago</div>
         </div>
       </div>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">
+    </a> -->
+    <a *ngFor="let item of nortification_list" class="list-group-item list-group-item-action">
       <div class="notification-info">
         <div class="notification-list-user-img"><img src="assets/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-        <div class="notification-list-user-block"><span class="notification-list-user-name">New project idea</span>A
-          traffic light system project idea added by a
-          senior mentor from Cambio Company.
+        <div class="notification-list-user-block"><span class="notification-list-user-name">{{item.nortificationtitle}}</span>A
+          {{item.nortificationbody}}
           <div class="notification-date">5 days ago</div>
         </div>
       </div>
     </a>
-    <a *ngIf="!isJanaka()" href="#" class="list-group-item list-group-item-action">
+    <!-- <a *ngIf="!isJanaka()" href="#" class="list-group-item list-group-item-action">
       <div class="notification-info">
         <div class="notification-list-user-img"><img src="assets/images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
         <div class="notification-list-user-block"><span class="notification-list-user-name">Project Succeed </span>Dimento
@@ -29,25 +28,8 @@
           <div class="notification-date">2 days ago</div>
         </div>
       </div>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">
-      <div class="notification-info">
-        <div class="notification-list-user-img"><img src="assets/images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-        <div class="notification-list-user-block"><span class="notification-list-user-name">Want a student</span>there
-          is a vacancy for a student to join
-          EClips project
-          <div class="notification-date">1 day ago</div>
-        </div>
-      </div>
-    </a>
-    <a *ngIf="!isJanaka()" href="#" class="list-group-item list-group-item-action">
-      <div class="notification-info">
-        <div class="notification-list-user-img"><img src="assets/images/avatar-5.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-        <div class="notification-list-user-block"><span class="notification-list-user-name">New Mentor</span>a new
-          mentor from WS02 has joined to Greenary project
-          <div class="notification-date">1 day ago</div>
-        </div>
-      </div>
-    </a>
+    </a> -->
+
+
   </div>
 </div>

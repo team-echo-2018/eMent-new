@@ -15,5 +15,5 @@ export enum HttpEnum {
     ADDSTUDENT = 'http://localhost:8000/api/student/addStudent',
     DELSTUDENT ='http://localhost:8000/api/student/deleteStudent',
 
-    GETNORTIFICATION =  'http://localhost:8000/api/nortify/getnortification'
+    GETNORTIFICATION =  'http://localhost:8000/api/nortify/getnortificatio'
 }
