@@ -403,50 +403,6 @@ BackendController.prototype.updateProject = function (req, callback) {
 
 
 
-// ProjectIdea Object related functions ..............................................................
-// Get projectIdea by id object from DB model
-BackendController.prototype.getProjectIdea = function (req, callback) {
-
-    var daoMsql = new DAOMySql();
-
-    daoMsql.getProjectIdea(req.projectIdeaId, function (result, err) {
-        console.log("Enter to the get projectIdea function");
-        if (err || !result) {
-            console.log("** error or no result");
-            callback(null, err);
-        } else {
-            callback(result);
-        }
-    });
-}
-
-// Update projectIdea object from DB model
-BackendController.prototype.updateProjectIdea = function (req, callback) {
-
-    // ProjectIdea object with updated details
-    var projectIdea = new Mentor(
-        req.projectIdeaId,
-        req.projectIdeaDate,
-        req.projectIdeaOwner,
-        req.projectIdeaCategory
-    );
-
-    var daoMsql = new DAOMySql();
-
-    daoMsql.updateProjectIdea(projectIdea, function (result, err) {
-        console.log("Enter to the update projectIdea function");
-        if (err || !result) {
-            console.log("** error or no result");
-            callback(null, err);
-        } else {
-            callback(result);
-        }
-    });
-}
-
-
-
-
 // Skill Object related functions ..............................................................
 // Get skill by id object from DB model
 BackendController.prototype.getSkill = function (req, callback) {
@@ -658,15 +614,32 @@ BackendController.prototype.updatePost = function (req, callback) {
     }
 }
 
+// ProjectIdea Object related functions ..............................................................
+// Get projectIdea by id object from DB model
+BackendController.prototype.getProjectIdea = function (req, callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.getProjectIdea(req.projectIdeaId, function (result, err) {
+        console.log("Enter to the get projectIdea function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+
 /* insert project idea */
 
 BackendController.prototype.insertProjectIdea = function (req, callback) {
 
     var projectidea = new ProjectIdea(0,
-        req.ideaName,
-        req.ideaDescription,
-        req.ideaOwner,
-        req.ideaCategory);
+        req.projectIdeaDate,
+        req.projectIdeaOwner,
+        req.projectIdeaCategory);
 
     var daoMsql = new DAOMySql();
 
@@ -678,5 +651,49 @@ BackendController.prototype.insertProjectIdea = function (req, callback) {
         }
     })
 }
+// Update projectIdea object from DB model
+BackendController.prototype.updateProjectIdea = function (req, callback) {
+
+    // ProjectIdea object with updated details
+    var projectIdea = new ProjectIdea(
+        req.projectIdeaId,
+        req.projectIdeaDate,
+        req.projectIdeaOwner,
+        req.projectIdeaCategory
+    );
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.updateProjectIdea(projectIdea, function (result, err) {
+        console.log("Enter to the update projectIdea function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+/** DELETE PROJECT IDEA */
+BackendController.prototype.deleteProjectIdea = function (req, callback) {
+    var daoMsql = new DAOMySql();
+
+    daoMsql.deleteProjectIdea(req, function (result, err) {
+        console.log("connecting to database and deleting project idea" + result);
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            console.log("project idea deleted");
+
+            callback(result);
+        }
+    });
+}
+
+
+
+
 
 module.exports = BackendController;
