@@ -71,8 +71,8 @@ router.route('/student/deleteStudent').post(function (req, res) {
             res.status(404);
             res.send(error);
         } else {
-            //res.status(200);
-            res.send("ok");
+            res.status(200);
+            res.json(result);
         }
 
     });

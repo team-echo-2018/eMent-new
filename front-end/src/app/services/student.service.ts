@@ -17,6 +17,7 @@ export class StudentService {
 
   // get all the students' details
   getStudents() {
+    this.studentsList = [];
     this.httpBackendRequest.realizarHttpPost(HttpEnum.GETSTUDENTS, null)
       .subscribe(
         (result) => {
@@ -53,10 +54,14 @@ export class StudentService {
 
     this.httpBackendRequest.realizarHttpPost(HttpEnum.DELSTUDENT, student).subscribe(
       (result) => {
-        console.log(result);
+        this.router.navigate(['/admin-panel']);
 
       },
-      (err) => alert("cannot delete student" + err)
+
+      (err) => {
+        alert("cannot delete student" + err);
+        console.log(err);
+      }
     );
   }
 }

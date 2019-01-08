@@ -86,9 +86,10 @@ export class AdminPanelComponent implements OnInit {
     this.notificationsActive = true;
     this.title = "Notifications";
   }
+
+
   deleteStudent(std:Student){
     this.studentService.deleteStudent(std);
-    //this.studentService.getStudents();
 
   }
 

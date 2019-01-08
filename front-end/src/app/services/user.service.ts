@@ -12,23 +12,7 @@ export class UserService {
 
   currentUser: any;
 
-  sp_user1 = new User();
-  sp_student1 = new Student();
-
   constructor(private httpBackendRequest: HttpBackendRequestService) {
-    this.sp_user1.userId = "30";
-    this.sp_user1.userName = "Janaka";
-    this.sp_user1.userPassword = "Janaka123";
-    this.sp_user1.userType = "S";
-
-    this.sp_student1.setId("30");
-    this.sp_student1.setFirstName("Janaka");
-    this.sp_student1.setLastName("Bandara");
-    this.sp_student1.setAddress("NO.10,Main street,Matara");
-    this.sp_student1.setEmail("janakabandara@gmail.com");
-    this.sp_student1.setPhone("0769618755");
-    this.sp_student1.setImgLink("");
-    this.sp_student1.setDescription("student at ucsc");
   }
 
   ngOnInit() {
