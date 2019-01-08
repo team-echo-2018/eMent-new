@@ -5,6 +5,7 @@ import { Postreply } from '../entities/postreply';
 import { Posts } from '../entities/posts';
 import { Company } from '../entities/company';
 import { message } from '../entities/message';
+import { nortification } from '../entities/nortification';
 
 export class Utils {
 
@@ -99,6 +100,15 @@ export class Utils {
       msg.message =imessage.message;
       msg.recieverId =imessage.recieverId;
       msg.senderId =imessage.senderId;
+
+      return msg;
+    }
+
+    public static convertnortificationtonortify(imessage:any):nortification{
+      const msg =new nortification();
+      msg.nortificationID =imessage.nid;
+      msg.nortificationbody =imessage.nbody;
+      msg.nortificationtitle =imessage.ntitle;
 
       return msg;
     }
