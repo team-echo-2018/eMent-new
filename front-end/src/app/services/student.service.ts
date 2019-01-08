@@ -54,8 +54,7 @@ export class StudentService {
 
     this.httpBackendRequest.realizarHttpPost(HttpEnum.DELSTUDENT, student).subscribe(
       (result) => {
-        this.router.navigate(['/admin-panel']);
-
+        alert("Student Successfully Deleted.");
       },
 
       (err) => {
