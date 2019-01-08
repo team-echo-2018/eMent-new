@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { NortificationService } from '../../services/nortification.service';
-import { from } from 'rxjs';
 import { nortification } from 'src/app/entities/nortification';
 
 @Component({
@@ -15,10 +14,16 @@ export class NotificationComponent implements OnInit {
   constructor(private authService:AuthenticationService ,private nortservice:NortificationService) { }
 
   ngOnInit() {
+    this.getnortifications();
+    //this.nortification_list =this.nortservice.getnortifications();
+    //console.log("nortification component");
+
+    //console.log(this.nortification_list);
+
+  }
+  getnortifications(){
+    this.nortification_list=new Array();
     this.nortification_list =this.nortservice.getnortifications();
   }
 
-  isJanaka() {
-    return this.authService.getUser().userName == "Janaka";
-  }
 }

@@ -106,9 +106,10 @@ export class Utils {
 
     public static convertnortificationtonortify(imessage:any):nortification{
       const msg =new nortification();
-      msg.nortificationID =imessage.nid;
-      msg.nortificationbody =imessage.nbody;
-      msg.nortificationtitle =imessage.ntitle;
+      msg.nortificationID =imessage.  nortificationID;
+      msg.nortificationbody =imessage.nortificationtitle;
+      msg.nortificationtitle =imessage.nortificationtitle;
+      msg.time =imessage.timee;
 
       return msg;
     }

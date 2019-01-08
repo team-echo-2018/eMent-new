@@ -801,6 +801,24 @@ BackendController.prototype.deleteProjectIdea = function (req, callback) {
     });
 }
 
+/* crud controller for nortificatons */
+
+BackendController.prototype.getnortificationss = function (req,callback) {
+
+    var daoMsql = new DAOMySql();
+    daoMsql.getnortifications(function (result, err) {
+        console.log("Enter to the get nortifications");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            console.log("returning from controller");
+            
+            callback(result);
+        }
+    });
+}
+
 
 
 
