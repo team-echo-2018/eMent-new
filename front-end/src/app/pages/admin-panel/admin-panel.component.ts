@@ -6,6 +6,7 @@ import { MentorService } from '../../services/mentor.service';
 import { Mentor } from '../../entities/mentor';
 import { Student } from '../../entities/student';
 import { StudentService } from '../../services/student.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-panel',
@@ -14,11 +15,11 @@ import { StudentService } from '../../services/student.service';
 })
 export class AdminPanelComponent implements OnInit {
 
-  dashboardActive:boolean;
+  dashboardActive: boolean;
   companiesActive: boolean;
-  mentorsActive:boolean;
+  mentorsActive: boolean;
   studentsActive: boolean;
-  notificationsActive:boolean;
+  notificationsActive: boolean;
   title: string;
 
   companyList: Company[];
@@ -27,7 +28,7 @@ export class AdminPanelComponent implements OnInit {
 
   constructor(private authService: AuthenticationService,
     private companyService: CompanyService, private mentorService: MentorService,
-    private studentService: StudentService) { }
+    private studentService: StudentService, private router: Router) { }
 
   ngOnInit() {
     this.activateDashboard();
@@ -86,10 +87,13 @@ export class AdminPanelComponent implements OnInit {
     this.notificationsActive = true;
     this.title = "Notifications";
   }
-  deleteStudent(std:Student){
-    this.studentService.deleteStudent(std);
-    //this.studentService.getStudents();
 
+
+  deleteStudent(std: Student) {
+    this.studentService.deleteStudent(std);
+    this.studentService.getStudents();    
+    this.studentList = this.studentService.studentsList;
+    this.router.navigate(['/admin-panel']);
   }
 
 

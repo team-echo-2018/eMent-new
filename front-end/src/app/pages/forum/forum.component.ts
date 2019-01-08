@@ -3,6 +3,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { Posts } from '../../entities/posts';
 import { Postreply } from '../../entities/postreply';
 import { PostserviceService } from '../../services/postservice.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-forum',
@@ -11,15 +12,19 @@ import { PostserviceService } from '../../services/postservice.service';
 })
 export class ForumComponent implements OnInit {
 
+  user:any;
   posts : Posts[];
+  userprofilename:string;
   postsreply :Postreply[];
   Postheading:string;
   postbody:string;
   postreply:string;
   author:string;
+  address:String;
   type:boolean;
+  name:string;
 
-  constructor(private authService: AuthenticationService,private postService :PostserviceService) { }
+  constructor(private authService: AuthenticationService,private postService :PostserviceService,private userService:UserService) { }
 
   hidden:boolean =false;
   hiddenwrite :boolean =false;
@@ -27,14 +32,18 @@ export class ForumComponent implements OnInit {
   ngOnInit():void {
     this.authService.isUserLogged();
     this.retrevePosts();
+    this.user=this.userService.getCurrentUser();
+    this.author =this.user.userName;
+    //console.log(this.author);
+    this.type =(this.user.userType==='A');
+    this.name =this.user.getFirstName()+" "+this.user.getLastName();
+    this.userprofilename =this.user.getImgLink();
 
-    this.type =(this.authService.getUser().userType==='A');
   }
 
   retrevePosts(){
-    this.postService.getPosts();
-    this.author =this.authService.getUser().userName;
-    this.posts =this.postService.postlist;
+    this.posts =this.postService.getPosts();
+    //this.posts =this.postService.postlist;
     console.log(this.posts);
 
   }
@@ -53,8 +62,8 @@ export class ForumComponent implements OnInit {
     }else{
       this.hidden =true;
     }
-    this.postService.getPostsreply(pst);
-    this.postsreply=this.postService.replylist;
+    this.postsreply=this.postService.getPostsreply(pst);
+    //this.postsreply=this.postService.replylist;
     console.log(this.postreply);
 
     };
@@ -62,10 +71,10 @@ export class ForumComponent implements OnInit {
     addpost(){
       const pst =new Posts();
 
-      pst.postAuthor =this.author;
+      pst.postAuthor =this.authService.getUser().userName;
       pst.postbody=this.postbody;
       pst.posttitle=this.Postheading;
-      this.posts.push(pst);
+      //this.posts.push(pst);
       this.postService.InsertPosts(pst);
       console.log(pst+"added");
 
@@ -74,12 +83,12 @@ export class ForumComponent implements OnInit {
 
     addreply(pst:Posts){
       const rep =new Postreply();
-      rep.Author=this.author;
+      rep.Author=this.authService.getUser().userName;
       rep.body=this.postreply;
       rep.replyid=null;
       rep.postId =pst.postId;
       console.log(rep.body);
-      this.postsreply.push(rep);
+     // this.postsreply.push(rep);
       this.postService.InsertReplys(rep);
 
     }

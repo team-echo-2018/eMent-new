@@ -71,8 +71,8 @@ router.route('/student/deleteStudent').post(function (req, res) {
             res.status(404);
             res.send(error);
         } else {
-            //res.status(200);
-            res.send("ok");
+            res.status(200);
+            res.json(result);
         }
 
     });
@@ -238,12 +238,12 @@ router.route('/posts/deletePost').post(function (req, res) {
 
 /* insert a Reply for post */
 router.route('/posts/insertReply').post(function (req, res) {
-    backendController.insertReply(req.body, function (res, error) {
+    backendController.insertReply(req.body, function (result, error) {
         if (error) {
             res.status(404);
             res.send(error);
         } else {
-            res.status(200);
+           // res.status(200);
             res.json(result);
         }
 
@@ -253,12 +253,12 @@ router.route('/posts/insertReply').post(function (req, res) {
 /* insert post reply */
 
 router.route('/posts/insertPost').post(function (req, res) {
-    backendController.insertPost(req.body, function (res, error) {
+    backendController.insertPost(req.body, function (result, error) {
         if (error) {
             res.status(404);
             res.send(error);
         } else {
-            res.status(200);
+            //res.status(200);
             res.json(result);
         }
 
@@ -328,5 +328,6 @@ router.route('/projectideas/delete/projectIdea').post(function (req, res) {
 });
 
 /* Routes for task CRUD operations */
+
 
 module.exports = router;

@@ -12,67 +12,114 @@
 </style>
 
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
-  <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-10 my-5 pb-3 page-box">
-      <div class="w3-col m7">
+  <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Left Column -->
+    <div class="w3-col m3">
+      <!-- Profile -->
+      <app-pro-desc></app-pro-desc>
+      <br>
 
-        <div class="w3-row-padding">
-          <div class="w3-col m12">
-            <div class="w3-card w3-round w3-white">
-              <div class="w3-container w3-padding">
-                <h4 class="w3-opacity">Welcome to the ement Forum</h4>
-                <div class="w3-container w3-padding" style="align-self:left;" class="sender-msg-list" style="width: 50%;height: 100%;padding: 10px">
-                  <input style="border-right: 400px; padding: 10px; width: 400px" type="text" [(ngModel)]="Postheading"
-                    placeholder="Post heading ">
-                  <input style="border-right: 400px; padding: 10px; width: 400px" type="text" [(ngModel)]="postbody"
-                    placeholder="Enter postbody">
-                  <button type="button" class="w3-button w3-theme" (click)="addpost()"><i class="fa fa-pencil"></i>
-                    Post</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div *ngFor="let post of posts">
-          <div class="w3-container w3-card w3-white w3-round w3-margin">
-            <br>
-            <img src="../../../assets/img/default.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+      <!-- Accordion -->
 
-            <h4>{{post.postAuthor}}</h4>
-            <br>
-            <h5>{{post.posttitle}}</h5>
-            <hr class="w3-clear">
-            <p>{{post.postbody}}</p>
-            <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" (click)="writecomment(post)"><i class="fa fa-thumbs-up"></i>
-              Reply</button>
+      <br>
 
-            <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" (click)="comments(post)"><i class="fa fa-comment"></i>
-              Read Comments</button>
-            <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" (click)="deleteposts(post)" *ngIf="type"><i
-                class="fa fa-comment"></i> Delete comment</button>
+      <!-- Alert Box -->
+      <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+          <i class="fa fa-remove"></i>
+        </span>
+        <p><strong>Hey! {{author}}</strong></p>
+        <p>Welcome back to the Ement Forum</p>
+      </div>
 
-            <div *ngIf="hiddenwrite">
-              <div class="w3-container w3-padding">
-                <h6 class="w3-opacity">Welcome to the ement Forum</h6>
-                <input type="text" [(ngModel)]="postreply" placeholder="Enter comment">
-                <button type="button" class="w3-button w3-theme" (click)="addreply(post)"><i class="fa fa-pencil"></i>
+    <!-- End Left Column -->
+    </div>
+
+    <!-- Middle Column -->
+    <div class="w3-col m7">
+
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <div class="w3-container w3-padding" style="align-self:left;" class="sender-msg-list" style="width: 50%;height: 100%;padding: 10px">
+                <input style="border-right: 400px; padding: 10px; width: 400px" type="text" [(ngModel)]="Postheading"
+                  placeholder="Post heading ">
+                <input style="border-right: 400px; padding: 10px; width: 400px" type="text" [(ngModel)]="postbody"
+                  placeholder="Enter postbody">
+                <button type="button" class="w3-button w3-theme" (click)="addpost()"><i class="fa fa-pencil"></i>
                   Post</button>
               </div>
-            </div>
-            <div *ngIf="hidden">
-              <ul *ngFor="let reply of postsreply ">
-                <li>
-                  <h6>{{reply.Author}}</h6>
-                  <p>{{reply.body}}</p>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
       </div>
+
+
+      <div *ngFor="let post of posts">
+        <div class="w3-container w3-card w3-white w3-round w3-margin">
+          <br>
+          <img src="../../../assets/img/default.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+
+          <h4>{{post.postAuthor}}</h4>
+          <br>
+          <h5>{{post.posttitle}}</h5>
+          <hr class="w3-clear">
+          <p>{{post.postbody}}</p>
+          <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" (click)="writecomment(post)"><i class="fa fa-thumbs-up"></i>
+            Reply</button>
+
+          <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" (click)="comments(post)"><i class="fa fa-comment"></i>
+            Read Comments</button>
+          <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" (click)="deleteposts(post)" *ngIf="type"><i
+              class="fa fa-comment"></i> Delete comment</button>
+
+          <div *ngIf="hiddenwrite">
+            <div class="w3-container w3-padding">
+              <h6 class="w3-opacity">Welcome to the ement Forum</h6>
+              <input type="text" [(ngModel)]="postreply" placeholder="Enter comment">
+              <button type="button" class="w3-button w3-theme" (click)="addreply(post)"><i class="fa fa-pencil"></i>
+                Post</button>
+            </div>
+          </div>
+          <div *ngIf="hidden">
+            <ul *ngFor="let reply of postsreply ">
+              <li>
+                <h6>{{reply.Author}}</h6>
+                <p>{{reply.body}}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+    <!-- End Middle Column -->
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-col m2">
+      <app-notification></app-notification>
+      <br>
+
+      <br>
+
+      <br>
+
+      <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
+        <p><i class="fa fa-bug w3-xxlarge"></i></p>
+      </div>
+
+     <!-- End Right Column  -->
+     </div>
+
+  <!-- End Grid -->
   </div>
 
+<!-- End Page Container -->
 </div>
 
 <!-- Add the app footer section -->
 
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->
