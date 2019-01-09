@@ -6,6 +6,8 @@ import { Company } from 'src/app/entities/company';
 import { Mentor } from 'src/app/entities/mentor';
 import { MentorService } from 'src/app/services/mentor.service';
 import { HttpEnum } from 'src/app/utils/httpEnum';
+import { Project } from 'src/app/entities/project';
+import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-features',
@@ -17,21 +19,28 @@ export class FeaturesComponent implements OnInit {
 
   base: string;
 
+  projectList:Project[];
   studentList: Student[];
   companyList: Company[];
   mentorList: Mentor[];
 
+  isSearching: boolean;
+  viewUserId: string;
+
   constructor(private studentService: StudentService, private companyService: CompanyService,
-    private mentorService: MentorService, private cd: ChangeDetectorRef) { }
+    private mentorService: MentorService, private cd: ChangeDetectorRef,private projectService: ProjectService) { }
 
   ngOnInit() {
     this.studentService.getStudents();
     this.companyService.getCompanies();
     this.mentorService.getMentors();
+    //this.projectService.getProjects();
     this.studentList = this.studentService.studentsList;
     this.companyList = this.companyService.companiesList;
     this.mentorList = this.mentorService.mentorsList;
     this.base = HttpEnum.BASEURL;
+
+    this.isSearching = true;
   }
 
   searchStudent(fname) {
@@ -62,6 +71,15 @@ export class FeaturesComponent implements OnInit {
 
     // Detect changes on data
     this.cd.detectChanges();
+  }
+
+  setViewUserId(id){
+    this.viewUserId = id;
+    this.isSearching = false;
+  }
+
+  back() {
+    this.isSearching = true;
   }
 
 }

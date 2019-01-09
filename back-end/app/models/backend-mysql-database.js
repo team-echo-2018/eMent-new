@@ -734,6 +734,47 @@ DatabaseMySql.prototype.getProject = function (projectId, callback) {
   });
 }
 
+// get all projects' objects
+DatabaseMySql.prototype.getProjects = function (callback) {
+
+  var utils = new Utils();
+
+  var sqlSelectAllProjects = utils.getSqlSelectAllProjects();
+
+  connection.query(sqlSelectAllProjects, function (err, resultProject) {
+    if (err || resultProject.length == 0) {
+      callback(null, err);
+    } else {
+      var i = 0; var resCom = [];
+      while (resultProject[i]) {
+        resCom.push(utils.generateProject(resultProject[i]));
+        i = i + 1;
+      }
+      callback(resCom);
+    }
+  });
+}
+
+// get Project object by name
+DatabaseMySql.prototype.getProjectByName = function (projectName, callback) {
+
+  var utils = new Utils();
+
+  var sqlSelectProject = utils.getSqlSelectProjecttByName(projectName);
+
+  connection.query(sqlSelectProject, function (err, resultProject) {
+    if (err || resultProject.length == 0) {
+      callback(null, err);
+    } else {
+      var i = 0; var resCom = [];
+      while (resultProject[i]) {
+        resCom.push(utils.generateProject(resultProject[i]));
+        i = i + 1;
+      }
+      callback(resCom);
+    }
+  });
+}
 // insert project object to DB
 DatabaseMySql.prototype.insertProject = function (project, callback) {
 

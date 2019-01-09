@@ -25,6 +25,12 @@ export enum HttpEnum {
     GETMENTORS = 'http://localhost:8000/api/mentor/getall',
     GETMENTORBYFNAME = 'http://localhost:8000/api/mentor/get/fname',
 
+    // Project operation related urls
+    GETPROJECTS = 'http://localhost:8000/api/project/getall',
+    GETPROJECTBYNAME = 'http://localhost:8000/api/project/get/name',
+
     // Notification operation related urls
     GETNORTIFICATION =  'http://localhost:8000/api/nortify/getnortificatio'
+
+
 }

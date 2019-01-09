@@ -379,7 +379,34 @@ router.route('/projectideas/delete/projectIdea').post(function (req, res) {
     });
 });
 
-/* Routes for task CRUD operations */
+/* Routes for project CRUD operations */
+
+/* Router for getting project details */
+router.route('/project/getall').post(function (req, res) {
+    backendController.getProject(function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.json(result);
+        }
+    });
+});
+
+/* Router for getting project details by name*/
+router.route('/projecty/get/name').post(function (req, res) {
+    backendController.getProjectByName(req.body, function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            console.log(result);
+            res.json(result);
+        }
+    });
+});
+
+
 
 
 /* routes for nortification crud */

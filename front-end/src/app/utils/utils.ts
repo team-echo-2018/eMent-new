@@ -6,6 +6,7 @@ import { Posts } from '../entities/posts';
 import { Company } from '../entities/company';
 import { message } from '../entities/message';
 import { nortification } from '../entities/nortification';
+import { Project } from '../entities/project';
 
 export class Utils {
 
@@ -113,4 +114,20 @@ export class Utils {
 
       return msg;
     }
+    public static convertDatabaseProjectToProject(dataProject: any): Project {
+
+        const project = new Project();
+        project.projectId = dataProject.projectId;
+        project.projectIdeaId = dataProject.projectIdeaId;
+        project.projectMentors = dataProject.projectMentors;
+        project.projectLeadMentor = dataProject.projectLeadMentor;
+        project.projectStartingDate = dataProject.projectStartingDate;
+        project.projectEndingDate = dataProject.projectEndingDate;
+        
+
+        console.log(project);
+        return project;
+
+    }
+
 }

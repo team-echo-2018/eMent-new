@@ -661,6 +661,37 @@ BackendController.prototype.getProject = function (req, callback) {
     });
 }
 
+// Get project by name from DB model
+BackendController.prototype.getProjectByName = function (req, callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.getProjectByName(req.projectName, function (result, err) {
+        console.log("Enter to the get project function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+// Get ALL projects objects from DB model
+BackendController.prototype.getProjects = function (callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.getProjects(function (result, err) {
+        console.log("Enter to the get projects function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
 //insert project 
 
 BackendController.prototype.insertProject = function (req, callback) {
