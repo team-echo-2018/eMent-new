@@ -16,9 +16,9 @@ export class ForumComponent implements OnInit {
   posts : Posts[];
   userprofilename:string;
   postsreply :Postreply[];
-  Postheading :string;
-  postbody:string;
-  postreply:string;
+  Postheading :string=" ";
+  postbody:string=" ";
+  postreply:string=" ";
   author:string;
   address:String;
   type:boolean;
@@ -72,9 +72,6 @@ export class ForumComponent implements OnInit {
       const pst =new Posts();
 
       pst.postAuthor =this.authService.getUser().userName;
-      console.log(this.postbody);
-      console.log(this.Postheading);
-
       pst.postbody=this.postbody;
       pst.posttitle=this.Postheading;
       this.posts.push(pst);
@@ -91,7 +88,7 @@ export class ForumComponent implements OnInit {
       rep.replyid=null;
       rep.postId =pst.postId;
       console.log(rep.body);
-     // this.postsreply.push(rep);
+      this.postsreply.push(rep);
       this.postService.InsertReplys(rep);
 
     }

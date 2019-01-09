@@ -123,7 +123,7 @@ export class PostserviceService {
 
     this.httpBackendRequest.realizarHttpPost(this.insertPostsUrl,Postdetails).subscribe(
       (error)=>{
-        console.log(error);
+        //console.log(error);
 
       }
 
