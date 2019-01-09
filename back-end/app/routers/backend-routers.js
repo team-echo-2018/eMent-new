@@ -169,6 +169,18 @@ router.route('/company/getall').post(function (req, res) {
     });
 });
 
+//Route for delete company
+router.route('/company/deleteCompany').post(function (req, res) {
+    backendController.deleteCompany(req.body, function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.json(result);
+        }
+    });
+});
+
 /* Routes for mentor CRUD operations */
 
 /* Router for getting mentors details */

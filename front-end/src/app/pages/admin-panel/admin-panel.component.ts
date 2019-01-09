@@ -108,22 +108,23 @@ export class AdminPanelComponent implements OnInit {
   // Delete function for users by id
   deleteUser(userId: string) {
 
-    console.log(confirm("Are you sure ?"));
-    // // Initialise user with user id
-    // let user = new User();
-    // user.userId = userId;
+    // Initialise user with user id
+    let user = new User();
+    user.userId = userId;
 
-    // // Delete user from database
-    // this.userService.deleteUser(user);
+    // Delete user from database
+    if (console.log(confirm("Are you sure ?"))) {
+      this.userService.deleteUser(user);
+    }
 
-    // // Get and Update user list from services
-    // this.mentorService.getMentors();
-    // this.studentService.getStudents();
-    // this.mentorList = this.mentorService.mentorsList;
-    // this.studentList = this.studentService.studentsList;
+    // Get and Update user list from services
+    this.mentorService.getMentors();
+    this.studentService.getStudents();
+    this.mentorList = this.mentorService.mentorsList;
+    this.studentList = this.studentService.studentsList;
 
-    // // Detect changes on data
-    // this.cd.detectChanges();
+    // Detect changes on data
+    this.cd.detectChanges();
   }
 
   // Delete function for company by id
