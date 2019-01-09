@@ -34,6 +34,19 @@ router.route('/addUser').post(function (req, res) {
     });
 });
 
+//Route for delete user
+router.route('/deleteUser').post(function (req, res) {
+    backendController.deleteUser(req.body, function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.json(result);
+        }
+    });
+});
+
+
 /* Routes for student CRUD operations */
 
 /* Route for insert student */
@@ -147,6 +160,18 @@ router.route('/profile/update').post(function (req, res) {
 /* Router for getting companies details */
 router.route('/company/getall').post(function (req, res) {
     backendController.getCompanies(function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.json(result);
+        }
+    });
+});
+
+//Route for delete company
+router.route('/company/deleteCompany').post(function (req, res) {
+    backendController.deleteCompany(req.body, function (result, error) {
         if (error) {
             res.status(404);
             res.send(error);
