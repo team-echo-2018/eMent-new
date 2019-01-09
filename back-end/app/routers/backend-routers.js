@@ -75,6 +75,20 @@ router.route('/student/getall').post(function (req, res) {
     });
 });
 
+/* Router for getting student details by fname*/
+router.route('/student/get/fname').post(function (req, res) {
+    console.log(req);
+    backendController.getStudentByFname(req.body, function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            console.log(result);
+            res.json(result);
+        }
+    });
+});
+
 /** delete student */
 router.route('/student/deleteStudent').post(function (req, res) {
     console.log(req.body);
@@ -164,6 +178,19 @@ router.route('/company/getall').post(function (req, res) {
             res.status(404);
             res.send(error);
         } else {
+            res.json(result);
+        }
+    });
+});
+
+/* Router for getting COMPANY details by name*/
+router.route('/company/get/name').post(function (req, res) {
+    backendController.getCompanyByName(req.body, function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            console.log(result);
             res.json(result);
         }
     });

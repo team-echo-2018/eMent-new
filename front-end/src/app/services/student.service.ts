@@ -65,15 +65,16 @@ export class StudentService {
   }
 
   // get student by first name 
-  getStudent(fname) {
+  getStudentByName(student) {
     this.studentsList = [];
-    this.httpBackendRequest.realizarHttpPost(HttpEnum.GETSTUDENTS, null)
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.GETSTUDENTBYFNAME, student)
       .subscribe(
         (result) => {
           if (result === null) {
             console.log("respond error");
           } else {
             let i = 0;
+            console.log(result);
             while (result[i]) {
               let stud = Utils.convertDatabaseStudentToStudent(result[i]);
               this.studentsList.push(stud);
@@ -81,7 +82,7 @@ export class StudentService {
             }
           }
         },
-        (err) => alert('getting companies error occured.. !')
+        (err) => alert('getting student error occured.. !')
       );
   }
 
