@@ -941,7 +941,25 @@ BackendController.prototype.getnortificationss = function (req,callback) {
             callback(null, err);
         } else {
           //  console.log("returning from controller");
-            
+
+            callback(result);
+        }
+    });
+}
+
+/* insert nortifications*/
+
+BackendController.prototype.insertProjectNortifications = function (req,callback) {
+
+    var daoMsql = new DAOMySql();
+    daoMsql.insertProjectNortifications(req.body,function (result, err) {
+     //   console.log("Enter to the get nortifications");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+          //  console.log("returning from controller");
+
             callback(result);
         }
     });

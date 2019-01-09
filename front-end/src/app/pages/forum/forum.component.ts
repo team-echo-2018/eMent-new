@@ -13,6 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 export class ForumComponent implements OnInit {
 
   user:any;
+  readcommentonce:boolean =true;
   posts : Posts[];
   userprofilename:string;
   postsreply :Postreply[];
@@ -52,15 +53,21 @@ export class ForumComponent implements OnInit {
   writecomment(){
     if(this.hiddenwrite){
       this.hiddenwrite =false;
+      this.hidden =true;
+      this.readcommentonce=false;
     }else{
       this.hiddenwrite =true;
+      this.readcommentonce =true;
     }
   }
   comments(pst:Posts){
     if(this.hidden){
       this.hidden =false;
+      this.hiddenwrite=false;
+      this.readcommentonce=false;
     }else{
       this.hidden =true;
+      this.readcommentonce =true;
     }
     this.postsreply=this.postService.getPostsreply(pst);
     //this.postsreply=this.postService.replylist;

@@ -1095,4 +1095,35 @@ DatabaseMySql.prototype.getnortifications = function ( callback) {
   });
 }
 
+DatabaseMySql.prototype.insertProjectNortifications = function (nortification, callback) {
+
+  var utils = new Utils();
+  console.log(nortification);
+  
+  /* -- Start transation -- */
+  connection.beginTransaction(function (err) {
+    if (err) { callback(null, err); }
+
+    var sqlInsertnortification = utils.getInsertSqlSkill(nortification);
+
+    /* -- Start insert Skill -- */
+    insertSql(sqlInsertnortification, function (result, err) {
+      if (err) {
+        connection.rollback();
+        callback(null, err);
+      } else {
+        connection.commit(function (err) {
+          if (err) {
+            connection.rollback();
+            callback(null, err);
+          }
+          console.log('Transaction Complete.');
+          callback("nortification successfully inserted into the system!");
+        });
+      }
+    });
+  });
+}
+
+
 module.exports = DatabaseMySql;

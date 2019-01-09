@@ -378,4 +378,17 @@ router.route('/nortify/getnortificatio').post(function (req, res) {
 
     });
 });
+
+/* insert nortifications */
+router.route('/nortify/insertNortification').post(function (req, res) {
+    backendController.insertProjectNortifications(req.body, function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.json(result);
+        }
+    });
+});
+
 module.exports = router;

@@ -636,4 +636,15 @@ Utils.prototype.selectNortifications =function(){
 }
 
 // export utils
+
+Utils.prototype.insertNortifications =function(nortification){
+    var sqlInsertNortification = "INSERT INTO posts (nortificationID,nortificationtitle,nortificationbody,timee) VALUES ("+
+        "NULL,"+
+        "'"+nortification.nortificationtitle +"',"+
+        "'"+nortification.nortificationbody +"',"+
+        "'"+nortification.time +"')";
+    console.log(sqlInsertNortification);
+    return sqlInsertNortification;
+}
+
 module.exports = Utils;
