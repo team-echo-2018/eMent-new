@@ -494,6 +494,8 @@ Utils.prototype.addPosts =function(Post)
         "'"+Post.postAuthor +"',"+
         "'"+Post.posttitle +"',"+
         "'"+Post.postbody +"')";
+    console.log(sqlInsertPost);
+        
     return sqlInsertPost;
 }
 
