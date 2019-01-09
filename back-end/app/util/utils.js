@@ -489,6 +489,8 @@ Utils.prototype.generateMentor = function (resultMentor) {
 //add posts
 Utils.prototype.addPosts =function(Post)
 {
+    console.log(Post);
+    
     var sqlInsertPost = "INSERT INTO posts (postId,postauthor,postheading,postbody) VALUES ("+
         "NULL,"+
         "'"+Post.postAuthor +"',"+
@@ -627,7 +629,7 @@ Utils.prototype.generateTask = function (resultTask) {
 
 Utils.prototype.selectNortifications =function(){
     var selectSqlnortify = "SELECT * FROM nortifications";
-    console.log(selectSqlnortify);
+    //console.log(selectSqlnortify);
     
 
     return selectSqlnortify;

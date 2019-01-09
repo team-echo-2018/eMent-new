@@ -119,6 +119,8 @@ export class PostserviceService {
   }
 /* INSERT POSTS */
   InsertPosts(Postdetails:Posts){
+    console.log(Postdetails);
+
     this.httpBackendRequest.realizarHttpPost(this.insertPostsUrl,Postdetails).subscribe(
       (error)=>{
         console.log(error);

@@ -254,6 +254,10 @@ router.route('/posts/insertReply').post(function (req, res) {
 
 router.route('/posts/insertPost').post(function (req, res) {
     backendController.insertPost(req.body, function (result, error) {
+        console.log("asdf");
+        
+        console.log(req.body);
+        
         if (error) {
             res.status(404);
             res.send(error);

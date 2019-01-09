@@ -72,6 +72,9 @@ export class ForumComponent implements OnInit {
       const pst =new Posts();
 
       pst.postAuthor =this.authService.getUser().userName;
+      console.log(this.postbody);
+      console.log(this.Postheading);
+
       pst.postbody=this.postbody;
       pst.posttitle=this.Postheading;
       this.posts.push(pst);
