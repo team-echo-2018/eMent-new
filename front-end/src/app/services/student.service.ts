@@ -63,4 +63,27 @@ export class StudentService {
       }
     );
   }
+
+  // get student by first name 
+  getStudentByName(student) {
+    this.studentsList = [];
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.GETSTUDENTBYFNAME, student)
+      .subscribe(
+        (result) => {
+          if (result === null) {
+            console.log("respond error");
+          } else {
+            let i = 0;
+            console.log(result);
+            while (result[i]) {
+              let stud = Utils.convertDatabaseStudentToStudent(result[i]);
+              this.studentsList.push(stud);
+              i = i + 1;
+            }
+          }
+        },
+        (err) => alert('getting student error occured.. !')
+      );
+  }
+
 }

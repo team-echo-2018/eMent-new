@@ -49,8 +49,8 @@
           <div class="card">
             <div class="card-body">
               <form>
-                <input class="form-control form-control-lg" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-primary search-btn" type="submit">Search</button>
+                <input #stdSearch class="form-control form-control-lg" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-primary search-btn" type="button" (click)="searchStudent(stdSearch.value)">Search</button>
               </form>
             </div>
           </div>
@@ -62,7 +62,7 @@
           <div class="row">
             <div class="col-2 pt-3">
               <div class="user-avatar float-xl-center pr-0 float-none">
-                <img src="assets/images/avatar-1.jpg" alt="User Avatar" class="rounded-circle user-avatar-xl ml-5">
+                <img src="{{base}}{{student.studentImgLink}}" alt="User Avatar" class="rounded-circle user-avatar-xl ml-5">
               </div>
             </div>
 
@@ -70,13 +70,36 @@
               <div class="card-header d-flex">
                 <h4 class="card-header-title"><b>Student :</b> {{student.studentFname}} {{student.studentLname}}</h4>
                 <div class="toolbar ml-auto">
-                  <a href="#" class="btn btn-primary btn-sm ">View Student</a>
+                  <button class="btn btn-primary btn-sm " data-toggle="modal" data-target="#stdModal">View Student</button>
                 </div>
               </div>
               <div class="card-body">
                 <p class="card-text">{{student.studentDescription}}</p>
               </div>
             </div>
+
+            <!-- Student Modal -->
+            <div id="stdModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">{{student.studentFname}} {{student.studentLname}}</h4>
+                  </div>
+                  <div class="modal-body ml-2">
+                    <p><b>By Sachini Chathurangi</b></p>
+                    <p>Simple CRUD sites - Create, Read,Update,Delete (read includes list).
+                      Possible 'objects' could be Dog Breeds, any type of pet, plants, flowers etc.
+                      Level of detail is up to you. Locations like Museums, National Parks. Events like
+                      music festivals is another possibility. Data Model sample for Events</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -90,8 +113,8 @@
           <div class="card">
             <div class="card-body">
               <form>
-                <input class="form-control form-control-lg" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-primary search-btn" type="submit">Search</button>
+                <input #cmpnySearch class="form-control form-control-lg" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-primary search-btn" type="button" (click)="searchCompany(cmpnySearch.value)">Search</button>
               </form>
             </div>
           </div>

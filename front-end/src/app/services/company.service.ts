@@ -34,6 +34,30 @@ export class CompanyService {
       );
   }
 
+  // get company by company name 
+  getCompanyByName(company) {
+    this.companiesList = [];
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.GETCOMPANYBYNAME, company)
+      .subscribe(
+        (result) => {
+          if (result === null) {
+            console.log("respond error");
+          } else {
+            let i = 0;
+            console.log(result);
+            while (result[i]) {
+              let comp = Utils.convertDatabaseCompanyToCompany(result[i]);
+              this.companiesList.push(comp);
+              i = i + 1;
+            }
+          }
+        },
+        (err) => alert('getting company error occured.. !')
+      );
+  }
+
+
+
   // Delete company from database
   deleteCompany(company: Company) {
     this.httpBackendRequest.realizarHttpPost(HttpEnum.DELETECOMPANY, company)
