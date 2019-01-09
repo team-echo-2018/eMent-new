@@ -291,6 +291,15 @@ Utils.prototype.getSqlSelectProject = function (projectId) {
     return sqlSelectProject;
 };
 
+// SQL query for select all projects
+Utils.prototype.getSqlSelectAllProjects = function () {
+
+    var sqlSelectProject = "SELECT * FROM project";
+    return sqlSelectProject;
+};
+
+
+
 // SQL query for insert project
 Utils.prototype.getInsertSqlProject = function (project) {
 

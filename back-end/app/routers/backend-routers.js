@@ -393,9 +393,9 @@ router.route('/project/getall').post(function (req, res) {
     });
 });
 
-/* Router for getting project details by name*/
-router.route('/projecty/get/name').post(function (req, res) {
-    backendController.getProjectByName(req.body, function (result, error) {
+/* Router for getting project details by id*/
+router.route('/project/get/id').post(function (req, res) {
+    backendController.getProject(req.body, function (result, error) {
         if (error) {
             res.status(404);
             res.send(error);

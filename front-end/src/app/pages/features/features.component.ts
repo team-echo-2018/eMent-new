@@ -34,13 +34,25 @@ export class FeaturesComponent implements OnInit {
     this.studentService.getStudents();
     this.companyService.getCompanies();
     this.mentorService.getMentors();
-    //this.projectService.getProjects();
+    this.projectService.getProjects();
+
     this.studentList = this.studentService.studentsList;
     this.companyList = this.companyService.companiesList;
     this.mentorList = this.mentorService.mentorsList;
+    this.projectList=this.projectService.projectsList;
     this.base = HttpEnum.BASEURL;
 
     this.isSearching = true;
+  }
+
+  searchProject(id) {
+    let project = new Project();
+    project.projectId = id;
+    this.projectService.getProject(project);
+    this.projectList = this.projectService.projectsList;
+
+    // Detect changes on data
+    this.cd.detectChanges();
   }
 
   searchStudent(fname) {

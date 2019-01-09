@@ -27,7 +27,7 @@ export enum HttpEnum {
 
     // Project operation related urls
     GETPROJECTS = 'http://localhost:8000/api/project/getall',
-    GETPROJECTBYNAME = 'http://localhost:8000/api/project/get/name',
+    GETPROJECT = 'http://localhost:8000/api/project/get/id',
 
     // Notification operation related urls
     GETNORTIFICATION =  'http://localhost:8000/api/nortify/getnortificatio'

@@ -12,8 +12,8 @@ export class ProjectService {
   projectsList: Project[] = new Array();
   constructor(private httpBackendRequest: HttpBackendRequestService) { }
 
-  // get all the companies' details
-  getCompanies() {
+  // get all the project details
+  getProjects() {
     this.projectsList = [];
     this.httpBackendRequest.realizarHttpPost(HttpEnum.GETPROJECTS, null)
       .subscribe(
@@ -34,10 +34,10 @@ export class ProjectService {
   }
 
 
-  // get project by project name 
-  getProjectByName(project) {
+  // get project by project id 
+  getProject(project) {
     this.projectsList = [];
-    this.httpBackendRequest.realizarHttpPost(HttpEnum.GETCOMPANYBYNAME, project)
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.GETPROJECT, project)
       .subscribe(
         (result) => {
           if (result === null) {
