@@ -987,16 +987,8 @@ DatabaseMySql.prototype.getSkill = function (skillId, callback) {
   });
 }
 
-<<<<<<< HEAD
-/* insert Posts */
-
-
-DatabaseMySql.prototype.insertsPosts = function (Post, callback) {
-  
-=======
 // insert skill object to DB
 DatabaseMySql.prototype.insertSkill = function (skill, callback) {
->>>>>>> 26dfa7b3998c3b33d94ea090f2a223348ebba2d8
 
   var utils = new Utils();
   console.log(Post);
