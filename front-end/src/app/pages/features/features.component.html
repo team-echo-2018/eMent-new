@@ -99,69 +99,62 @@
         <!-- ============================================================== -->
         <!-- end search bar  -->
         <div *ngFor="let company of companyList" class="card">
+          <div class="card-header d-flex">
+            <h4 class="card-header-title"><b>Company : </b>{{company.companyName}}</h4>
+            <div class="toolbar ml-auto">
+              <a href="#" class="btn btn-primary btn-sm ">View Company</a>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{company.companyDescription }}</p>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- mentor tab pane -->
+      <div class="tab-pane fade" id="pills-msg" role="tabpanel" aria-labelledby="pills-msg-tab">
+        <!-- search bar  -->
+        <!-- ============================================================== -->
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+          <div class="card">
+            <div class="card-body">
+              <form>
+                <input class="form-control form-control-lg" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-primary search-btn" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end search bar  -->
+        <!-- ============================================================== -->
+        <div *ngFor="let mentor of mentorList" class="card">
           <div class="row">
             <div class="col-2 pt-3">
               <div class="user-avatar float-xl-center pr-0 float-none">
                 <img src="assets/images/avatar-1.jpg" alt="User Avatar" class="rounded-circle user-avatar-xl ml-5">
               </div>
             </div>
-            <div class="col-10">
-              <div class="card-header d-flex">
-                <h4 class="card-header-title"><b>Company : </b>{{company.companyName}}</h4>
-                <div class="toolbar ml-auto">
-                  <a href="#" class="btn btn-primary btn-sm ">View Company</a>
-                </div>
-              </div>
-              <div class="card-body">
-                <p class="card-text">{{company.companyDescription }}</p>
-              </div>
-            </div>
           </div>
-        </div>
-
-        <!-- mentor tab pane -->
-        <div class="tab-pane fade" id="pills-msg" role="tabpanel" aria-labelledby="pills-msg-tab">
-          <!-- search bar  -->
-          <!-- ============================================================== -->
-          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <div class="card">
-              <div class="card-body">
-                <form>
-                  <input class="form-control form-control-lg" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-primary search-btn" type="submit">Search</button>
-                </form>
+          <div class="col-10">
+            <div class="card-header d-flex">
+              <h4 class="card-header-title"><b>Mentor : </b>{{mentor.mentorFname}} {{mentor.mentorLname}}</h4>
+              <div class="toolbar ml-auto">
+                <a href="#" class="btn btn-primary btn-sm ">View Mentor</a>
               </div>
             </div>
-          </div>
-          <!-- ============================================================== -->
-          <!-- end search bar  -->
-          <!-- ============================================================== -->
-          <div *ngFor="let mentor of mentorList" class="card">
-            <div class="row">
-              <div class="col-2 pt-3">
-                <div class="user-avatar float-xl-center pr-0 float-none">
-                  <img src="assets/images/avatar-1.jpg" alt="User Avatar" class="rounded-circle user-avatar-xl ml-5">
-                </div>
-              </div>
-            </div>
-            <div class="col-10">
-              <div class="card-header d-flex">
-                <h4 class="card-header-title"><b>Mentor : </b>{{mentor.mentorFname}} {{mentor.mentorLname}}</h4>
-                <div class="toolbar ml-auto">
-                  <a href="#" class="btn btn-primary btn-sm ">View Mentor</a>
-                </div>
-              </div>
-              <div class="card-body">
-                <p class="card-text">{{ mentor.mentorDescription}}</p>
-              </div>
+            <div class="card-body">
+              <p class="card-text">{{ mentor.mentorDescription}}</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 
+</div>
 
-  <!-- Add the app footer section -->
-  <app-footer></app-footer>
+
+<!-- Add the app footer section -->
+<app-footer></app-footer>
