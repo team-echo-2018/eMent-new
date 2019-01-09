@@ -28,4 +28,8 @@ export class FeaturesComponent implements OnInit {
     this.mentorList = this.mentorService.mentorsList;
   }
 
+  searchStudent(name){
+    
+  }
+
 }
