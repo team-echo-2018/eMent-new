@@ -113,7 +113,7 @@ export class AdminPanelComponent implements OnInit {
     user.userId = userId;
 
     // Delete user from database
-    if (console.log(confirm("Are you sure ?"))) {
+    if (confirm("Are you sure ?")) {
       this.userService.deleteUser(user);
     }
 
@@ -135,7 +135,9 @@ export class AdminPanelComponent implements OnInit {
     company.companyId = companyId;
 
     // Delete company from database
-    this.companyService.deleteCompany(company);
+    if (confirm("Are you sure ?")) {
+      this.companyService.deleteCompany(company);
+    }
 
     // Get and Update company list from services
     this.companyService.getCompanies();
