@@ -975,9 +975,9 @@ function insertSql(query, callback) {
 DatabaseMySql.prototype.getSkill = function (skillId, callback) {
 
   var utils = new Utils();
-
+  
   var sqlSelectSkill = utils.getSqlSelectSkill(skillId);
-
+  
   connection.query(sqlSelectSkill, function (err, resultSkill) {
     if (err || resultSkill.length == 0) {
       callback(null, err);
@@ -1047,5 +1047,51 @@ DatabaseMySql.prototype.updateSkill = function (skill, callback) {
   });
 }
 
+/* DB query inserting function */
+function insertSql(query, callback) {
+  connection.query(query, function (err, result) {
+    if (err) {
+      callback(null, err);
+    } else {
+      callback(result)
+    }
+  });
+}
+
+/* CRUD MODELS FOR NORTIFICATIONS */
+//GET NORTIFICATIONS
+
+// DatabaseMySql.prototype.getnortifications = function (err, callback) {
+
+//   console.log("backendmysql controller");
+//   var utils = new Utils(); 
+
+//   var sqlSelectnortifications = utils.selectNortifications();
+//  // console.log(sqlSelectnortifications);
+
+//   connection.query(sqlSelectnortifications, function (err, resultPosts) {
+//     if (err || resultPosts.length == 0) {
+//       callback(null, err);
+//     } else {
+//       callback(resultPosts);
+//     }
+//   });
+// }
+
+DatabaseMySql.prototype.getnortifications = function ( callback) {
+
+  console.log("backendmysql controller nortifications");
+  var utils = new Utils();
+
+  var sqlSelectPost = utils.selectNortifications();
+
+  connection.query(sqlSelectPost, function (err, resultPosts) {
+    if (err || resultPosts.length == 0) {
+      callback(null, err);
+    } else {
+      callback(resultPosts);
+    }
+  });
+}
 
 module.exports = DatabaseMySql;

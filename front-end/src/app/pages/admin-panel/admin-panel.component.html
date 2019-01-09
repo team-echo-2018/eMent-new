@@ -161,7 +161,7 @@
                 <!-- mentors content -->
                 <div *ngIf="mentorsActive" class="ecommerce-widget">
                     <div class="row">
-                        <!-- company table  -->
+                        <!-- mentor table  -->
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="card">
                                 <h5 class="card-header">Registered Mentors</h5>
@@ -189,7 +189,7 @@
                                                     <td>{{mentor.mentorPhone}}</td>
                                                     <td>{{mentor.mentorEmail}}</td>
                                                     <td>{{mentor.mentorDescription}}</td>
-                                                    <td><button class="btn btn-danger rounded">DELETE</button></td>
+                                                    <td><button class="btn btn-danger rounded" (click)="deleteUser(mentor.mentorId)">DELETE</button></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -205,7 +205,7 @@
                 <!-- students content -->
                 <div *ngIf="studentsActive" class="ecommerce-widget">
                     <div class="row">
-                        <!-- company table  -->
+                        <!-- mentor table  -->
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="card">
                                 <h5 class="card-header">Registered Students</h5>
@@ -233,7 +233,7 @@
                                                     <td>{{student.studentPhone}}</td>
                                                     <td>{{student.studentEmail}}</td>
                                                     <td>{{student.studentDescription}}</td>
-                                                    <td><button class="btn btn-danger rounded" (click)="deleteStudent(student)">DELETE</button></td>
+                                                    <td><button class="btn btn-danger rounded" (click)="deleteUser(student.studentId)">DELETE</button></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -249,7 +249,7 @@
                 <!-- notifications content -->
                 <div *ngIf="notificationsActive" class="ecommerce-widget">
                     <div class="row">
-                        <!-- company table  -->
+                        <!-- notification table  -->
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="card">
                                 <h5 class="card-header">Recent Orders</h5>
@@ -300,24 +300,6 @@
 
             </div>
         </div>
-
-        <!-- footer -->
-        <!-- <div class="footer mb-0">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="text-md-right footer-links d-none d-sm-block">
-                            <a href="javascript: void(0);">About</a>
-                            <a href="javascript: void(0);">Support</a>
-                            <a href="javascript: void(0);">Contact Us</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- end footer -->
     </div>
     <!-- end wrapper  -->
 </div>

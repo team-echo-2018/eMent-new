@@ -188,7 +188,7 @@ router.route('/mentor/getall').post(function (req, res) {
 /* get posts */
 router.route('/posts/getPost').post(function (req, res) {
     backendController.getPosts(req.body, function (result, error) {
-        console.log(result);
+        //console.log(result);
 
         if (error) {
             res.status(404);
@@ -206,7 +206,7 @@ router.route('/posts/getPostReply').post(function (req, res) {
     console.log("route for replys called");
 
     backendController.getreplyPosts(req.body, function (result, error) {
-        console.log(result);
+        //console.log(result);
 
         if (error) {
             res.status(404);
@@ -343,4 +343,23 @@ router.route('/projectideas/delete/projectIdea').post(function (req, res) {
 /* Routes for task CRUD operations */
 
 
+/* routes for nortification crud */
+
+/* get nortification */
+router.route('/nortify/getnortificatio').post(function (req, res) {
+    console.log("asdf");
+    
+    backendController.getnortificationss(req.body, function (result, error) {
+        console.log("backend router"+result);
+
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            console.log(result);
+            res.json(result);
+        }
+
+    });
+});
 module.exports = router;

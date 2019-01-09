@@ -621,7 +621,15 @@ Utils.prototype.generateTask = function (resultTask) {
     return task;
 };
 
+// get latest nortifications
 
+Utils.prototype.selectNortifications =function(){
+    var selectSqlnortify = "SELECT * FROM nortifications";
+    console.log(selectSqlnortify);
+    
+
+    return selectSqlnortify;
+}
 
 // export utils
 module.exports = Utils;
