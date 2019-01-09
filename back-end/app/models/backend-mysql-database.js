@@ -944,9 +944,11 @@ DatabaseMySql.prototype.updatePost = function (Post, callback) {
 
 
 DatabaseMySql.prototype.insertsPosts = function (Post, callback) {
+  
 
   var utils = new Utils();
-
+  console.log(Post);
+  
   /* -- Start transation -- */
   connection.beginTransaction(function (err) {
     if (err) { callback(null, err); }
