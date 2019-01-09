@@ -479,9 +479,155 @@ DatabaseMySql.prototype.updateCompany = function (company, callback) {
     });
   });
 }
+//Post Model related functions .................
+// get Post object in DB
+DatabaseMySql.prototype.getPost = function (err, callback) {
+
+  console.log("backendmysql controller");
+  var utils = new Utils();
+
+  var sqlSelectPost = utils.selectPosts();
+
+  connection.query(sqlSelectPost, function (err, resultPosts) {
+    if (err || resultPosts.length == 0) {
+      callback(null, err);
+    } else {
+      callback(resultPosts);
+    }
+  });
+}
+
+/* get Post reply object in db */
+
+DatabaseMySql.prototype.getReply = function (rep, callback) {
+
+  var utils = new Utils();
+  console.log("from backend mysql");
 
 
+  var sqlselectreply = utils.getReply(rep);
 
+  connection.query(sqlselectreply, function (err, resultsreply) {
+    console.log(resultsreply);
+
+    if (err || resultsreply.length == 0) {
+      callback(null, err);
+    } else {
+      callback(resultsreply);
+    }
+  })
+}
+
+// updating a post
+DatabaseMySql.prototype.updatePost = function (Post, callback) {
+
+  var utils = new Utils();
+
+  /* -- Start transation -- */
+  //connection.connect();
+  connection.beginTransaction(function (err) {
+    if (err) { callback(null, err); }
+
+    var sqlUpdatePost = utils.updatePosts(Post);
+
+    connection.query(sqlUpdatePost, function (result, err) {
+      if (err) {
+        connection.rollback();
+        callback(null, err);
+      } else {
+        connection.commit(function (err) {
+          if (err) {
+            connection.rollback();
+            callback(null, err);
+          }
+          console.log('Transaction Complete.');
+          //connection.end();
+          callback("Post successfully updated in the system!");
+        });
+      }
+    });
+  });
+}
+
+/* insert Posts */
+
+
+DatabaseMySql.prototype.insertsPosts = function (Post, callback) {
+
+  var utils = new Utils();
+
+  /* -- Start transation -- */
+  connection.beginTransaction(function (err) {
+    if (err) { callback(null, err); }
+
+    var sqlInsertspost = utils.addPosts(Post);
+
+    /* -- Start insert Skill -- */
+    insertSql(sqlInsertspost, function (result, err) {
+      if (err) {
+        connection.rollback();
+        callback(null, err);
+      } else {
+        connection.commit(function (err) {
+          if (err) {
+            connection.rollback();
+            callback(null, err);
+          }
+          console.log('Transaction Complete.');
+          callback("Post successfully inserted into the system!");
+        });
+      }
+    });
+  });
+}
+
+/* insert reply */
+
+DatabaseMySql.prototype.insertreply = function (reply, callback) {
+
+  var utils = new Utils();
+
+  /* -- Start transation -- */
+  connection.beginTransaction(function (err) {
+    if (err) { callback(null, err); }
+
+    var sqlInsertreply = utils.insertReply(reply);
+
+    /* -- Start insert Skill -- */
+    insertSql(sqlInsertreply, function (result, err) {
+      if (err) {
+        connection.rollback();
+        callback(null, err);
+      } else {
+        connection.commit(function (err) {
+          if (err) {
+            connection.rollback();
+            callback(null, err);
+          }
+          console.log('Transaction Complete.');
+          callback("Post reply successfully inserted into the system!");
+        });
+      }
+    });
+  });
+}
+
+//Delete POSTs
+DatabaseMySql.prototype.deletePost = function (err, callback) {
+
+  var utils = new Utils();
+
+  var sqldeletePost = utils.deletePost(Post);
+
+  connection.query(sqldeletePost, function (err, resultPosts) {
+    if (err || resultPosts.length == 0) {
+      callback(null, err);
+    } else {
+      //callback (utils.generateStudent(resultStudent[0]));
+      return resultPosts;
+    }
+  });
+}
 // Milestone Model related functions ..............................................................
 // get milestone object by id
 DatabaseMySql.prototype.getMilestone = function (milestoneId, callback) {
@@ -735,85 +881,6 @@ DatabaseMySql.prototype.deleteProjectIdea = function (projectIdea, callback) {
 }
 
 
-// Skill Model related functions ..............................................................
-// get skill object by id
-DatabaseMySql.prototype.getSkill = function (skillId, callback) {
-
-  var utils = new Utils();
-
-  var sqlSelectSkill = utils.getSqlSelectSkill(skillId);
-
-  connection.query(sqlSelectSkill, function (err, resultSkill) {
-    if (err || resultSkill.length == 0) {
-      callback(null, err);
-    } else {
-      callback(utils.generateSkill(resultSkill[0]));
-    }
-  });
-}
-
-// insert skill object to DB
-DatabaseMySql.prototype.insertSkill = function (skill, callback) {
-
-  var utils = new Utils();
-
-  /* -- Start transation -- */
-  connection.beginTransaction(function (err) {
-    if (err) { callback(null, err); }
-
-    var sqlInsertSkill = utils.getInsertSqlSkill(skill);
-
-    /* -- Start insert Skill -- */
-    insertSql(sqlInsertSkill, function (result, err) {
-      if (err) {
-        connection.rollback();
-        callback(null, err);
-      } else {
-        connection.commit(function (err) {
-          if (err) {
-            connection.rollback();
-            callback(null, err);
-          }
-          console.log('Transaction Complete.');
-          callback("Skill successfully inserted into the system!");
-        });
-      }
-    });
-  });
-}
-
-// update skill object in DB
-DatabaseMySql.prototype.updateSkill = function (skill, callback) {
-
-  var utils = new Utils();
-
-  /* -- Start transation -- */
-  connection.beginTransaction(function (err) {
-    if (err) { callback(null, err); }
-
-    var sqlUpdateSkill = utils.getUpdateSqlSkill(skill);
-
-    /* -- Start update Skill -- */
-    insertSql(sqlUpdateSkill, function (result, err) {
-      if (err) {
-        connection.rollback();
-        callback(null, err);
-      } else {
-        connection.commit(function (err) {
-          if (err) {
-            connection.rollback();
-            callback(null, err);
-          }
-          console.log('Transaction Complete.');
-          callback("Skill successfully updated in the system!");
-        });
-      }
-    });
-  });
-}
-
-
-
 // Task Model related functions ..............................................................
 // get task object by id
 DatabaseMySql.prototype.getTask = function (taskId, callback) {
@@ -891,154 +958,6 @@ DatabaseMySql.prototype.updateTask = function (task, callback) {
   });
 }
 
-// get Post object in DB
-DatabaseMySql.prototype.getPost = function (err, callback) {
-
-  console.log("backendmysql controller");
-  var utils = new Utils();
-
-  var sqlSelectPost = utils.selectPosts();
-
-  connection.query(sqlSelectPost, function (err, resultPosts) {
-    if (err || resultPosts.length == 0) {
-      callback(null, err);
-    } else {
-      callback(resultPosts);
-    }
-  });
-}
-
-/* get Post reply object in db */
-
-DatabaseMySql.prototype.getReply = function (rep, callback) {
-
-  var utils = new Utils();
-  console.log("from backend mysql");
-
-
-  var sqlselectreply = utils.getReply(rep);
-
-  connection.query(sqlselectreply, function (err, resultsreply) {
-    console.log(resultsreply);
-
-    if (err || resultsreply.length == 0) {
-      callback(null, err);
-    } else {
-      callback(resultsreply);
-    }
-  })
-}
-
-// updating a post
-DatabaseMySql.prototype.updatePost = function (Post, callback) {
-
-  var utils = new Utils();
-
-  /* -- Start transation -- */
-  //connection.connect();
-  connection.beginTransaction(function (err) {
-    if (err) { callback(null, err); }
-
-    var sqlUpdatePost = utils.updatePosts(Post);
-
-    connection.query(sqlUpdatePost, function (result, err) {
-      if (err) {
-        connection.rollback();
-        callback(null, err);
-      } else {
-        connection.commit(function (err) {
-          if (err) {
-            connection.rollback();
-            callback(null, err);
-          }
-          console.log('Transaction Complete.');
-          //connection.end();
-          callback("Post successfully updated in the system!");
-        });
-      }
-    });
-  });
-}
-
-/* insert Posts */
-
-
-DatabaseMySql.prototype.insertsPosts = function (Post, callback) {
-
-  var utils = new Utils();
-
-  /* -- Start transation -- */
-  connection.beginTransaction(function (err) {
-    if (err) { callback(null, err); }
-
-    var sqlInsertspost = utils.addPosts(Post);
-
-    /* -- Start insert Skill -- */
-    insertSql(sqlInsertspost, function (result, err) {
-      if (err) {
-        connection.rollback();
-        callback(null, err);
-      } else {
-        connection.commit(function (err) {
-          if (err) {
-            connection.rollback();
-            callback(null, err);
-          }
-          console.log('Transaction Complete.');
-          callback("Post successfully inserted into the system!");
-        });
-      }
-    });
-  });
-}
-
-/* insert reply */
-
-DatabaseMySql.prototype.insertreply = function (reply, callback) {
-
-  var utils = new Utils();
-
-  /* -- Start transation -- */
-  connection.beginTransaction(function (err) {
-    if (err) { callback(null, err); }
-
-    var sqlInsertreply = utils.insertReply(reply);
-
-    /* -- Start insert Skill -- */
-    insertSql(sqlInsertreply, function (result, err) {
-      if (err) {
-        connection.rollback();
-        callback(null, err);
-      } else {
-        connection.commit(function (err) {
-          if (err) {
-            connection.rollback();
-            callback(null, err);
-          }
-          console.log('Transaction Complete.');
-          callback("Post reply successfully inserted into the system!");
-        });
-      }
-    });
-  });
-}
-
-//Delete POSTs
-DatabaseMySql.prototype.deletePost = function (err, callback) {
-
-  var utils = new Utils();
-
-  var sqldeletePost = utils.deletePost(Post);
-
-  connection.query(sqldeletePost, function (err, resultPosts) {
-    if (err || resultPosts.length == 0) {
-      callback(null, err);
-    } else {
-      //callback (utils.generateStudent(resultStudent[0]));
-      return resultPosts;
-    }
-  });
-}
 
 /* DB query inserting function */
 function insertSql(query, callback) {
@@ -1051,6 +970,82 @@ function insertSql(query, callback) {
   });
 }
 
+// Skill Model related functions ..............................................................
+// get skill object by id
+DatabaseMySql.prototype.getSkill = function (skillId, callback) {
+
+  var utils = new Utils();
+
+  var sqlSelectSkill = utils.getSqlSelectSkill(skillId);
+
+  connection.query(sqlSelectSkill, function (err, resultSkill) {
+    if (err || resultSkill.length == 0) {
+      callback(null, err);
+    } else {
+      callback(utils.generateSkill(resultSkill[0]));
+    }
+  });
+}
+
+// insert skill object to DB
+DatabaseMySql.prototype.insertSkill = function (skill, callback) {
+
+  var utils = new Utils();
+
+  /* -- Start transation -- */
+  connection.beginTransaction(function (err) {
+    if (err) { callback(null, err); }
+
+    var sqlInsertSkill = utils.getInsertSqlSkill(skill);
+
+    /* -- Start insert Skill -- */
+    insertSql(sqlInsertSkill, function (result, err) {
+      if (err) {
+        connection.rollback();
+        callback(null, err);
+      } else {
+        connection.commit(function (err) {
+          if (err) {
+            connection.rollback();
+            callback(null, err);
+          }
+          console.log('Transaction Complete.');
+          callback("Skill successfully inserted into the system!");
+        });
+      }
+    });
+  });
+}
+
+// update skill object in DB
+DatabaseMySql.prototype.updateSkill = function (skill, callback) {
+
+  var utils = new Utils();
+
+  /* -- Start transation -- */
+  connection.beginTransaction(function (err) {
+    if (err) { callback(null, err); }
+
+    var sqlUpdateSkill = utils.getUpdateSqlSkill(skill);
+
+    /* -- Start update Skill -- */
+    insertSql(sqlUpdateSkill, function (result, err) {
+      if (err) {
+        connection.rollback();
+        callback(null, err);
+      } else {
+        connection.commit(function (err) {
+          if (err) {
+            connection.rollback();
+            callback(null, err);
+          }
+          console.log('Transaction Complete.');
+          callback("Skill successfully updated in the system!");
+        });
+      }
+    });
+  });
+}
 
 
 module.exports = DatabaseMySql;
