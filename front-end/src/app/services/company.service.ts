@@ -23,7 +23,7 @@ export class CompanyService {
             console.log("respond error");
           } else {
             let i = 0;
-            while(result[i]) {
+            while (result[i]) {
               let comp = Utils.convertDatabaseCompanyToCompany(result[i]);
               this.companiesList.push(comp);
               i = i + 1;
@@ -31,6 +31,17 @@ export class CompanyService {
           }
         },
         (err) => alert('getting companies error occured.. !')
+      );
+  }
+
+  // Delete company from database
+  deleteCompany(company: Company) {
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.DELETECOMPANY, company)
+      .subscribe(
+        (result) => {
+          alert(result);
+        },
+        (err) => alert('Error occured.. Contact Administrations!')
       );
   }
 }

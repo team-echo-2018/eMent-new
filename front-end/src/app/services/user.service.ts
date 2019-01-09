@@ -8,21 +8,28 @@ import { Student } from '../entities/student';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
 
+  // Current user variable
   currentUser: any;
+
 
   constructor(private httpBackendRequest: HttpBackendRequestService) {
   }
 
+
   ngOnInit() {
+    // Set current user to null
     this.currentUser = null;
   }
 
+  // Get current user
   getCurrentUser(): any {
     return this.currentUser;
   }
 
+  // Set current user to Object model
   setCurrentUser(loggedUser: User, user: Object) {
     switch (loggedUser.userType) {
       case 'S':
@@ -34,14 +41,17 @@ export class UserService {
     }
   }
 
+  // Set user details for a student
   private setUserForStudent(curStudent: Object) {
     this.currentUser = Utils.convertDatabaseStudentToStudent(curStudent);
   }
 
+  // Set user details for a mentor
   private setUserForMentor(curMentor: Object) {
     this.currentUser = Utils.convertDatabaseMentorToMentor(curMentor);
   }
 
+  // Insert user to database
   insertUser(user) {
     this.httpBackendRequest.realizarHttpPost(HttpEnum.ADDUSER, user)
       .subscribe(
@@ -49,11 +59,11 @@ export class UserService {
           return result;
         },
         (err) => alert('Error occured.. Contact Administrations!')
-        // Verificar erro backend > (err) => alert('Ocorreu um erro: ' + err)
       );
 
   }
 
+  // Update current user details
   updateCurrentUserDetails(loggedUser: User, user: any) {
     switch (loggedUser.userType) {
       case 'S':
@@ -65,15 +75,26 @@ export class UserService {
     }
   }
 
-  updateStudentDetails(student: Student) {
+  // Update student details
+  private updateStudentDetails(student: Student) {
     this.httpBackendRequest.realizarHttpPost(HttpEnum.UPDATESTUDENT, student)
       .subscribe(
         (result) => {
           alert(result);
         },
         (err) => alert('Error occured.. Contact Administrations!')
-        // Verificar erro backend > (err) => alert('Ocorreu um erro: ' + err)
       );
+  }
+
+  // Delete user from database
+  deleteUser(user: User) {
+    this.httpBackendRequest.realizarHttpPost(HttpEnum.DELETEUSER, user)
+    .subscribe(
+      (result) => {
+        alert(result);
+      },
+      (err) => alert('Error occured.. Contact Administrations!')
+    );
   }
 
 }
