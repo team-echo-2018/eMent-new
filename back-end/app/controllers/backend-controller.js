@@ -102,6 +102,22 @@ BackendController.prototype.getStudent = function (req, callback) {
     });
 }
 
+// Get student by fname from DB model
+BackendController.prototype.getStudentByFname = function (req, callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.getStudentByFname(req.studentFname, function (result, err) {
+        console.log("Enter to the get student function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
 // Get ALL students' objects from DB model
 BackendController.prototype.getStudents = function (callback) {
 
@@ -338,6 +354,22 @@ BackendController.prototype.getCompany = function (req, callback) {
     var daoMsql = new DAOMySql();
 
     daoMsql.getCompany(req.companyId, function (result, err) {
+        console.log("Enter to the get company function");
+        if (err || !result) {
+            console.log("** error or no result");
+            callback(null, err);
+        } else {
+            callback(result);
+        }
+    });
+}
+
+// Get company by name from DB model
+BackendController.prototype.getCompanyByName = function (req, callback) {
+
+    var daoMsql = new DAOMySql();
+
+    daoMsql.getCompanyByName(req.companyName, function (result, err) {
         console.log("Enter to the get company function");
         if (err || !result) {
             console.log("** error or no result");

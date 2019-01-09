@@ -26,7 +26,6 @@ export class Utils {
     public static convertDatabaseStudentToStudent(dataStudent: any): Student {
 
         const student = new Student();
-
         student.studentId = dataStudent.studentId;
         student.studentFname = dataStudent.studentFname;
         student.studentLname = dataStudent.studentLname;
@@ -36,6 +35,7 @@ export class Utils {
         student.studentImgLink = dataStudent.studentImgLink;
         student.studentDescription = dataStudent.studentDescription;
 
+        console.log(student);
         return student;
 
     }

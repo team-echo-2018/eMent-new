@@ -163,7 +163,12 @@ DatabaseMySql.prototype.getStudentByFname = function (studentFname, callback) {
     if (err || resultStudent.length == 0) {
       callback(null, err);
     } else {
-      callback(utils.generateStudent(resultStudent[0]));
+      var i = 0; var resCom = [];
+      while (resultStudent[i]) {
+        resCom.push(utils.generateStudent(resultStudent[i]));
+        i = i + 1;
+      }
+      callback(resCom);
     }
   });
 }
@@ -415,7 +420,12 @@ DatabaseMySql.prototype.getCompanyByName = function (companyName, callback) {
     if (err || resultCompany.length == 0) {
       callback(null, err);
     } else {
-      callback(utils.generateCompany(resultCompany[0]));
+      var i = 0; var resCom = [];
+      while (resultCompany[i]) {
+        resCom.push(utils.generateCompany(resultCompany[i]));
+        i = i + 1;
+      }
+      callback(resCom);
     }
   });
 }
@@ -975,9 +985,9 @@ function insertSql(query, callback) {
 DatabaseMySql.prototype.getSkill = function (skillId, callback) {
 
   var utils = new Utils();
-  
+
   var sqlSelectSkill = utils.getSqlSelectSkill(skillId);
-  
+
   connection.query(sqlSelectSkill, function (err, resultSkill) {
     if (err || resultSkill.length == 0) {
       callback(null, err);
@@ -1078,7 +1088,7 @@ function insertSql(query, callback) {
 //   });
 // }
 
-DatabaseMySql.prototype.getnortifications = function ( callback) {
+DatabaseMySql.prototype.getnortifications = function (callback) {
 
   console.log("backendmysql controller nortifications");
   var utils = new Utils();
