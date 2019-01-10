@@ -75,7 +75,7 @@
           <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" (click)="deleteposts(post)" *ngIf="type"><i
               class="fa fa-comment"></i> Delete comment</button>
 
-          <div *ngIf="hiddenwrite ">
+          <div *ngIf="hidden ">
             <div class="w3-container w3-padding">
               <h6 class="w3-opacity">Welcome to the ement Forum</h6>
               <input type="text" [(ngModel)]="postreply" placeholder="Enter comment">
