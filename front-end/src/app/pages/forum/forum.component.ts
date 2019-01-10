@@ -13,12 +13,13 @@ import { UserService } from 'src/app/services/user.service';
 export class ForumComponent implements OnInit {
 
   user:any;
+  readcommentonce:boolean =true;
   posts : Posts[];
   userprofilename:string;
   postsreply :Postreply[];
-  Postheading:string;
-  postbody:string;
-  postreply:string;
+  Postheading :string=" ";
+  postbody:string=" ";
+  postreply:string=" ";
   author:string;
   address:String;
   type:boolean;
@@ -32,16 +33,16 @@ export class ForumComponent implements OnInit {
   ngOnInit():void {
     this.authService.isUserLogged();
     this.retrevePosts();
-    this.user=this.userService.getCurrentUser();
+    this.user=this.authService.getUser;
     this.author =this.user.userName;
     //console.log(this.author);
     this.type =(this.user.userType==='A');
-    this.name =this.user.getFirstName()+" "+this.user.getLastName();
-    this.userprofilename =this.user.getImgLink();
+
 
   }
 
   retrevePosts(){
+    this.posts=new Array();
     this.posts =this.postService.getPosts();
     //this.posts =this.postService.postlist;
     console.log(this.posts);
@@ -52,15 +53,21 @@ export class ForumComponent implements OnInit {
   writecomment(){
     if(this.hiddenwrite){
       this.hiddenwrite =false;
+      this.hidden =true;
+      this.readcommentonce=false;
     }else{
       this.hiddenwrite =true;
+      this.readcommentonce =true;
     }
   }
   comments(pst:Posts){
     if(this.hidden){
       this.hidden =false;
+      this.hiddenwrite=false;
+      this.readcommentonce=false;
     }else{
       this.hidden =true;
+      this.readcommentonce =true;
     }
     this.postsreply=this.postService.getPostsreply(pst);
     //this.postsreply=this.postService.replylist;
@@ -74,7 +81,7 @@ export class ForumComponent implements OnInit {
       pst.postAuthor =this.authService.getUser().userName;
       pst.postbody=this.postbody;
       pst.posttitle=this.Postheading;
-      //this.posts.push(pst);
+      this.posts.push(pst);
       this.postService.InsertPosts(pst);
       console.log(pst+"added");
 
@@ -88,7 +95,7 @@ export class ForumComponent implements OnInit {
       rep.replyid=null;
       rep.postId =pst.postId;
       console.log(rep.body);
-     // this.postsreply.push(rep);
+      this.postsreply.push(rep);
       this.postService.InsertReplys(rep);
 
     }

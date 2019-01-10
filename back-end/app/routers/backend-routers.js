@@ -227,7 +227,7 @@ router.route('/mentor/getall').post(function (req, res) {
 /* get posts */
 router.route('/posts/getPost').post(function (req, res) {
     backendController.getPosts(req.body, function (result, error) {
-        //console.log(result);
+        console.log(result);
 
         if (error) {
             res.status(404);
@@ -306,6 +306,10 @@ router.route('/posts/insertReply').post(function (req, res) {
 
 router.route('/posts/insertPost').post(function (req, res) {
     backendController.insertPost(req.body, function (result, error) {
+        //console.log("asdf");
+        
+        //console.log(req.body);
+        
         if (error) {
             res.status(404);
             res.send(error);
@@ -389,16 +393,29 @@ router.route('/nortify/getnortificatio').post(function (req, res) {
     console.log("asdf");
     
     backendController.getnortificationss(req.body, function (result, error) {
-        console.log("backend router"+result);
+        //console.log("backend router"+result);
 
         if (error) {
             res.status(404);
             res.send(error);
         } else {
-            console.log(result);
+            //console.log(result);
             res.json(result);
         }
 
     });
 });
+
+/* insert nortifications */
+router.route('/nortify/insertNortification').post(function (req, res) {
+    backendController.insertProjectNortifications(req.body, function (result, error) {
+        if (error) {
+            res.status(404);
+            res.send(error);
+        } else {
+            res.json(result);
+        }
+    });
+});
+
 module.exports = router;

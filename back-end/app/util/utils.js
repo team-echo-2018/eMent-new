@@ -489,11 +489,15 @@ Utils.prototype.generateMentor = function (resultMentor) {
 //add posts
 Utils.prototype.addPosts =function(Post)
 {
+    console.log(Post);
+    
     var sqlInsertPost = "INSERT INTO posts (postId,postauthor,postheading,postbody) VALUES ("+
         "NULL,"+
         "'"+Post.postAuthor +"',"+
         "'"+Post.posttitle +"',"+
         "'"+Post.postbody +"')";
+    console.log(sqlInsertPost);
+        
     return sqlInsertPost;
 }
 
@@ -625,11 +629,22 @@ Utils.prototype.generateTask = function (resultTask) {
 
 Utils.prototype.selectNortifications =function(){
     var selectSqlnortify = "SELECT * FROM nortifications";
-    console.log(selectSqlnortify);
+    //console.log(selectSqlnortify);
     
 
     return selectSqlnortify;
 }
 
 // export utils
+
+Utils.prototype.insertNortifications =function(nortification){
+    var sqlInsertNortification = "INSERT INTO posts (nortificationID,nortificationtitle,nortificationbody,timee) VALUES ("+
+        "NULL,"+
+        "'"+nortification.nortificationtitle +"',"+
+        "'"+nortification.nortificationbody +"',"+
+        "'"+nortification.time +"')";
+    console.log(sqlInsertNortification);
+    return sqlInsertNortification;
+}
+
 module.exports = Utils;

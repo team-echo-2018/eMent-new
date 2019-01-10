@@ -75,15 +75,21 @@
           <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" (click)="deleteposts(post)" *ngIf="type"><i
               class="fa fa-comment"></i> Delete comment</button>
 
-          <div *ngIf="hiddenwrite">
+          <div *ngIf="hidden ">
             <div class="w3-container w3-padding">
               <h6 class="w3-opacity">Welcome to the ement Forum</h6>
               <input type="text" [(ngModel)]="postreply" placeholder="Enter comment">
               <button type="button" class="w3-button w3-theme" (click)="addreply(post)"><i class="fa fa-pencil"></i>
                 Post</button>
             </div>
+            <ul *ngFor="let reply of postsreply ">
+                <li>
+                  <h6>{{reply.Author}}</h6>
+                  <p>{{reply.body}}</p>
+                </li>
+            </ul>
           </div>
-          <div *ngIf="hidden">
+          <div  *ngIf="hiddenwrite ">
             <ul *ngFor="let reply of postsreply ">
               <li>
                 <h6>{{reply.Author}}</h6>

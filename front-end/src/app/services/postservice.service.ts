@@ -57,6 +57,7 @@ export class PostserviceService {
 /* GET REPLY FOR POSTS */
 
   getPosts():Posts[]{
+    this.postlist =new Array();
     console.log("posts service called");
 
     this.httpBackendRequest.realizarHttpPost(this.getPostsUrl,null).subscribe(
@@ -118,9 +119,11 @@ export class PostserviceService {
   }
 /* INSERT POSTS */
   InsertPosts(Postdetails:Posts){
+    console.log(Postdetails);
+
     this.httpBackendRequest.realizarHttpPost(this.insertPostsUrl,Postdetails).subscribe(
       (error)=>{
-        console.log("problem inserting posts");
+        //console.log(error);
 
       }
 

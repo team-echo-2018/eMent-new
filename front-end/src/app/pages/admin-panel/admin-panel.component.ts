@@ -9,6 +9,8 @@ import { StudentService } from '../../services/student.service';
 import { Router } from '@angular/router';
 import { User } from '../../entities/user';
 import { UserService } from '../../services/user.service';
+import { NortificationService } from 'src/app/services/nortification.service';
+import { nortification } from 'src/app/entities/nortification';
 
 @Component({
   selector: 'app-admin-panel',
@@ -26,17 +28,20 @@ export class AdminPanelComponent implements OnInit {
   studentsActive: boolean;
   notificationsActive: boolean;
   title: string;
+  nortTitile:string =" ";
+  nortbody:string =" ";
 
   // Object lists
   companyList: Company[];
   mentorList: Mentor[];
   studentList: Student[];
+  nortificationList:nortification[];
 
 
   constructor(private authService: AuthenticationService,
     private companyService: CompanyService, private mentorService: MentorService,
     private studentService: StudentService, private userService: UserService,
-    private cd: ChangeDetectorRef) { }
+    private cd: ChangeDetectorRef,private nortService:NortificationService) { }
 
 
 
@@ -50,6 +55,8 @@ export class AdminPanelComponent implements OnInit {
     this.companyList = this.companyService.companiesList;
     this.mentorList = this.mentorService.mentorsList;
     this.studentList = this.studentService.studentsList;
+    this.nortificationList =this.nortService.getnortifications();
+    console.log(this.nortificationList);
 
     // Detect changes on data
     this.cd.detectChanges();
@@ -145,6 +152,9 @@ export class AdminPanelComponent implements OnInit {
 
     // Detect changes on data
     this.cd.detectChanges();
+  }
+  addmessage(){
+    //this.nortService.addnortification();
   }
 
   // Logout funtion

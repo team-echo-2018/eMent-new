@@ -10,11 +10,14 @@ import { nortification } from 'src/app/entities/nortification';
 })
 export class NotificationComponent implements OnInit {
 
+  user:string =" ";
+
   nortification_list:nortification[];
   constructor(private authService:AuthenticationService ,private nortservice:NortificationService) { }
 
   ngOnInit() {
     this.getnortifications();
+    this.user = this.authService.getUser().userName;
     //this.nortification_list =this.nortservice.getnortifications();
     //console.log("nortification component");
 

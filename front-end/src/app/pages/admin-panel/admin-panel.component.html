@@ -145,7 +145,7 @@
                                                     <td>{{company.companyPhone}}</td>
                                                     <td>{{company.companyEmail}}</td>
                                                     <td>{{company.companyDescription}}</td>
-                                                    <td><button class="btn btn-danger rounded">DELETE</button></td>
+                                                    <td><button class="btn btn-danger rounded" (click)="deleteUser(company.mentorId)">DELETE</button></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -252,7 +252,7 @@
                         <!-- notification table  -->
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="card">
-                                <h5 class="card-header">Recent Orders</h5>
+                                <h5 class="card-header">Recent Nortifications</h5>
                                 <div class="card-body p-0">
                                     <div class="table-responsive">
                                         <table class="table">
@@ -261,31 +261,27 @@
                                                     <th class="border-0">Title</th>
                                                     <th class="border-0">body</th>
                                                     <th class="border-0">time</th>
-                                                   
+
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody *ngFor="let item of nortificationList">
                                                 <tr>
-                                                    <td>New Project Idea</td>
-                                                    <td>A traffic light system project idea added by senio mentor cambio</td>
-                                                    <td>5 days </td>
-                                                    
+                                                    <td>{{item.nortificationtitle}}</td>
+                                                    <td>{{item.nortificationbody}}</td>
+                                                    <td>{{item.time}} </td>
+
                                                 </tr>
-                                                <tr>
-                                                    <td>Project succeeded</td>
-                                                    <td>dimento project has been successfully done by supersix team</td>
-                                                    <td>2 days ago </td>
-                                                </tr>
-                                                <tr>
-                                                    
-                                                    <td>want a student </td>
-                                                    <td>there is a vacency for a student to join eclipse project </td>
-                                                    <td>1 day ago</td>
-                                                </tr>
-                                               
                                                 <tr>
                                                     <td colspan="9"><a href="#" class="btn btn-outline-light float-right">View
                                                             Details</a></td>
+                                                </tr>
+                                            </tbody>
+                                            <tbody>
+                                                <tr>
+                                                    <td><input type="text" [(ngModel)]="nortTitile" name="message" placeholder="enter Title"></td>
+                                                    <td><input type="text" [(ngModel)]="nortbody" name="message" placeholder="enter Body"></td>
+                                                    <td><input type="submit" value="Add a nortification" (click)="addnortification()"></td>
+
                                                 </tr>
                                             </tbody>
                                         </table>
